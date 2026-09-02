@@ -101,7 +101,11 @@ export function DeliveryPicker({
               aria-pressed={slotId === s.id}
               onClick={() => onSlotChange(s.id)}
               className={cx(
-                "h-11 rounded-xl border px-2 text-[13px] font-medium transition-colors",
+                /* `whitespace-nowrap` para "p.m." não cair sozinho na segunda
+                   linha. Com quatro colunas sobram 123px por botão e o rótulo
+                   pedia 138px a 13px — daí a fonte menor, o recuo apertado e o
+                   entreletras negativo, que juntos cabem com folga. */
+                "h-11 whitespace-nowrap rounded-xl border px-1 text-[12px] font-medium tracking-tight transition-colors",
                 slotId === s.id
                   ? "border-dorado-600 bg-dorado-100 text-cacao"
                   : "border-crema-300 bg-white text-cacao-700 hover:border-cacao/30",

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Logo } from "./Logo";
 import { useCart } from "@/lib/cart";
+import { SearchSuggest } from "./SearchSuggest";
 import { useWishlist } from "@/lib/wishlist";
 import { OCCASIONS } from "@/lib/catalog";
 import { cx, soles } from "@/lib/format";
@@ -42,10 +43,8 @@ export function TopBar() {
 
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [query, setQuery] = useState("");
 
   const itemCount = useCart((s) =>
     s.items.reduce((n, i) => n + i.qty, 0) + s.addons.reduce((n, a) => n + a.qty, 0),
@@ -64,13 +63,6 @@ export function Header() {
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
-
-  function submitSearch(e: React.FormEvent) {
-    e.preventDefault();
-    if (!query.trim()) return;
-    router.push(`/tortas?q=${encodeURIComponent(query.trim())}`);
-    setSearchOpen(false);
-  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-crema-200 bg-crema/95 backdrop-blur-sm">
@@ -129,18 +121,7 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1 lg:ml-6">
-          <form onSubmit={submitSearch} className="hidden xl:block">
-            <label className="relative flex h-11 w-56 items-center">
-              <IconSearch className="pointer-events-none absolute left-3.5 h-4 w-4 text-cacao-300" />
-              <input
-                type="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Buscar tortas..."
-                className="h-full w-full rounded-full border border-crema-300 bg-white pl-10 pr-4 text-sm placeholder:text-cacao-300 focus:border-dorado-600"
-              />
-            </label>
-          </form>
+          <SearchSuggest className="hidden xl:block" />
 
           <button
             type="button"
@@ -192,19 +173,9 @@ export function Header() {
       </div>
 
       {searchOpen && (
-        <form onSubmit={submitSearch} className="border-t border-crema-200 px-4 py-3 xl:hidden">
-          <label className="relative flex h-12 items-center">
-            <IconSearch className="pointer-events-none absolute left-4 h-[18px] w-[18px] text-cacao-300" />
-            <input
-              autoFocus
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Buscar tortas..."
-              className="h-full w-full rounded-full border border-crema-300 bg-white pl-11 pr-4 text-[15px] placeholder:text-cacao-300 focus:border-dorado-600"
-            />
-          </label>
-        </form>
+        <div className="border-t border-crema-200 px-4 py-3 xl:hidden">
+          <SearchSuggest variant="mobile" autoFocus />
+        </div>
       )}
 
       {menuOpen && (
