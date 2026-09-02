@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ==========================================================================
+   Tortas Fanor — sistema visual
+   Creme quente + cacau + dourado. O dourado só carrega texto cacau
+   (contraste 9:1), nunca branco — o botão principal do site antigo era
+   amarelo com texto branco a 1,8:1, ilegível ao sol.
+   ========================================================================== */
+
+@theme {
+  /* Superfícies */
+  --color-crema: #fffcf5;
+  --color-crema-100: #fdf7ea;
+  --color-crema-200: #f9efdc;
+  --color-crema-300: #f0e2c8;
+
+  /* Tinta */
+  --color-cacao: #3b2314;
+  --color-cacao-700: #5a3a24;
+  --color-cacao-500: #806047;
+  --color-cacao-300: #8a6c54;
+
+  /* Ação */
+  --color-dorado: #f7c118;
+  --color-dorado-600: #e2a900;
+  --color-dorado-200: #fbe6a3;
+  --color-dorado-100: #fdf3d4;
+
+  /* Destaque de preço e links */
+  --color-terracota: #c23a17;
+  --color-terracota-700: #9c2f11;
+
+  /* Sinais */
+  --color-verde: #376b4a;
+  --color-verde-100: #e6f2ea;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 16px;
+  --shadow-card: 0 1px 2px rgb(59 35 20 / 0.04), 0 8px 24px -12px rgb(59 35 20 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(59 35 20 / 0.06), 0 18px 40px -18px rgb(59 35 20 / 0.22);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-crema);
+    color: var(--color-cacao);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--color-cacao);
+  }
+
+  /* Foco visível e consistente — o tema antigo removia o outline em vários
+     controles, o que quebrava a navegação por teclado no checkout. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-cacao);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-dorado-200);
+    color: var(--color-cacao);
+  }
+
+  /* Dois resets contra o mesmo defeito: conteúdo largo estourando a coluna e
+     fazendo a página inteira rolar na horizontal.
+
+     O <fieldset> nasce com `min-inline-size: min-content` e itens de grid e
+     flex nascem com `min-width: auto` — todos se recusam a encolher abaixo do
+     conteúdo. Basta um calendário rolável, uma imagem com largura intrínseca
+     ou uma tabela dentro para a coluna crescer e arrastar o layout junto.
+
+     `:where()` mantém a especificidade em zero, então qualquer `min-w-*`
+     explícito no componente continua vencendo. */
+  fieldset {
+    min-inline-size: 0;
+  }
+
+  :where(.grid, .flex) > * {
+    min-width: 0;
+  }
+}
+
+@layer components {
+  /* Ornamento tipográfico usado sob os títulos de seção. */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-dorado-600);
+  }
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    height: 1px;
+    width: 2.5rem;
+    background: currentColor;
+    opacity: 0.55;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-crema-200);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Esconde a barra de rolagem em faixas roláveis (chips de filtro no mobile) */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

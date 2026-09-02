@@ -1,0 +1,1118 @@
+{
+  "generatedAt": "2026-09-01T18:43:17.2988004-03:00",
+  "sources": [
+    "C:\\projetos\\fanor\\data\\catalog.json",
+    "https://pre.indigods.com/producto/torta-red-velvet/",
+    "https://fanor321.sirv.com/Spins/red%20velvet/red%20velvet.spin?info"
+  ],
+  "files": [
+    {
+      "productId": 261,
+      "productSlug": "bracito",
+      "productName": "Bracito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Brazo_02.jpg",
+      "localPath": "/assets/produtos/bracito/01_Brazo_02.jpg"
+    },
+    {
+      "productId": 261,
+      "productSlug": "bracito",
+      "productName": "Bracito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Dulce-Pasion-Brazo.jpg",
+      "localPath": "/assets/produtos/bracito/02_Dulce-Pasion-Brazo.jpg"
+    },
+    {
+      "productId": 261,
+      "productSlug": "bracito",
+      "productName": "Bracito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Dulce-Pasion-Brazo.jpg",
+      "localPath": "/assets/produtos/bracito/03_W2_Dulce-Pasion-Brazo.jpg"
+    },
+    {
+      "productId": 261,
+      "productSlug": "bracito",
+      "productName": "Bracito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Dulce-Pasion-Brazo_Fanor.jpg",
+      "localPath": "/assets/produtos/bracito/04_Dulce-Pasion-Brazo_Fanor.jpg"
+    },
+    {
+      "productId": 694,
+      "productSlug": "tropical",
+      "productName": "Tropical",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Tropical-20_1000x1000px.png",
+      "localPath": "/assets/produtos/tropical/01_Tropical-20_1000x1000px.png"
+    },
+    {
+      "productId": 675,
+      "productSlug": "fantasia",
+      "productName": "Fantasía",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Fantasia-20_1000x1000px.png",
+      "localPath": "/assets/produtos/fantasia/01_Fantasia-20_1000x1000px.png"
+    },
+    {
+      "productId": 284,
+      "productSlug": "rica-morena",
+      "productName": "Rica Morena",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica-Morena-20_1000x1000px.png",
+      "localPath": "/assets/produtos/rica-morena/01_Rica-Morena-20_1000x1000px.png"
+    },
+    {
+      "productId": 284,
+      "productSlug": "rica-morena",
+      "productName": "Rica Morena",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica_Morena_01.jpg",
+      "localPath": "/assets/produtos/rica-morena/02_Rica_Morena_01.jpg"
+    },
+    {
+      "productId": 284,
+      "productSlug": "rica-morena",
+      "productName": "Rica Morena",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Rica-Morena-26.jpg",
+      "localPath": "/assets/produtos/rica-morena/03_W_Rica-Morena-26.jpg"
+    },
+    {
+      "productId": 284,
+      "productSlug": "rica-morena",
+      "productName": "Rica Morena",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica-Morena-26_Fanor.jpg",
+      "localPath": "/assets/produtos/rica-morena/04_Rica-Morena-26_Fanor.jpg"
+    },
+    {
+      "productId": 265,
+      "productSlug": "la-clasica",
+      "productName": "La Clásica",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_02_1080x1080px.png",
+      "localPath": "/assets/produtos/la-clasica/01_T26_La-Clasica_02_1080x1080px.png"
+    },
+    {
+      "productId": 265,
+      "productSlug": "la-clasica",
+      "productName": "La Clásica",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T20_La-Clasica_01_1000x1000px.png",
+      "localPath": "/assets/produtos/la-clasica/02_T20_La-Clasica_01_1000x1000px.png"
+    },
+    {
+      "productId": 265,
+      "productSlug": "la-clasica",
+      "productName": "La Clásica",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_W01_1000x1000px.png",
+      "localPath": "/assets/produtos/la-clasica/03_T26_La-Clasica_W01_1000x1000px.png"
+    },
+    {
+      "productId": 265,
+      "productSlug": "la-clasica",
+      "productName": "La Clásica",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_W02_1000x1000px.png",
+      "localPath": "/assets/produtos/la-clasica/04_T26_La-Clasica_W02_1000x1000px.png"
+    },
+    {
+      "productId": 265,
+      "productSlug": "la-clasica",
+      "productName": "La Clásica",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_01_1000x1000px.png",
+      "localPath": "/assets/produtos/la-clasica/05_T26_La-Clasica_01_1000x1000px.png"
+    },
+    {
+      "productId": 692,
+      "productSlug": "torta-helada",
+      "productName": "Torta Helada",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Torta-Helada-03_1000x1000px.png",
+      "localPath": "/assets/produtos/torta-helada/01_Torta-Helada-03_1000x1000px.png"
+    },
+    {
+      "productId": 692,
+      "productSlug": "torta-helada",
+      "productName": "Torta Helada",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Torta-Helada-02_1000x1000px.png",
+      "localPath": "/assets/produtos/torta-helada/02_Torta-Helada-02_1000x1000px.png"
+    },
+    {
+      "productId": 692,
+      "productSlug": "torta-helada",
+      "productName": "Torta Helada",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Torta-Helada_Fanor.jpg",
+      "localPath": "/assets/produtos/torta-helada/03_Torta-Helada_Fanor.jpg"
+    },
+    {
+      "productId": 692,
+      "productSlug": "torta-helada",
+      "productName": "Torta Helada",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Torta-Helada.jpg",
+      "localPath": "/assets/produtos/torta-helada/04_W_Torta-Helada.jpg"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26-T20_Selva-Negra-Especial-Cherry_1080x1080px.png",
+      "localPath": "/assets/produtos/selva-negra/01_T26-T20_Selva-Negra-Especial-Cherry_1080x1080px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W02_1000x1000px.png",
+      "localPath": "/assets/produtos/selva-negra/02_T26_Selva-Negra-Especial-Cherry_W02_1000x1000px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W03_1000x1000px.png",
+      "localPath": "/assets/produtos/selva-negra/03_T26_Selva-Negra-Especial-Cherry_W03_1000x1000px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W01_1000x1000px.png",
+      "localPath": "/assets/produtos/selva-negra/04_T26_Selva-Negra-Especial-Cherry_W01_1000x1000px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_02_1080x1080px.png",
+      "localPath": "/assets/produtos/selva-negra/05_T26_Selva-Negra-Especial-Cherry_02_1080x1080px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_01_1000x1000px.png",
+      "localPath": "/assets/produtos/selva-negra/06_T26_Selva-Negra-Especial-Cherry_01_1000x1000px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_03_1080x1080px.jpg",
+      "localPath": "/assets/produtos/selva-negra/07_T26_Selva-Negra-Especial-Cherry_03_1080x1080px.jpg"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Selva-Negra-Especial-Cherry_02_1000x1000px.png",
+      "localPath": "/assets/produtos/selva-negra/08_T20_Selva-Negra-Especial-Cherry_02_1000x1000px.png"
+    },
+    {
+      "productId": 532,
+      "productSlug": "selva-negra",
+      "productName": "Selva Negra",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_1080x1080px.png",
+      "localPath": "/assets/produtos/selva-negra/09_T26_Selva-Negra-Especial-Cherry_1080x1080px.png"
+    },
+    {
+      "productId": 279,
+      "productSlug": "mousse-de-fresa",
+      "productName": "Mousse de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Mousse_Fresa_01.jpg",
+      "localPath": "/assets/produtos/mousse-de-fresa/01_Mousse_Fresa_01.jpg"
+    },
+    {
+      "productId": 279,
+      "productSlug": "mousse-de-fresa",
+      "productName": "Mousse de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Mousse-de-Fresa-20.jpg",
+      "localPath": "/assets/produtos/mousse-de-fresa/02_W_Mousse-de-Fresa-20.jpg"
+    },
+    {
+      "productId": 279,
+      "productSlug": "mousse-de-fresa",
+      "productName": "Mousse de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Mousse-de-Fresa-20_Fanor.jpg",
+      "localPath": "/assets/produtos/mousse-de-fresa/03_Mousse-de-Fresa-20_Fanor.jpg"
+    },
+    {
+      "productId": 278,
+      "productSlug": "moca",
+      "productName": "Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_02_1080x1080px.png",
+      "localPath": "/assets/produtos/moca/01_T26_Moca_02_1080x1080px.png"
+    },
+    {
+      "productId": 278,
+      "productSlug": "moca",
+      "productName": "Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_W01_1000x1000px.png",
+      "localPath": "/assets/produtos/moca/02_T26_Moca_W01_1000x1000px.png"
+    },
+    {
+      "productId": 278,
+      "productSlug": "moca",
+      "productName": "Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_01_1000x1000px.png",
+      "localPath": "/assets/produtos/moca/03_T26_Moca_01_1000x1000px.png"
+    },
+    {
+      "productId": 278,
+      "productSlug": "moca",
+      "productName": "Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T20_Moca_01_1000x1000px.png",
+      "localPath": "/assets/produtos/moca/04_T20_Moca_01_1000x1000px.png"
+    },
+    {
+      "productId": 260,
+      "productSlug": "dulce-pasion",
+      "productName": "Dulce Pasión",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Dulce_Pasion_01.jpg",
+      "localPath": "/assets/produtos/dulce-pasion/01_Dulce_Pasion_01.jpg"
+    },
+    {
+      "productId": 726,
+      "productSlug": "torta-1",
+      "productName": "Torta 1½",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/11/Torta-1%C2%BD_1000x1000px.png",
+      "localPath": "/assets/produtos/torta-1/01_Torta-1½_1000x1000px.png"
+    },
+    {
+      "productId": 257,
+      "productSlug": "torta-de-chocolate",
+      "productName": "Torta de Chocolate",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate_01.jpg",
+      "localPath": "/assets/produtos/torta-de-chocolate/01_Chocolate_01.jpg"
+    },
+    {
+      "productId": 257,
+      "productSlug": "torta-de-chocolate",
+      "productName": "Torta de Chocolate",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate-26.jpg",
+      "localPath": "/assets/produtos/torta-de-chocolate/02_Chocolate-26.jpg"
+    },
+    {
+      "productId": 257,
+      "productSlug": "torta-de-chocolate",
+      "productName": "Torta de Chocolate",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate02-26_1000x1000px.png",
+      "localPath": "/assets/produtos/torta-de-chocolate/03_Chocolate02-26_1000x1000px.png"
+    },
+    {
+      "productId": 257,
+      "productSlug": "torta-de-chocolate",
+      "productName": "Torta de Chocolate",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate-26_Fanor.jpg",
+      "localPath": "/assets/produtos/torta-de-chocolate/04_Chocolate-26_Fanor.jpg"
+    },
+    {
+      "productId": 253,
+      "productSlug": "cheesecake-de-sauco",
+      "productName": "Cheesecake de Sauco",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Cheesecake-de-Sauco-26.jpg",
+      "localPath": "/assets/produtos/cheesecake-de-sauco/01_Cheesecake-de-Sauco-26.jpg"
+    },
+    {
+      "productId": 253,
+      "productSlug": "cheesecake-de-sauco",
+      "productName": "Cheesecake de Sauco",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Cheesecake-de-Sauco-26_Fanor.jpg",
+      "localPath": "/assets/produtos/cheesecake-de-sauco/02_Cheesecake-de-Sauco-26_Fanor.jpg"
+    },
+    {
+      "productId": 919,
+      "productSlug": "3-leches-de-moca",
+      "productName": "3 Leches de Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Moca_01_1080x1080px.jpg",
+      "localPath": "/assets/produtos/3-leches-de-moca/01_T26_3Leches-Moca_01_1080x1080px.jpg"
+    },
+    {
+      "productId": 919,
+      "productSlug": "3-leches-de-moca",
+      "productName": "3 Leches de Moca",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_3Leches-Moca_1000x1000px.png",
+      "localPath": "/assets/produtos/3-leches-de-moca/02_T20_3Leches-Moca_1000x1000px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/T26-T20_Sambito_01_1080x1080px.png",
+      "localPath": "/assets/produtos/sambito/01_T26-T20_Sambito_01_1080x1080px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Mango-24_01_1000x1000px.png",
+      "localPath": "/assets/produtos/sambito/02_Sambito-de-Mango-24_01_1000x1000px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W_Sambito-de-Lu%CC%81cuma_02-24_1000x1000px.png",
+      "localPath": "/assets/produtos/sambito/03_W_Sambito-de-Lúcuma_02-24_1000x1000px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Lu%CC%81cuma-24_02_1000x1000px.png",
+      "localPath": "/assets/produtos/sambito/04_Sambito-de-Lúcuma-24_02_1000x1000px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Lu%CC%81cuma-20_1000x1000px.png",
+      "localPath": "/assets/produtos/sambito/05_Sambito-de-Lúcuma-20_1000x1000px.png"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Sambito-de-Lucuma-24_Fanor.jpg",
+      "localPath": "/assets/produtos/sambito/06_Sambito-de-Lucuma-24_Fanor.jpg"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Sambito-de-Lucuma-24.jpg",
+      "localPath": "/assets/produtos/sambito/07_W_Sambito-de-Lucuma-24.jpg"
+    },
+    {
+      "productId": 656,
+      "productSlug": "sambito",
+      "productName": "Sambito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Sambito_1000x1000px.png",
+      "localPath": "/assets/produtos/sambito/08_T20_Sambito_1000x1000px.png"
+    },
+    {
+      "productId": 564,
+      "productSlug": "corazon-red-velvet",
+      "productName": "Corazón Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26-T20_Red-Velvet_01_1080x1080px.png",
+      "localPath": "/assets/produtos/corazon-red-velvet/01_T26-T20_Red-Velvet_01_1080x1080px.png"
+    },
+    {
+      "productId": 564,
+      "productSlug": "corazon-red-velvet",
+      "productName": "Corazón Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Corazon_Red_Velvet01_1000x1000px.png",
+      "localPath": "/assets/produtos/corazon-red-velvet/02_Corazon_Red_Velvet01_1000x1000px.png"
+    },
+    {
+      "productId": 564,
+      "productSlug": "corazon-red-velvet",
+      "productName": "Corazón Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Corazon-Red-Velvet-Fresas_1000x1000px.png",
+      "localPath": "/assets/produtos/corazon-red-velvet/03_T20_Corazon-Red-Velvet-Fresas_1000x1000px.png"
+    },
+    {
+      "productId": 564,
+      "productSlug": "corazon-red-velvet",
+      "productName": "Corazón Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_Corazon-Red-Velvet_1000x1000px.png",
+      "localPath": "/assets/produtos/corazon-red-velvet/04_T20_Corazon-Red-Velvet_1000x1000px.png"
+    },
+    {
+      "productId": 564,
+      "productSlug": "corazon-red-velvet",
+      "productName": "Corazón Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Corazon_Red_Velvet02_1000x1000px.png",
+      "localPath": "/assets/produtos/corazon-red-velvet/05_Corazon_Red_Velvet02_1000x1000px.png"
+    },
+    {
+      "productId": 542,
+      "productSlug": "red-velvet",
+      "productName": "Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Red_Velvet_01.jpg",
+      "localPath": "/assets/produtos/red-velvet/01_Red_Velvet_01.jpg"
+    },
+    {
+      "productId": 542,
+      "productSlug": "red-velvet",
+      "productName": "Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Red_Velvet_02.jpg",
+      "localPath": "/assets/produtos/red-velvet/02_Red_Velvet_02.jpg"
+    },
+    {
+      "productId": 542,
+      "productSlug": "red-velvet",
+      "productName": "Red Velvet",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_Red-Velvet_1000x1000px.png",
+      "localPath": "/assets/produtos/red-velvet/03_T20_Red-Velvet_1000x1000px.png"
+    },
+    {
+      "productId": 191,
+      "productSlug": "3-leches-de-vainilla",
+      "productName": "3 Leches de Vainilla",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Vainilla_W01_1000x1000px.png",
+      "localPath": "/assets/produtos/3-leches-de-vainilla/01_T26_3Leches-Vainilla_W01_1000x1000px.png"
+    },
+    {
+      "productId": 191,
+      "productSlug": "3-leches-de-vainilla",
+      "productName": "3 Leches de Vainilla",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Vainilla_01_1000x1000px.png",
+      "localPath": "/assets/produtos/3-leches-de-vainilla/02_T26_3Leches-Vainilla_01_1000x1000px.png"
+    },
+    {
+      "productId": 191,
+      "productSlug": "3-leches-de-vainilla",
+      "productName": "3 Leches de Vainilla",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_3Leches-Vainilla_1000x1000px.png",
+      "localPath": "/assets/produtos/3-leches-de-vainilla/03_T20_3Leches-Vainilla_1000x1000px.png"
+    },
+    {
+      "productId": 264,
+      "productSlug": "homero",
+      "productName": "Homero",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Homero-26.jpg",
+      "localPath": "/assets/produtos/homero/01_Homero-26.jpg"
+    },
+    {
+      "productId": 264,
+      "productSlug": "homero",
+      "productName": "Homero",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Homero-26_Fanor.jpg",
+      "localPath": "/assets/produtos/homero/02_Homero-26_Fanor.jpg"
+    },
+    {
+      "productId": 707,
+      "productSlug": "guagua",
+      "productName": "Guagua",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/11/Guagua2024-G_1000x1000px.png",
+      "localPath": "/assets/produtos/guagua/01_Guagua2024-G_1000x1000px.png"
+    },
+    {
+      "productId": 563,
+      "productSlug": "tronquito",
+      "productName": "Tronquito",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Tronquito_1000x1000px.png",
+      "localPath": "/assets/produtos/tronquito/01_Tronquito_1000x1000px.png"
+    },
+    {
+      "productId": 272,
+      "productSlug": "fototorta",
+      "productName": "FotoTorta",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/FotoTortas_1000x1000px.png",
+      "localPath": "/assets/produtos/fototorta/01_FotoTortas_1000x1000px.png"
+    },
+    {
+      "productId": 688,
+      "productSlug": "sublime",
+      "productName": "Sublime",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sublime02-26_1000x1000px.png",
+      "localPath": "/assets/produtos/sublime/01_Sublime02-26_1000x1000px.png"
+    },
+    {
+      "productId": 688,
+      "productSlug": "sublime",
+      "productName": "Sublime",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sublime03-26_1000x1000px.png",
+      "localPath": "/assets/produtos/sublime/02_Sublime03-26_1000x1000px.png"
+    },
+    {
+      "productId": 688,
+      "productSlug": "sublime",
+      "productName": "Sublime",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W2_Sublime-26_1000x1000px.png",
+      "localPath": "/assets/produtos/sublime/03_W2_Sublime-26_1000x1000px.png"
+    },
+    {
+      "productId": 688,
+      "productSlug": "sublime",
+      "productName": "Sublime",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Sublime-26_Fanor.jpg",
+      "localPath": "/assets/produtos/sublime/04_Sublime-26_Fanor.jpg"
+    },
+    {
+      "productId": 688,
+      "productSlug": "sublime",
+      "productName": "Sublime",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Sublime-26.jpg",
+      "localPath": "/assets/produtos/sublime/05_W_Sublime-26.jpg"
+    },
+    {
+      "productId": 672,
+      "productSlug": "oreochoco-sensations",
+      "productName": "OreoChoco Sensations",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/OreoChoco-Sensations-26_1000x1000px.png",
+      "localPath": "/assets/produtos/oreochoco-sensations/01_OreoChoco-Sensations-26_1000x1000px.png"
+    },
+    {
+      "productId": 650,
+      "productSlug": "delicia-de-fresa",
+      "productName": "Delicia de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia-de-Fresa_02-26_1000x1000px.png",
+      "localPath": "/assets/produtos/delicia-de-fresa/01_Delicia-de-Fresa_02-26_1000x1000px.png"
+    },
+    {
+      "productId": 650,
+      "productSlug": "delicia-de-fresa",
+      "productName": "Delicia de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W_Delicia-de-Fresa-26_1000x1000px.png",
+      "localPath": "/assets/produtos/delicia-de-fresa/02_W_Delicia-de-Fresa-26_1000x1000px.png"
+    },
+    {
+      "productId": 648,
+      "productSlug": "chocolate-tropical",
+      "productName": "Chocolate Tropical",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Chocolate-Tropical-26_1000x1000px.png",
+      "localPath": "/assets/produtos/chocolate-tropical/01_Chocolate-Tropical-26_1000x1000px.png"
+    },
+    {
+      "productId": 281,
+      "productSlug": "princesa",
+      "productName": "Princesa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Princesa-26.jpg",
+      "localPath": "/assets/produtos/princesa/01_W_Princesa-26.jpg"
+    },
+    {
+      "productId": 281,
+      "productSlug": "princesa",
+      "productName": "Princesa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Princesa-26_Fanor.jpg",
+      "localPath": "/assets/produtos/princesa/02_Princesa-26_Fanor.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_01.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/01_Pasion_de_Fresa_01.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion-de-Fresa-26_Fanor.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/02_Pasion-de-Fresa-26_Fanor.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_04.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/03_Pasion_de_Fresa_04.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_02.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/04_Pasion_de_Fresa_02.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Pasion-de-Fresa-26.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/05_W2_Pasion-de-Fresa-26.jpg"
+    },
+    {
+      "productId": 280,
+      "productSlug": "pasion-de-fresa",
+      "productName": "Pasión de Fresa",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W3_Pasion-de-Fresa-26.jpg",
+      "localPath": "/assets/produtos/pasion-de-fresa/06_W3_Pasion-de-Fresa-26.jpg"
+    },
+    {
+      "productId": 259,
+      "productSlug": "domino-de-mango",
+      "productName": "Dominó de Mango",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Domino-de-Mango-26.jpg",
+      "localPath": "/assets/produtos/domino-de-mango/01_W2_Domino-de-Mango-26.jpg"
+    },
+    {
+      "productId": 259,
+      "productSlug": "domino-de-mango",
+      "productName": "Dominó de Mango",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Domino-de-Mango-26_Fanor.jpg",
+      "localPath": "/assets/produtos/domino-de-mango/02_Domino-de-Mango-26_Fanor.jpg"
+    },
+    {
+      "productId": 259,
+      "productSlug": "domino-de-mango",
+      "productName": "Dominó de Mango",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Domino-de-Mango-26.jpg",
+      "localPath": "/assets/produtos/domino-de-mango/03_Domino-de-Mango-26.jpg"
+    },
+    {
+      "productId": 258,
+      "productSlug": "delicia-de-durazno",
+      "productName": "Delicia de Durazno",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno_02-26_1000x1000px.png",
+      "localPath": "/assets/produtos/delicia-de-durazno/01_Delicia-de-Durazno_02-26_1000x1000px.png"
+    },
+    {
+      "productId": 258,
+      "productSlug": "delicia-de-durazno",
+      "productName": "Delicia de Durazno",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno-26_Fanor.jpg",
+      "localPath": "/assets/produtos/delicia-de-durazno/02_Delicia-de-Durazno-26_Fanor.jpg"
+    },
+    {
+      "productId": 258,
+      "productSlug": "delicia-de-durazno",
+      "productName": "Delicia de Durazno",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno-26.jpg",
+      "localPath": "/assets/produtos/delicia-de-durazno/03_Delicia-de-Durazno-26.jpg"
+    },
+    {
+      "productId": 647,
+      "productSlug": "torta-2",
+      "productName": "Torta 2½",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/2%C2%BD_01.jpg",
+      "localPath": "/assets/produtos/torta-2/01_2½_01.jpg"
+    },
+    {
+      "productId": 647,
+      "productSlug": "torta-2",
+      "productName": "Torta 2½",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/2%C2%BD_02.jpg",
+      "localPath": "/assets/produtos/torta-2/02_2½_02.jpg"
+    },
+    {
+      "productId": 699,
+      "productSlug": "encanto-marino",
+      "productName": "Encanto Marino",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Encanto-Marino-26_Fanor.jpg",
+      "localPath": "/assets/produtos/encanto-marino/01_Encanto-Marino-26_Fanor.jpg"
+    },
+    {
+      "productId": 699,
+      "productSlug": "encanto-marino",
+      "productName": "Encanto Marino",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Encanto-Marino-26.jpg",
+      "localPath": "/assets/produtos/encanto-marino/02_Encanto-Marino-26.jpg"
+    },
+    {
+      "productId": 653,
+      "productSlug": "delicia-tropical",
+      "productName": "Delicia Tropical",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia_Tropical_02_1000x1000px.png",
+      "localPath": "/assets/produtos/delicia-tropical/01_Delicia_Tropical_02_1000x1000px.png"
+    },
+    {
+      "productId": 653,
+      "productSlug": "delicia-tropical",
+      "productName": "Delicia Tropical",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia_Tropical_01_1000x1000px.png",
+      "localPath": "/assets/produtos/delicia-tropical/02_Delicia_Tropical_01_1000x1000px.png"
+    },
+    {
+      "productId": 789,
+      "productSlug": "dulce-violeta",
+      "productName": "Dulce Violeta",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Dulce-Violeta_1000x1000.png",
+      "localPath": "/assets/produtos/dulce-violeta/01_Dulce-Violeta_1000x1000.png"
+    },
+    {
+      "productId": 704,
+      "productSlug": "whisky",
+      "productName": "Whisky",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Whisky-26_1000x1000px.png",
+      "localPath": "/assets/produtos/whisky/01_Whisky-26_1000x1000px.png"
+    },
+    {
+      "productId": 890,
+      "productSlug": "papa-amoroso-2",
+      "productName": "Papá Amoroso 2",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-amoroso_1000x1000px.png",
+      "localPath": "/assets/produtos/papa-amoroso-2/01_Papa-amoroso_1000x1000px.png"
+    },
+    {
+      "productId": 888,
+      "productSlug": "papa-artista-2",
+      "productName": "Papá Artista 2",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-artista_1000x1000px.png",
+      "localPath": "/assets/produtos/papa-artista-2/01_Papa-artista_1000x1000px.png"
+    },
+    {
+      "productId": 835,
+      "productSlug": "papa-elegante",
+      "productName": "Papá Elegante",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_ELEGANTE_1080x1080px.png",
+      "localPath": "/assets/produtos/papa-elegante/01_2026_PAPA_ELEGANTE_1080x1080px.png"
+    },
+    {
+      "productId": 889,
+      "productSlug": "papa-deportista-2",
+      "productName": "Papá Deportista 2",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-deportista_1000x1000px.png",
+      "localPath": "/assets/produtos/papa-deportista-2/01_Papa-deportista_1000x1000px.png"
+    },
+    {
+      "productId": 703,
+      "productSlug": "alteza-06",
+      "productName": "Alteza 06",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Alteza06_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-06/01_Alteza06_1000x1000px.png"
+    },
+    {
+      "productId": 700,
+      "productSlug": "alteza-05",
+      "productName": "Alteza 05",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Alteza05_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-05/01_Alteza05_1000x1000px.png"
+    },
+    {
+      "productId": 585,
+      "productSlug": "alteza-del-dulce-romance",
+      "productName": "Alteza del Dulce Romance",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-del-Dulce-Romance_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-del-dulce-romance/01_Alteza-del-Dulce-Romance_1000x1000px.png"
+    },
+    {
+      "productId": 584,
+      "productSlug": "alteza-del-vinculo-eterno",
+      "productName": "Alteza del Vínculo Eterno",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-del-Vinculo-Eterno_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-del-vinculo-eterno/01_Alteza-del-Vinculo-Eterno_1000x1000px.png"
+    },
+    {
+      "productId": 580,
+      "productSlug": "alteza-destellos-de-pasion",
+      "productName": "Alteza Destellos de Pasión",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-Destellos-de-Pasion_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-destellos-de-pasion/01_Alteza-Destellos-de-Pasion_1000x1000px.png"
+    },
+    {
+      "productId": 561,
+      "productSlug": "alteza-charada",
+      "productName": "Alteza Charada",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-Charada_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-charada/01_Alteza-Charada_1000x1000px.png"
+    },
+    {
+      "productId": 560,
+      "productSlug": "alteza-reno",
+      "productName": "Alteza Reno",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-Rena_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-reno/01_Alteza-Rena_1000x1000px.png"
+    },
+    {
+      "productId": 555,
+      "productSlug": "alteza-del-bosque",
+      "productName": "Alteza del Bosque",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-del-Bosque_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-del-bosque/01_Alteza-del-Bosque_1000x1000px.png"
+    },
+    {
+      "productId": 501,
+      "productSlug": "alteza-03",
+      "productName": "Alteza 03",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza03.jpg",
+      "localPath": "/assets/produtos/alteza-03/01_Alteza03.jpg"
+    },
+    {
+      "productId": 500,
+      "productSlug": "alteza-02",
+      "productName": "Alteza 02",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza02_1000x1000px.png",
+      "localPath": "/assets/produtos/alteza-02/01_Alteza02_1000x1000px.png"
+    },
+    {
+      "productId": 495,
+      "productSlug": "alteza-01",
+      "productName": "Alteza 01",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza01.jpg",
+      "localPath": "/assets/produtos/alteza-01/01_Alteza01.jpg"
+    },
+    {
+      "productId": 886,
+      "productSlug": "papa-aventurero-2",
+      "productName": "Papá Aventurero 2",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-aventurero_1000x1000px.png",
+      "localPath": "/assets/produtos/papa-aventurero-2/01_Papa-aventurero_1000x1000px.png"
+    },
+    {
+      "productId": 838,
+      "productSlug": "papa-amoroso",
+      "productName": "Papá Amoroso",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_AMOROSO_1080x1080px.png",
+      "localPath": "/assets/produtos/papa-amoroso/01_2026_PAPA_AMOROSO_1080x1080px.png"
+    },
+    {
+      "productId": 837,
+      "productSlug": "papa-deportista",
+      "productName": "Papá Deportista",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_DEPORTISTA_1080x1080px.png",
+      "localPath": "/assets/produtos/papa-deportista/01_2026_PAPA_DEPORTISTA_1080x1080px.png"
+    },
+    {
+      "productId": 836,
+      "productSlug": "papa-artista",
+      "productName": "Papá Artista",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_ARTISTA_1080x1080px.png",
+      "localPath": "/assets/produtos/papa-artista/01_2026_PAPA_ARTISTA_1080x1080px.png"
+    },
+    {
+      "productId": 830,
+      "productSlug": "papa-aventurero",
+      "productName": "Papá Aventurero",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_AVENTURERO_1080x1080px.png",
+      "localPath": "/assets/produtos/papa-aventurero/01_2026_PAPA_AVENTURERO_1080x1080px.png"
+    },
+    {
+      "productId": 502,
+      "productSlug": "alteza-04",
+      "productName": "Alteza 04",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza04.jpg",
+      "localPath": "/assets/produtos/alteza-04/01_Alteza04.jpg"
+    },
+    {
+      "productId": 784,
+      "productSlug": "alteza-ambar",
+      "productName": "Alteza Ambar",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Alteza-Ambar_1000x1000.png",
+      "localPath": "/assets/produtos/alteza-ambar/01_Alteza-Ambar_1000x1000.png"
+    },
+    {
+      "productId": 887,
+      "productSlug": "papa-elegante-2",
+      "productName": "Papá Elegante 2",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-elegante_1000x1000px.png",
+      "localPath": "/assets/produtos/papa-elegante-2/01_Papa-elegante_1000x1000px.png"
+    },
+    {
+      "productId": 788,
+      "productSlug": "reina-de-peonias",
+      "productName": "Reina de Peonías",
+      "sourceUrl": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Reina-Peoni%CC%81a_1000x1000.png",
+      "localPath": "/assets/produtos/reina-de-peonias/01_Reina-Peonía_1000x1000.png"
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_01.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_01.jpg",
+      "frame": 1
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_02.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_02.jpg",
+      "frame": 2
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_03.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_03.jpg",
+      "frame": 3
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_04.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_04.jpg",
+      "frame": 4
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_05.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_05.jpg",
+      "frame": 5
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_06.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_06.jpg",
+      "frame": 6
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_07.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_07.jpg",
+      "frame": 7
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_08.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_08.jpg",
+      "frame": 8
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_09.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_09.jpg",
+      "frame": 9
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_10.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_10.jpg",
+      "frame": 10
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_11.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_11.jpg",
+      "frame": 11
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_12.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_12.jpg",
+      "frame": 12
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_13.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_13.jpg",
+      "frame": 13
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_14.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_14.jpg",
+      "frame": 14
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_15.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_15.jpg",
+      "frame": 15
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_16.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_16.jpg",
+      "frame": 16
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_17.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_17.jpg",
+      "frame": 17
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_18.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_18.jpg",
+      "frame": 18
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_19.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_19.jpg",
+      "frame": 19
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_20.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_20.jpg",
+      "frame": 20
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_21.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_21.jpg",
+      "frame": 21
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_22.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_22.jpg",
+      "frame": 22
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_23.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_23.jpg",
+      "frame": 23
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_24.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_24.jpg",
+      "frame": 24
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_25.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_25.jpg",
+      "frame": 25
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_26.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_26.jpg",
+      "frame": 26
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_27.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_27.jpg",
+      "frame": 27
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_28.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_28.jpg",
+      "frame": 28
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_29.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_29.jpg",
+      "frame": 29
+    },
+    {
+      "productId": 63,
+      "productSlug": "red-velvet-360",
+      "productName": "Torta Red Velvet - giro 360 graus",
+      "sourceUrl": "https://fanor321.sirv.com/Spins/red%20velvet/RV-1000x1000_30.jpg",
+      "localPath": "/assets/360/red-velvet/RV-1000x1000_30.jpg",
+      "frame": 30
+    }
+  ]
+}

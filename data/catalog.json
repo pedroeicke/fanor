@@ -1,0 +1,3164 @@
+[
+  {
+    "id": 261,
+    "slug": "bracito",
+    "name": "Bracito",
+    "description": "Date un gustito con una torta de 12 porciones. Son 3 capas de torta y doble relleno, decoradas con chantillly artesanal y frutas frescas.",
+    "price": 39,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Brazo_02.jpg",
+        "alt": "Bracito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Dulce-Pasion-Brazo.jpg",
+        "alt": "Bracito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Dulce-Pasion-Brazo.jpg",
+        "alt": "Bracito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Dulce-Pasion-Brazo_Fanor.jpg",
+        "alt": "Bracito",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "rectangulares",
+        "name": "Rectangulares"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 694,
+    "slug": "tropical",
+    "name": "Tropical",
+    "description": "Una amalgama perfecta de torta de Chocolate, Vainilla y Delicia, sobriamente decorada con frutas, chocolate y chantilly artesanal.",
+    "price": 53,
+    "priceRange": {
+      "min": 53,
+      "max": 75
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Tropical-20_1000x1000px.png",
+        "alt": "Tropical",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 53
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 75
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 675,
+    "slug": "fantasia",
+    "name": "Fantasía",
+    "description": "Una sorprendente combinación de tres capas de torta Chocochip, Naranja y Moca, elegantemente decorada con aguaymanto, chantilly y chocolates artesanales.",
+    "price": 53,
+    "priceRange": {
+      "min": 53,
+      "max": 75
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Fantasia-20_1000x1000px.png",
+        "alt": "Fantasía",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "infantil"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 53
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 75
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 284,
+    "slug": "rica-morena",
+    "name": "Rica Morena",
+    "description": "¡La tentación está en el chocolate! Disfruta tres capas de torta chocochip, delicia y chocolate humedecidas y rellenas con los más ricos sabores.",
+    "price": 53,
+    "priceRange": {
+      "min": 53,
+      "max": 75
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica-Morena-20_1000x1000px.png",
+        "alt": "Rica Morena",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica_Morena_01.jpg",
+        "alt": "Rica Morena",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Rica-Morena-26.jpg",
+        "alt": "Rica Morena",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica-Morena-26_Fanor.jpg",
+        "alt": "Rica Morena",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Rica-Morena-20_1000x1000px.png",
+        "alt": "Rica Morena",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 53
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 75
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 265,
+    "slug": "la-clasica",
+    "name": "La Clásica",
+    "description": "Disfruta el sabor clásico de nuestras titulares, tres capas de torta de vainilla, chocolate y naranja, humedecidas y rellenas para satisfacer tu paladar.",
+    "price": 53,
+    "priceRange": {
+      "min": 53,
+      "max": 75
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_02_1080x1080px.png",
+        "alt": "La Clásica",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T20_La-Clasica_01_1000x1000px.png",
+        "alt": "La Clásica",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_W01_1000x1000px.png",
+        "alt": "La Clásica",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_W02_1000x1000px.png",
+        "alt": "La Clásica",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_La-Clasica_01_1000x1000px.png",
+        "alt": "La Clásica",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 53
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 75
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 692,
+    "slug": "torta-helada",
+    "name": "Torta Helada",
+    "description": "Más que una torta, un fresco y emblemático postre nacional que une un liviano bizcochuelo con una riquísima gelatina y una esponjosa carlota . Tiene 24 cm de diámetro y rinde 24 generosas porciones.",
+    "price": 55,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Torta-Helada-03_1000x1000px.png",
+        "alt": "Torta Helada",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Torta-Helada-02_1000x1000px.png",
+        "alt": "Torta Helada",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Torta-Helada_Fanor.jpg",
+        "alt": "Torta Helada",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Torta-Helada.jpg",
+        "alt": "Torta Helada",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      },
+      {
+        "slug": "semi-frios",
+        "name": "Semi-Fríos"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "semifrio"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 532,
+    "slug": "selva-negra",
+    "name": "Selva Negra",
+    "description": "Date el gusto con esta irresistible torta de chocolate rellena de kirsch y cerezas.",
+    "price": 55,
+    "priceRange": {
+      "min": 55,
+      "max": 95
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26-T20_Selva-Negra-Especial-Cherry_1080x1080px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W02_1000x1000px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W03_1000x1000px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_W01_1000x1000px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_02_1080x1080px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_01_1000x1000px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_03_1080x1080px.jpg",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Selva-Negra-Especial-Cherry_02_1000x1000px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26_Selva-Negra-Especial-Cherry_1080x1080px.png",
+        "alt": "Selva Negra",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 55
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 95
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 279,
+    "slug": "mousse-de-fresa",
+    "name": "Mousse de Fresa",
+    "description": "Un delicado y apetitoso mousse hecho con fresas frescas tiene el perfecto balance entre textura y sabor. Tiene 20 cm de diámetro y rinde 16 generosas porciones.",
+    "price": 55,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Mousse_Fresa_01.jpg",
+        "alt": "Mousse de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Mousse-de-Fresa-20.jpg",
+        "alt": "Mousse de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Mousse-de-Fresa-20_Fanor.jpg",
+        "alt": "Mousse de Fresa",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      },
+      {
+        "slug": "semi-frios",
+        "name": "Semi-Fríos"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "frutales",
+      "semifrio"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 278,
+    "slug": "moca",
+    "name": "Moca",
+    "description": "Despierta tus sentidos con esta deliciosa torta de café rellena con crema moca.",
+    "price": 55,
+    "priceRange": {
+      "min": 55,
+      "max": 80
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_02_1080x1080px.png",
+        "alt": "Moca",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_W01_1000x1000px.png",
+        "alt": "Moca",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T26_Moca_01_1000x1000px.png",
+        "alt": "Moca",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/T20_Moca_01_1000x1000px.png",
+        "alt": "Moca",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 55
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 80
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 260,
+    "slug": "dulce-pasion",
+    "name": "Dulce Pasión",
+    "description": "Enciende la pasión de tu paladar con esta deliciosa combinación de tres capas de torta pasión, naranja, y moca, humedecidas y rellenas con los más ricos sabores.",
+    "price": 55,
+    "priceRange": {
+      "min": 55,
+      "max": 80
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Dulce_Pasion_01.jpg",
+        "alt": "Dulce Pasión",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 55
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 80
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 726,
+    "slug": "torta-1",
+    "name": "Torta 1½",
+    "description": "Dale un gustito a tus invitados con una suculenta torta de 18 porciones. La llamamos Torta 1½. Son tres capas de torta y doble relleno decoradas con chantilly artesanal y fruta fresca.",
+    "price": 57,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/11/Torta-1%C2%BD_1000x1000px.png",
+        "alt": "Torta 1½",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "rectangulares",
+        "name": "Rectangulares"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "20–25 porciones",
+    "maxServings": 25,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 257,
+    "slug": "torta-de-chocolate",
+    "name": "Torta de Chocolate",
+    "description": "Nuestra clásica torta de chocolate rellena de fudge de chocolate.",
+    "price": 60,
+    "priceRange": {
+      "min": 60,
+      "max": 80
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate_01.jpg",
+        "alt": "Torta de Chocolate",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate-26.jpg",
+        "alt": "Torta de Chocolate",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate02-26_1000x1000px.png",
+        "alt": "Torta de Chocolate",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Chocolate-26_Fanor.jpg",
+        "alt": "Torta de Chocolate",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 60
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 80
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 253,
+    "slug": "cheesecake-de-sauco",
+    "name": "Cheesecake de Sauco",
+    "description": "Un delicioso cheesecake con fruta fresca e ingredientes especialmente seleccionados. Tiene 26 cm de diámetro.",
+    "price": 60,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Cheesecake-de-Sauco-26.jpg",
+        "alt": "Cheesecake de Sauco",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Cheesecake-de-Sauco-26_Fanor.jpg",
+        "alt": "Cheesecake de Sauco",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      },
+      {
+        "slug": "semi-frios",
+        "name": "Semi-Fríos"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "frutales",
+      "semifrio"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 919,
+    "slug": "3-leches-de-moca",
+    "name": "3 Leches de Moca",
+    "description": "Disfruta este delicioso y suave bizcocho de moca humedecido con rico almíbar de tres leches, algarrobina y relleno de manjar blanco.",
+    "price": 65,
+    "priceRange": {
+      "min": 65,
+      "max": 95
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Moca_01_1080x1080px.jpg",
+        "alt": "3 Leches de Moca",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_3Leches-Moca_1000x1000px.png",
+        "alt": "3 Leches de Moca",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "tres-leches",
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 65
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 95
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 656,
+    "slug": "sambito",
+    "name": "Sambito",
+    "description": "Tres suculentas capas de torta de chocolate rellenas con crema de fruta decoradas con crujientes grageas de chocolate.",
+    "price": 65,
+    "priceRange": {
+      "min": 65,
+      "max": 95
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/T26-T20_Sambito_01_1080x1080px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Mango-24_01_1000x1000px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W_Sambito-de-Lu%CC%81cuma_02-24_1000x1000px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Lu%CC%81cuma-24_02_1000x1000px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sambito-de-Lu%CC%81cuma-20_1000x1000px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Sambito-de-Lucuma-24_Fanor.jpg",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Sambito-de-Lucuma-24.jpg",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Sambito_1000x1000px.png",
+        "alt": "Sambito",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "rectangulares",
+        "name": "Rectangulares"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 65
+      },
+      {
+        "slug": "brazo",
+        "label": "Brazo",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 65
+      },
+      {
+        "slug": "24cm",
+        "label": "24 cm",
+        "serves": "15–18 porciones",
+        "order": 3,
+        "price": 95
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 18,
+    "flavors": [
+      {
+        "slug": "lucuma",
+        "label": "Lúcuma"
+      },
+      {
+        "slug": "mango",
+        "label": "Mango"
+      }
+    ],
+    "minFlavors": 1,
+    "maxFlavors": 2,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 564,
+    "slug": "corazon-red-velvet",
+    "name": "Corazón Red Velvet",
+    "description": "Comparte esta aterciopelada fusión de tres capas de torta roja con abundante ButterCream, con una decoración sobria y sofisticada. Un corazón perfecto para demostrar todo tu cariño en una presentación que es una verdadera obra de arte.",
+    "price": 65,
+    "priceRange": {
+      "min": 65,
+      "max": 110
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T26-T20_Red-Velvet_01_1080x1080px.png",
+        "alt": "Corazón Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Corazon_Red_Velvet01_1000x1000px.png",
+        "alt": "Corazón Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/T20_Corazon-Red-Velvet-Fresas_1000x1000px.png",
+        "alt": "Corazón Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_Corazon-Red-Velvet_1000x1000px.png",
+        "alt": "Corazón Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Corazon_Red_Velvet02_1000x1000px.png",
+        "alt": "Corazón Red Velvet",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "corazones",
+        "name": "Corazones"
+      },
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      }
+    ],
+    "occasions": [
+      "romance"
+    ],
+    "tags": [],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 75
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 110
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [
+      {
+        "slug": "con-fresas",
+        "label": "Con Fresas"
+      },
+      {
+        "slug": "clasico",
+        "label": "Clásico"
+      }
+    ],
+    "minFlavors": 1,
+    "maxFlavors": 2,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 542,
+    "slug": "red-velvet",
+    "name": "Red Velvet",
+    "description": "Roja e intensa como el amor, nuestra Red Velvet es una aterciopelada fusión de tres capas de torta con abundante ButterCream.",
+    "price": 65,
+    "priceRange": {
+      "min": 65,
+      "max": 95
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Red_Velvet_01.jpg",
+        "alt": "Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Red_Velvet_02.jpg",
+        "alt": "Red Velvet",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_Red-Velvet_1000x1000px.png",
+        "alt": "Red Velvet",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance"
+    ],
+    "tags": [],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 65
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 95
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 191,
+    "slug": "3-leches-de-vainilla",
+    "name": "3 Leches de Vainilla",
+    "description": "Regocíjate con este delicioso y suave bizcocho de vainilla humedecido con almíbar de tres leches y relleno de crema y manjar.",
+    "price": 65,
+    "priceRange": {
+      "min": 65,
+      "max": 95
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Vainilla_W01_1000x1000px.png",
+        "alt": "3 Leches de Vainilla",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2026/07/T26_3Leches-Vainilla_01_1000x1000px.png",
+        "alt": "3 Leches de Vainilla",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/T20_3Leches-Vainilla_1000x1000px.png",
+        "alt": "3 Leches de Vainilla",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "tres-leches"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 65
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 95
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 264,
+    "slug": "homero",
+    "name": "Homero",
+    "description": "Elige tu combinación de 3 sabores y diviértete con una torta temática de doble relleno decorada como la famosa donut de la tele.",
+    "price": 68.5,
+    "priceRange": {
+      "min": 68.5,
+      "max": 100
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Homero-26.jpg",
+        "alt": "Homero",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Homero-26_Fanor.jpg",
+        "alt": "Homero",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "infantil"
+    ],
+    "tags": [],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 68.5
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 100
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 20,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 707,
+    "slug": "guagua",
+    "name": "Guagua",
+    "description": "Inspiradas en las tradicionales guaguas peruanas, estas tortas especiales en sus tres tamaños son perfectas para capturar la esencia de este evento tan especial.",
+    "price": 79,
+    "priceRange": {
+      "min": 79,
+      "max": 152
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/11/Guagua2024-G_1000x1000px.png",
+        "alt": "Guagua",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      }
+    ],
+    "occasions": [
+      "infantil"
+    ],
+    "tags": [],
+    "sizes": [
+      {
+        "slug": "pequena",
+        "label": "Pequeña",
+        "serves": "8–10 porciones",
+        "order": 1,
+        "price": 79
+      },
+      {
+        "slug": "mediana",
+        "label": "Mediana",
+        "serves": "12–15 porciones",
+        "order": 3,
+        "price": 105
+      },
+      {
+        "slug": "grande",
+        "label": "Grande",
+        "serves": "20–25 porciones",
+        "order": 5,
+        "price": 152
+      }
+    ],
+    "defaultServes": "8–10 porciones",
+    "maxServings": 25,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 563,
+    "slug": "tronquito",
+    "name": "Tronquito",
+    "description": "Haz presente tu cariño en la cena navideña de tus familiares y amigos con un simpático Tronquito Fanor. Son tres suculentas capas de torta humedecidas con doble relleno y decoradas con Fudge. Incluye el adorno de plástico.",
+    "price": 85,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Tronquito_1000x1000px.png",
+        "alt": "Tronquito",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "navidad",
+        "name": "Navidad"
+      },
+      {
+        "slug": "rectangulares",
+        "name": "Rectangulares"
+      }
+    ],
+    "occasions": [
+      "navidad",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "12–15 porciones",
+    "maxServings": 15,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 272,
+    "slug": "fototorta",
+    "name": "FotoTorta",
+    "description": "Disfruta del sabor tradicional de Fanor con una temática totalmente personalizada para ti.",
+    "price": 85,
+    "priceRange": {
+      "min": 85,
+      "max": 250
+    },
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/FotoTortas_1000x1000px.png",
+        "alt": "FotoTorta",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "fototortas",
+        "name": "FotoTortas"
+      }
+    ],
+    "occasions": [
+      "personalizadas"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [
+      {
+        "slug": "20cm",
+        "label": "20 cm",
+        "serves": "10–12 porciones",
+        "order": 2,
+        "price": 85
+      },
+      {
+        "slug": "26cm",
+        "label": "26 cm",
+        "serves": "18–20 porciones",
+        "order": 4,
+        "price": 120
+      },
+      {
+        "slug": "2%c2%bd",
+        "label": "Torta 2½",
+        "serves": "20–25 porciones",
+        "order": 5,
+        "price": 170
+      },
+      {
+        "slug": "3%c2%bd",
+        "label": "Torta 3½",
+        "serves": "30–35 porciones",
+        "order": 6,
+        "price": 250
+      }
+    ],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 35,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": true,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 688,
+    "slug": "sublime",
+    "name": "Sublime",
+    "description": "Disfruta el tradicional sabor de esta sabrosa torta de chocolate rellena con salsa de chocolate y trocitos de maní. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sublime02-26_1000x1000px.png",
+        "alt": "Sublime",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Sublime03-26_1000x1000px.png",
+        "alt": "Sublime",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W2_Sublime-26_1000x1000px.png",
+        "alt": "Sublime",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Sublime-26_Fanor.jpg",
+        "alt": "Sublime",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Sublime-26.jpg",
+        "alt": "Sublime",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 672,
+    "slug": "oreochoco-sensations",
+    "name": "OreoChoco Sensations",
+    "description": "¡Una verdadera sensación para los amantes de las Óreo! Con una suave cobertura de chantilly artesanal y crocantes trozos de galleta en medio de un cremoso relleno, cada tajada es una explosión de sabores. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/OreoChoco-Sensations-26_1000x1000px.png",
+        "alt": "OreoChoco Sensations",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 650,
+    "slug": "delicia-de-fresa",
+    "name": "Delicia de Fresa",
+    "description": "Deléitate con estas deliciosas tres capas de esponjosa y húmeda torta de chocolate rellenas de abundante fresa, crema y manjar. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia-de-Fresa_02-26_1000x1000px.png",
+        "alt": "Delicia de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/W_Delicia-de-Fresa-26_1000x1000px.png",
+        "alt": "Delicia de Fresa",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 648,
+    "slug": "chocolate-tropical",
+    "name": "Chocolate Tropical",
+    "description": "Dos húmedas capas de torta de chocolate y dos suaves capas de crema de maracuyá, harán que cada bocado sea una explosión de sabores. Tiene 24 cm de diámetro y rinde 25 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Chocolate-Tropical-26_1000x1000px.png",
+        "alt": "Chocolate Tropical",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 281,
+    "slug": "princesa",
+    "name": "Princesa",
+    "description": "Engríe a tu paladar con esta exquisita torta de chocolate con relleno de crema de chocolate y crema de maní. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W_Princesa-26.jpg",
+        "alt": "Princesa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Princesa-26_Fanor.jpg",
+        "alt": "Princesa",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "infantil"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 280,
+    "slug": "pasion-de-fresa",
+    "name": "Pasión de Fresa",
+    "description": "Endulza tu paladar con esta deliciosa torta de chocolate con relleno de crema y fresas. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_01.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion-de-Fresa-26_Fanor.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_04.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Pasion_de_Fresa_02.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Pasion-de-Fresa-26.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W3_Pasion-de-Fresa-26.jpg",
+        "alt": "Pasión de Fresa",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 259,
+    "slug": "domino-de-mango",
+    "name": "Dominó de Mango",
+    "description": "La mejor combinación de chocolate y crema de mango para deleitar tu paladar. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/W2_Domino-de-Mango-26.jpg",
+        "alt": "Dominó de Mango",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Domino-de-Mango-26_Fanor.jpg",
+        "alt": "Dominó de Mango",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Domino-de-Mango-26.jpg",
+        "alt": "Dominó de Mango",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 258,
+    "slug": "delicia-de-durazno",
+    "name": "Delicia de Durazno",
+    "description": "Saborea tres capas de esponjosa y húmeda torta de naranja rellenas de durazno, crema y manjar. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 95,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno_02-26_1000x1000px.png",
+        "alt": "Delicia de Durazno",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno-26_Fanor.jpg",
+        "alt": "Delicia de Durazno",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Delicia-de-Durazno-26.jpg",
+        "alt": "Delicia de Durazno",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 647,
+    "slug": "torta-2",
+    "name": "Torta 2½",
+    "description": "Celebra en grande , celebra con 40 generosas porciones de tres capas de torta y doble relleno decoradas con chantilly artesanal y frutas frescas.",
+    "price": 98,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/2%C2%BD_01.jpg",
+        "alt": "Torta 2½",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/2%C2%BD_02.jpg",
+        "alt": "Torta 2½",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "rectangulares",
+        "name": "Rectangulares"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30–35 porciones",
+    "maxServings": 35,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 699,
+    "slug": "encanto-marino",
+    "name": "Encanto Marino",
+    "description": "Encanta a tus invitados con una bella torta temática marina de triple capa de torta húmeda y doble relleno decorada con fresquísimo Chantilly y chocolate blanco . Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 100,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Encanto-Marino-26_Fanor.jpg",
+        "alt": "Encanto Marino",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/07/Encanto-Marino-26.jpg",
+        "alt": "Encanto Marino",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "infantil"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 653,
+    "slug": "delicia-tropical",
+    "name": "Delicia Tropical",
+    "description": "Zambúllete en tres suculentas capas de torta de chocolate con muchísima fruta en el relleno y en la decoración. Tiene 26 cm de diámetro y rinde 28 generosas porciones.",
+    "price": 110,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia_Tropical_02_1000x1000px.png",
+        "alt": "Delicia Tropical",
+        "w": 1080,
+        "h": 1080
+      },
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Delicia_Tropical_01_1000x1000px.png",
+        "alt": "Delicia Tropical",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 789,
+    "slug": "dulce-violeta",
+    "name": "Dulce Violeta",
+    "description": "Delicadamente decorada con flores comestibles, macarrones y detalles elegantes, una Dulce Violeta dice «te amo» con dulzura y mucho estilo. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 150,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Dulce-Violeta_1000x1000.png",
+        "alt": "Dulce Violeta",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 704,
+    "slug": "whisky",
+    "name": "Whisky",
+    "description": "Una CandyCake perfecta para los que mejor saben disfrutar de la vida. Son tres capas de torta y doble relleno con irreverente decoración . Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 150,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Whisky-26_1000x1000px.png",
+        "alt": "Whisky",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "tortas-especiales",
+        "name": "Tortas Especiales"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": false
+  },
+  {
+    "id": 890,
+    "slug": "papa-amoroso-2",
+    "name": "Papá Amoroso 2",
+    "description": "Tres capas de torta húmeda y doble relleno, decorada con chantilly artesanal, chocolates, macarons dorados y una silueta entrañable en masa elástica. Un dulce homenaje al amor incondicional. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 160,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-amoroso_1000x1000px.png",
+        "alt": "Papá Amoroso 2",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": true
+  },
+  {
+    "id": 888,
+    "slug": "papa-artista-2",
+    "name": "Papá Artista 2",
+    "description": "Creativa, intensa y original. Una torta de nuestra nueva línea Mezzo Alteza, con cuatro capas de sabor y triple relleno. Decorada con chantilly artesanal, chocolates, macarons y detalles comestibles de papel de arroz. Tiene 20 cm de diámetro y rinde 30 porciones.",
+    "price": 160,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-artista_1000x1000px.png",
+        "alt": "Papá Artista 2",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 835,
+    "slug": "papa-elegante",
+    "name": "Papá Elegante",
+    "description": "Para un papá que impone estilo, elige la mejor combinación de sabores de tres capas de torta húmeda y doble relleno, sobriamente decoradas con chantilly artesanal y macarons dorados. Las solapas, los botones y la corbata son de masa fondant. Incluye el topper metalizado, dos botellitas y las esferas decorativas. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 160,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_ELEGANTE_1080x1080px.png",
+        "alt": "Papá Elegante",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": true
+  },
+  {
+    "id": 889,
+    "slug": "papa-deportista-2",
+    "name": "Papá Deportista 2",
+    "description": "Inspirada en la pasión por el fútbol, esta creación de tres capas de torta húmeda y doble relleno viene decorada con chantilly artesanal, bolas de chocolate y una silueta entrañable hecha en masa elástica. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-deportista_1000x1000px.png",
+        "alt": "Papá Deportista 2",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": true
+  },
+  {
+    "id": 703,
+    "slug": "alteza-06",
+    "name": "Alteza 06",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una requintada decoración floral. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Alteza06_1000x1000px.png",
+        "alt": "Alteza 06",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 700,
+    "slug": "alteza-05",
+    "name": "Alteza 05",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una requintada decoración floral. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/10/Alteza05_1000x1000px.png",
+        "alt": "Alteza 05",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 585,
+    "slug": "alteza-del-dulce-romance",
+    "name": "Alteza del Dulce Romance",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con mucho, mucho chocolate para compartir. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-del-Dulce-Romance_1000x1000px.png",
+        "alt": "Alteza del Dulce Romance",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 584,
+    "slug": "alteza-del-vinculo-eterno",
+    "name": "Alteza del Vínculo Eterno",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una sobria decoración artesanal. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-del-Vinculo-Eterno_1000x1000px.png",
+        "alt": "Alteza del Vínculo Eterno",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 580,
+    "slug": "alteza-destellos-de-pasion",
+    "name": "Alteza Destellos de Pasión",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una decoración repleta de detallitos perfecta para tu amor. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2024/02/Alteza-Destellos-de-Pasion_1000x1000px.png",
+        "alt": "Alteza Destellos de Pasión",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance",
+      "para-compartir"
+    ],
+    "tags": [
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 561,
+    "slug": "alteza-charada",
+    "name": "Alteza Charada",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor de una CandyCake. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-Charada_1000x1000px.png",
+        "alt": "Alteza Charada",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "navidad",
+        "name": "Navidad"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "navidad",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 560,
+    "slug": "alteza-reno",
+    "name": "Alteza Reno",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una decoración perfecta para la Navidad. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-Rena_1000x1000px.png",
+        "alt": "Alteza Reno",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "navidad",
+        "name": "Navidad"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "navidad",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 555,
+    "slug": "alteza-del-bosque",
+    "name": "Alteza del Bosque",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una impactante decoración navideña. Incluye dos adornos de plástico. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/12/Alteza-del-Bosque_1000x1000px.png",
+        "alt": "Alteza del Bosque",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "navidad",
+        "name": "Navidad"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "navidad",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 501,
+    "slug": "alteza-03",
+    "name": "Alteza 03",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una sobria decoración artesanal. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza03.jpg",
+        "alt": "Alteza 03",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 500,
+    "slug": "alteza-02",
+    "name": "Alteza 02",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor para celebrar todas tus conquistas. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza02_1000x1000px.png",
+        "alt": "Alteza 02",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 495,
+    "slug": "alteza-01",
+    "name": "Alteza 01",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una hermosa decoración artesanal. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 180,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza01.jpg",
+        "alt": "Alteza 01",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 886,
+    "slug": "papa-aventurero-2",
+    "name": "Papá Aventurero 2",
+    "description": "Una torta para papás con carácter. Elige la mejor combinación de sabores de sus tres capas de torta húmeda y doble relleno, decoradas con chantilly artesanal, rocas comestibles, papel comestible, una mini botella de whisky (no comestible), esferas plateadas y un topper metálico. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 190,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-aventurero_1000x1000px.png",
+        "alt": "Papá Aventurero 2",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 24,
+    "featured": true
+  },
+  {
+    "id": 838,
+    "slug": "papa-amoroso",
+    "name": "Papá Amoroso",
+    "description": "Una Alteza FotoTopper que captura la esencia de la complicidad entre un padre y su hijo. Tres capas de torta húmeda de Pasión, Naranja y Chocolate y doble relleno, sobriamente decoradas con chantilly artesanal, foil, macarons y papel comestible. Incluye el topper y las esferas metálicas. Un dulce homenaje al amor incondicional. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 220,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_AMOROSO_1080x1080px.png",
+        "alt": "Papá Amoroso",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "fototopper",
+        "name": "FotoTopper"
+      },
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "personalizadas",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": true,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 837,
+    "slug": "papa-deportista",
+    "name": "Papá Deportista",
+    "description": "Una Alteza FotoTopper perfecta para los amantes del deporte. Tres capas de torta húmeda de Pasión, Naranja y Chocolate y doble relleno, decoradas con chantilly artesanal con un elegante texturizado striped , siluetas de tenistas en plena acción, raquetas detalladas y mini pelotas de tenis hiperrealistas en papel comestible. Incluye el topper metálico y las esferas comestibles. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 220,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_DEPORTISTA_1080x1080px.png",
+        "alt": "Papá Deportista",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "fototopper",
+        "name": "FotoTopper"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "personalizadas",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": true,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 836,
+    "slug": "papa-artista",
+    "name": "Papá Artista",
+    "description": "¡Una verdadera obra de arte hecha torta! Una FotoTorta forrada con una ilustración que fusiona los icónicos girasoles y el cielo turbulento de la «Noche Estrellada» , coronada con el célebre autorretrato de Van Gogh. E lige la mejor combinación de sabores de tres capas de torta húmeda y doble relleno . Incluye el topper metálico, el caballete y el arco de esferas decorativas. Tiene 26 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 220,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_ARTISTA_1080x1080px.png",
+        "alt": "Papá Artista",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "fototortas",
+        "name": "FotoTortas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "personalizadas"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "10–12 porciones",
+    "maxServings": 12,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": true,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 830,
+    "slug": "papa-aventurero",
+    "name": "Papá Aventurero",
+    "description": "Una Alteza FotoTopper perfecta para los amantes de la aventura. Tres capas de torta húmeda de Pasión, Naranja y Chocolate y doble relleno, decoradas con chantilly artesanal, rocas comestibles y papel comestible. Incluye el trofeo y el topper metálico. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 220,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/2026_PAPA_AVENTURERO_1080x1080px.png",
+        "alt": "Papá Aventurero",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "fototopper",
+        "name": "FotoTopper"
+      },
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "personalizadas",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": true,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 502,
+    "slug": "alteza-04",
+    "name": "Alteza 04",
+    "description": "Una verdadera alteza con seis capas de torta y cinco rellenos. El doble de placer, el doble de sabor con una exuberante decoración artesanal. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 220,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2023/11/Alteza04.jpg",
+        "alt": "Alteza 04",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 784,
+    "slug": "alteza-ambar",
+    "name": "Alteza Ambar",
+    "description": "Tan alta como ella lo merece: Alteza Ambar, el doble de placer, el doble de sabor decorada con flores comestibles de casi medio metro de altura. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 250,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Alteza-Ambar_1000x1000.png",
+        "alt": "Alteza Ambar",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "cumpleanos",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  },
+  {
+    "id": 887,
+    "slug": "papa-elegante-2",
+    "name": "Papá Elegante 2",
+    "description": "Para el papá que siempre impone estilo. Una torta de nuestra línea Alteza, con sabores de pasión, naranja y chocolate. Decorada con chantilly artesanal y detalles en masa elástica. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 270,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/05/Papa-elegante_1000x1000px.png",
+        "alt": "Papá Elegante 2",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "destaques",
+        "name": "Destaques"
+      },
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "dia-del-padre",
+      "para-compartir"
+    ],
+    "tags": [
+      "chocolate",
+      "frutales"
+    ],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": true
+  },
+  {
+    "id": 788,
+    "slug": "reina-de-peonias",
+    "name": "Reina de Peonías",
+    "description": "Tan alta como ella lo merece: Reina de Peonías, el doble de placer, el doble de sabor decorada con perlas y dos peonías comestibles. Tiene 20 cm de diámetro y rinde 30 generosas porciones.",
+    "price": 280,
+    "priceRange": null,
+    "images": [
+      {
+        "src": "https://tortasfanor.sirv.com/WP_tortasfanor.com/2025/04/Reina-Peoni%CC%81a_1000x1000.png",
+        "alt": "Reina de Peonías",
+        "w": 1080,
+        "h": 1080
+      }
+    ],
+    "categories": [
+      {
+        "slug": "altezas",
+        "name": "Altezas"
+      },
+      {
+        "slug": "redondas",
+        "name": "Redondas"
+      }
+    ],
+    "occasions": [
+      "romance",
+      "para-compartir"
+    ],
+    "tags": [],
+    "sizes": [],
+    "defaultServes": "30 porciones",
+    "maxServings": 30,
+    "flavors": [],
+    "minFlavors": 0,
+    "maxFlavors": 0,
+    "acceptsPhoto": false,
+    "leadTimeHours": 48,
+    "featured": false
+  }
+]

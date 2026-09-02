@@ -1,0 +1,41 @@
+{
+  "name": "fanor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "catalog": "node scripts/build-catalog.mjs",
+    "catalog:fetch": "node scripts/fetch-variations.mjs",
+    "db:seed": "node scripts/db-seed.mjs",
+    "db:spin": "node scripts/import-spin360.mjs",
+    "db:admin": "node scripts/create-admin.mjs",
+    "db:photos": "node scripts/import-product-photos.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
+    "leaflet": "^1.9.4",
+    "next": "16.3.3",
+    "nodemailer": "^9.1.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/google.maps": "^3.66.1",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
