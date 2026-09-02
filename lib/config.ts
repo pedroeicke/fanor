@@ -63,11 +63,28 @@ export const stores = [
   },
 ] as const;
 
+const FALLBACK_SITE_URL = "https://tortasfanor.com";
+
 export const yearsInBusiness = new Date().getFullYear() - brand.since;
 
-/** URL canônica — usada em metadata, Open Graph e JSON-LD. */
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://tortasfanor.com";
+/**
+ * URL canônica — usada em metadata, Open Graph, sitemap e JSON-LD.
+ *
+ * A validação existe porque isto derrubou o build inteiro: a variável estava
+ * cadastrada no provedor, porém vazia, e `??` só cai no padrão para
+ * `null`/`undefined` — string vazia passava direto até `new URL("")`, que
+ * lança. Um valor de configuração em branco não pode impedir o site de subir,
+ * e um valor torto tem de virar o padrão em vez de erro de compilação.
+ */
+export const siteUrl = (() => {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  if (!configured) return FALLBACK_SITE_URL;
+  try {
+    return new URL(configured).toString().replace(/\/$/, "");
+  } catch {
+    return FALLBACK_SITE_URL;
+  }
+})();
 
 /** Abre o WhatsApp já com contexto, para o atendimento não começar do zero. */
 export function whatsappLink(message: string) {
