@@ -291,8 +291,13 @@ export function ProductPurchase({ product }: { product: Product }) {
           </button>
         </div>
 
-        <Button size="lg" onClick={handleAdd} className="flex-1">
-          <IconCart className="h-5 w-5" />
+        {/* Em 375px sobram 203px para este botão ao lado do contador; com o
+            recuo padrão do tamanho lg (64px), o ícone e o espaço entre eles,
+            restavam 107px para um texto que pede ~130 — "Añadir al carrito"
+            quebrava em duas linhas. `nowrap` proíbe a quebra; recuo menor e
+            ícone só a partir de `sm` devolvem 171px, folga de 40. */}
+        <Button size="lg" onClick={handleAdd} className="flex-1 whitespace-nowrap px-4 sm:px-8">
+          <IconCart className="hidden h-5 w-5 sm:block" />
           Añadir al carrito
         </Button>
       </div>
