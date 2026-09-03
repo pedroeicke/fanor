@@ -63,13 +63,16 @@ export function ProductCard({ product, priority = false }: { product: CardProduc
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-display text-[1.05rem] leading-snug">
+        {/* Empilhado no celular: com duas colunas de card em 375px sobram ~140px
+            de texto, e nome ao lado do preço fazia "3 Leches de Moca" quebrar
+            uma palavra por linha enquanto o preço invadia o nome. */}
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+          <h3 className="font-display text-[1rem] leading-snug sm:text-[1.05rem]">
             <Link href={`/tortas/${product.slug}`} className="after:absolute after:inset-0 after:content-['']">
               {product.name}
             </Link>
           </h3>
-          <p className="shrink-0 pt-0.5 font-display text-[1.05rem] font-semibold text-terracota">
+          <p className="shrink-0 font-display text-[1rem] font-semibold text-terracota sm:pt-0.5 sm:text-[1.05rem]">
             {product.priceRange && <span className="text-xs font-sans font-medium text-cacao-300">desde </span>}
             {solesShort(price)}
           </p>

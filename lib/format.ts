@@ -36,9 +36,26 @@ export function cdnImage(src: string, width: number) {
  * images.qualities, senão o otimizador do Next devolve 400 — e a imagem some
  * sem erro visível no console.
  */
+/**
+ * Larguras que o otimizador aceita — precisa espelhar `deviceSizes` +
+ * `imageSizes` do next.config.ts.
+ *
+ * Existe porque pedir uma largura fora da lista devolve 400 e a imagem
+ * desaparece sem erro no console. `next/image` respeita isso sozinho; quem
+ * monta a URL na mão, como o giro 360°, não tinha nada que impedisse.
+ */
+const ALLOWED_WIDTHS = [
+  16, 32, 48, 64, 96, 128, 256, 384, 448, 640, 750, 828, 1080, 1200, 1920, 2048, 3840,
+];
+
+/** Sobe para a menor largura permitida que ainda cubra o pedido. */
+function snapWidth(width: number) {
+  return ALLOWED_WIDTHS.find((w) => w >= width) ?? ALLOWED_WIDTHS[ALLOWED_WIDTHS.length - 1];
+}
+
 export function sizedImage(src: string, width: number, quality = 75) {
   if (!src) return src;
   if (src.includes("sirv.com")) return cdnImage(src, width);
   if (!src.startsWith("/")) return src;
-  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
+  return `/_next/image?url=${encodeURIComponent(src)}&w=${snapWidth(width)}&q=${quality}`;
 }

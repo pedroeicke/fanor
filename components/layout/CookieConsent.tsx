@@ -100,10 +100,10 @@ export function CookieConsent() {
       aria-label="Cookies"
       className="border-b border-crema-300 bg-crema-100"
     >
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 lg:px-8">
-        <p className="text-[14px] leading-relaxed text-cacao-700">
-          Usamos cookies propias para recordar tu carrito y cookies de análisis para entender cómo
-          se usa la tienda. Puedes rechazar las de análisis: la tienda funciona igual.{" "}
+      <div className="mx-auto flex max-w-7xl flex-col gap-2.5 px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-3 lg:px-8">
+        <p className="text-[13px] leading-snug text-cacao-700 sm:text-[14px] sm:leading-relaxed">
+          Usamos cookies para recordar tu carrito y, si aceptas, para medir cómo se usa la
+          tienda. Rechazar no cambia nada.{" "}
           <Link
             href="/politicas-de-privacidad"
             className="text-terracota underline underline-offset-4"

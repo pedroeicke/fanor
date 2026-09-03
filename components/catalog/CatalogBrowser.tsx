@@ -103,8 +103,11 @@ export function CatalogBrowser({
             ))}
           </div>
 
-          <div className="flex gap-2 lg:ml-auto lg:shrink-0">
-            <label className="relative flex h-11 flex-1 items-center lg:w-56 lg:flex-none">
+          {/* Empilhado no celular: a ordenação tem largura própria e o campo de
+              busca, com o min-width 0 do reset global, encolhia até sobrar só
+              o ícone por cima do texto do select. */}
+          <div className="flex flex-col gap-2 sm:flex-row lg:ml-auto lg:shrink-0">
+            <label className="relative flex h-11 items-center sm:flex-1 lg:w-56 lg:flex-none">
               <IconSearch className="pointer-events-none absolute left-3.5 h-4 w-4 text-cacao-300" />
               <input
                 type="search"
@@ -118,7 +121,7 @@ export function CatalogBrowser({
               value={sort}
               onChange={(e) => setSort(e.target.value as Sort)}
               aria-label="Ordenar resultados"
-              className="h-11 w-auto rounded-full text-sm lg:w-48"
+              className="h-11 w-full rounded-full text-sm sm:w-auto lg:w-48"
             >
               {SORTS.map((s) => (
                 <option key={s.value} value={s.value}>

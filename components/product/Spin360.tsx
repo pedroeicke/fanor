@@ -54,6 +54,16 @@ export function Spin360({
 }) {
   const [index, setIndex] = useState(0);
   const [ready, setReady] = useState(0);
+  /**
+   * Primeiro quadro falhou: some com o giro e deixa a galeria comum.
+   *
+   * Sem isto o defeito era invisível: o otimizador recusava a largura
+   * pedida com 400, `response.ok` era falso, o quadro ficava nulo — e o
+   * canvas ficava lá, um quadrado em branco com "Arrastra para girar" em
+   * cima. Foi assim no celular durante um deploy inteiro. Um giro que não
+   * carrega tem de sair da tela, não pedir para ser arrastado.
+   */
+  const [failed, setFailed] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [hinted, setHinted] = useState(false);
 
@@ -103,7 +113,10 @@ export function Spin360({
     async function load(i: number) {
       try {
         const response = await fetch(sizedImage(frames[i].src, width));
-        if (!response.ok) return;
+        if (!response.ok) {
+          if (i === 0) setFailed(true);
+          return;
+        }
         const bitmap = await createImageBitmap(await response.blob());
 
         if (cancelled) {
@@ -116,7 +129,8 @@ export function Spin360({
         if (i === 0) paint(0);
       } catch {
         /* Quadro que falhou fica nulo, e a roda pula esse índice em vez de
-           mostrar um buraco. */
+           mostrar um buraco. O primeiro é a exceção: sem ele não há giro. */
+        if (i === 0) setFailed(true);
       }
     }
 
@@ -185,7 +199,7 @@ export function Spin360({
     };
   }, [dragging, move]);
 
-  if (total < MIN_FRAMES) return null;
+  if (total < MIN_FRAMES || failed) return null;
 
   const progress = Math.round((ready / total) * 100);
 

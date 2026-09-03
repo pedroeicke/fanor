@@ -22,10 +22,10 @@ export function WhatsappFab() {
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => track("whatsapp_click", { location: pathname })}
-      className="fixed bottom-5 right-5 z-30 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lift transition-transform hover:scale-105 max-lg:bottom-[calc(1.25rem+env(safe-area-inset-bottom))]"
+      className="fixed bottom-4 right-4 z-30 grid h-12 w-12 place-items-center rounded-full bg-[#25D366] text-white shadow-lift transition-transform hover:scale-105 max-lg:bottom-[calc(1rem+env(safe-area-inset-bottom))] lg:bottom-5 lg:right-5 lg:h-14 lg:w-14"
       aria-label="Escríbenos por WhatsApp"
     >
-      <IconWhatsapp className="h-7 w-7" />
+      <IconWhatsapp className="h-6 w-6 lg:h-7 lg:w-7" />
     </a>
   );
 }

@@ -32,7 +32,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-10 sm:px-6 lg:px-8 lg:py-24">
         <div className="max-w-xl lg:max-w-[42%]">
-          <h1 className="text-[2.5rem] leading-[1.06] sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="text-[2rem] leading-[1.08] sm:text-5xl lg:text-[3.5rem]">
             Momentos especiales
             <br className="hidden sm:block" /> merecen una torta
             <br className="hidden sm:block" /> inolvidable
