@@ -1,0 +1,19 @@
+{
+  "name": "fanor-agente-sisgeco",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lê os movimentos do Sisgeco (SQL Server) e espelha no Supabase. Roda no PC da loja como serviço do Windows.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "node src/index.mjs",
+    "seed": "node test/seed-fake-sisgeco.mjs",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "mssql": "^11.0.2"
+  }
+}

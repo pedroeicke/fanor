@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# …em qualquer subpasta também (agente-sisgeco/ tem o seu)
+node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -52,3 +54,8 @@ public/uploads/
 # checklist derivados dele, sim, estão versionados em docs/.
 materiais-cliente/
 references/cliente/
+
+# mídia de instalador que se auto-extrai onde é executado
+SQLEXPR_x64_ENU/
+*.msi
+*.exe
