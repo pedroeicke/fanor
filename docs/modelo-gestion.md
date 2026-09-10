@@ -15,7 +15,7 @@ comprovantes emitidos entre set/2024 e set/2026. Migração: `supabase/migration
 | Encomenda = adiantamento + saldo | 937 `ADL`, 924 `REIN` | `sales.contract_id`; ADL/REIN são vendas comuns ligadas ao contrato |
 | Boleta sem identificar o cliente | 16.576 de 17.454 | Consumidor final não vira `customers`; receptor genérico da SUNAT |
 | Preço de lista muda | T26 passou por S/69, 70, 71, 75, 76, 80, 85 | Preço e descrição copiados em `sale_lines` |
-| Uma vendedora faz quase tudo | Carmen Apaza: 12.937 comprovantes | O balcão é a tela dela; `sellers` |
+| Uma vendedora faz quase tudo | a vendedora principal: 12.937 comprovantes | O balcão é a tela dela; `sellers` |
 | Yape/Plin vão na glosa ("YAPE 284") | — | Viram `payment_method` próprio, para conciliar |
 
 ## Mapa Sisgeco → novo

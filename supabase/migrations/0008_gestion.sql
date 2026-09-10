@@ -98,7 +98,7 @@ create table decorators (
   active     boolean not null default true
 );
 
--- Vendedoras (FVendedor). Carmen Apaza emitiu 12.937 dos 17.454 comprovantes:
+-- Vendedoras (FVendedor). Uma única vendedora emitiu 12.937 dos 17.454 comprovantes:
 -- o balcão é a tela dela. `user_id` liga a uma conta de login quando houver.
 create table sellers (
   id         uuid primary key default gen_random_uuid(),
