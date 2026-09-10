@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getServerSupabase } from "@/lib/supabase-server";
 import { formatDateShort } from "@/lib/delivery";
 import { cx } from "@/lib/format";
+import { AutoRefresh } from "@/components/admin/AutoRefresh";
 
 export const metadata: Metadata = { title: "Inventario" };
 export const dynamic = "force-dynamic";
@@ -67,6 +68,8 @@ export default async function InventoryPage() {
 
   return (
     <div className="space-y-8">
+      {/* Mesmo ritmo do leitor: o que entrar no Sisgeco aparece aqui em até ~10 s, sem F5. */}
+      <AutoRefresh everyMs={5_000} />
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="font-display text-2xl">Inventario</h2>
