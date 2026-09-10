@@ -42,7 +42,9 @@ export default async function InventoryPage() {
   const { today, ms: nowMs } = clock();
   const [{ data: cakes }, { data: levels }, { data: movements }, { data: runs }, { data: state }] = await Promise.all([
     db.from("cake_units").select("serial, status, produced_on, expires_on, products(name, sku), stores(name)")
-      .in("status", ["in_stock", "reserved"]).order("expires_on").order("serial"),
+      /* Mais nova primeiro: a torta que acabou de entrar é a que se quer
+         conferir, e a série cresce com o tempo — maior série, mais nova. */
+      .in("status", ["in_stock", "reserved"]).order("produced_on", { ascending: false }).order("serial", { ascending: false }),
     db.from("stock_levels").select("quantity, products(name, sku), stores(name)").neq("quantity", 0).order("quantity", { ascending: false }),
     db.from("stock_movements").select("source_number, kind, reference, created_at, stores(name), stock_movement_lines(id)")
       .order("created_at", { ascending: false }).limit(20),
