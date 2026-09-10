@@ -83,7 +83,7 @@ export default async function DeliveryPage() {
           <li key={s.id}>{s.label}</li>
         ))}
       </ul>
-      {/* Derivado da configuração, não escrito à mão: a Joseka pode abrir a
+      {/* Derivado da configuração, não escrito à mão: o Joseka pode abrir a
           última faixa no domingo pelo painel e o texto acompanha sozinho. */}
       {restricted.map((r) => (
         <p key={r.id}>

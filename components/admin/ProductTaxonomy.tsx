@@ -20,7 +20,7 @@ type Category = { id: string; slug: string; name: string; kind: string };
 /**
  * Tamanhos, sabores e categorias do produto.
  *
- * Fecha o critério de aceite: até aqui a Joseka podia editar o preço de um
+ * Fecha o critério de aceite: até aqui o Joseka podia editar o preço de um
  * tamanho existente, mas não criar um novo nem incluir um sabor — o que exige
  * programador é exatamente o que o painel deveria evitar.
  */

@@ -18,7 +18,7 @@ export type ProductImageRow = {
  * Gestão de imagens do produto.
  *
  * Reordenação por botões, não por arrastar: arrastar é hostil no celular e
- * exige biblioteca. Aqui a Joseka move a foto uma posição por vez, com o
+ * exige biblioteca. Aqui o Joseka move a foto uma posição por vez, com o
  * teclado ou o dedo, e funciona em qualquer tela.
  */
 export function ImageManager({

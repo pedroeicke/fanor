@@ -46,7 +46,7 @@ next-env.d.ts
 .data/
 public/uploads/
 
-# Material bruto do cliente: conversa de WhatsApp com a Joseka, áudios
+# Material bruto do cliente: conversa de WhatsApp com o Joseka, áudios
 # originais, gravação de tela. Serviu para levantar o escopo e não faz parte
 # do site. Fica de fora porque este repositório é público — o dossiê e o
 # checklist derivados dele, sim, estão versionados em docs/.

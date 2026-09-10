@@ -444,7 +444,7 @@ create policy "admin atualiza reclamações" on complaints         for update us
 -- Dados de referência: categorias, zonas, faixas horárias e parâmetros.
 --
 -- Produtos NÃO entram aqui — eles vêm por importação (npm run db:seed), porque
--- a lista definitiva ainda depende do CSV da Joseka.
+-- a lista definitiva ainda depende do CSV do Joseka.
 -- =============================================================================
 
 -- -----------------------------------------------------------------------------

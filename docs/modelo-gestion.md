@@ -65,7 +65,7 @@ Close2U (0 por processar … 6 anulado), com o código cru ao lado do enum.
 com a tela de venda. Abrir permissão para uma tela que não existe é risco sem
 benefício.
 
-## Perguntas para a Joseka (bloqueiam a próxima etapa)
+## Perguntas para o Joseka (bloqueiam a próxima etapa)
 
 1. **Famílias**: os prefixos PA, PT, H e O — o que são? (chutei Panadería, Postres, Helados, Otros.)
 2. **Lojas**: quais lojas/almacenes existem no Sisgeco (alm0…alm9) e qual vende o quê. O site conhece três: Calle Perú, Mercaderes, Av. EE.UU.

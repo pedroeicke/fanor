@@ -505,7 +505,7 @@ create policy "admin gerencia séries"         on fiscal_series          for all
 create policy "admin gerencia comprovantes"   on fiscal_documents       for all using (is_admin()) with check (is_admin());
 
 -- Famílias vistas nos comprovantes, pelo prefixo do código. Os nomes de PA,
--- PT, H, O são chute a confirmar com a Joseka; os demais estão nas descrições.
+-- PT, H, O são chute a confirmar com o Joseka; os demais estão nas descrições.
 insert into product_families (code, name, tracks_serial, sort_order) values
   ('T',   'Tortas',                true,  1),
   ('PS',  'Pastelería',            false, 2),

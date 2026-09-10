@@ -5,7 +5,7 @@
  * substitui tamanhos, sabores, imagens e categorias de cada um.
  *
  * Os produtos entram como `active` porque são exatamente os que estão no ar
- * hoje. Se forem 52 e não 59, a Joseka desativa os 7 pelo painel — é mais
+ * hoje. Se forem 52 e não 59, o Joseka desativa os 7 pelo painel — é mais
  * seguro do que eu adivinhar quais sumiram.
  *
  * Uso:
@@ -82,7 +82,7 @@ async function main() {
       status: "active",
       base_price: p.sizes.length ? null : p.price,
       /* O catálogo atual é "até N sabores". A regra "exatamente 3 entre 9"
-         chega com o CSV da Joseka: é min = max = 3 e nove linhas de sabor. */
+         chega com o CSV do Joseka: é min = max = 3 e nove linhas de sabor. */
       min_flavors: p.flavors.length ? 1 : 0,
       max_flavors: p.maxFlavors,
       lead_time_hours: p.leadTimeHours,

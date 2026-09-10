@@ -41,7 +41,7 @@ Loja completa em Next.js 16, catálogo no Supabase (São Paulo), 95 páginas.
 
 ---
 
-## 1. Bloqueado — depende da Joseka
+## 1. Bloqueado — depende do Joseka
 
 Nada disso eu consigo destravar sozinho.
 
@@ -81,10 +81,10 @@ Nada disso eu consigo destravar sozinho.
 
 - **Rotacionar as chaves do Supabase e o Personal Access Token** — passaram pelo chat
 - **Apagar o projeto Supabase de Oregon** (`uuavvitjiwlkznvbcysp`) — tem cópia completa dos dados
-- **Trocar a senha do painel** antes de entregar à Joseka
+- **Trocar a senha do painel** antes de entregar ao Joseka
 - **Plano Pro do Supabase (US$ 25/mês)** — o gratuito pausa o projeto após 7 dias sem atividade, o que derruba a loja
 - Definir hospedagem, também em São Paulo, para ficar junto do banco
-- Homologação com a Joseka e treinamento do painel
+- Homologação com o Joseka e treinamento do painel
 
 ---
 
@@ -109,7 +109,7 @@ Nada disso eu consigo destravar sozinho.
 O acesso ao painel fica em `/admin/login`. Usuário e senha **não** são
 versionados: este repositório é público. Estão no `.env.local`, que o
 `.gitignore` mantém fora — e a senha de teste precisa ser trocada antes de
-entregar à Joseka.
+entregar ao Joseka.
 
 ```bash
 npm run dev            # desenvolvimento
