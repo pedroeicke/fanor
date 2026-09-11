@@ -32,21 +32,30 @@ export const T = {
  * parou. Um dia parado na loja são ~300 movimentos; 500 por rodada alcança
  * em duas.
  */
+/**
+ * Do cabeçalho eu pego só o que uso (tipo de movimento e almacén decidem
+ * o destino); do detalhe pego `d.*`, todas as colunas que existirem. Assim o
+ * leitor não quebra se uma coluna do Sisgeco real tiver outro nome — foi o
+ * que aconteceu com `total`, que não existe na GuiaDet desta instalação.
+ * `groupMovements` no index.mjs lê cada campo com `?.`, então coluna ausente
+ * vira null, nunca erro.
+ *
+ * `numero` é o Nº Interno: correlativo único entre entradas (I004) e saídas
+ * por venda (S003). É ele o cursor. Ordena por `c.numero` só — a ordem das
+ * linhas dentro de um movimento não importa para o espelho.
+ */
 export const movementsAfter = `
   select top (@batch)
-    c.numero, c.codalmacen, c.codtipomov, c.fecha, c.numguia, c.numdocref, c.codvendedor, c.observacion,
-    d.linea, d.codarticulo, d.des, d.numserie, d.numlote, d.fechaven, d.cantidad, d.valor, d.total, d.numcomvta
+    c.numero as h_numero, c.codalmacen, c.codtipomov, c.fecha, c.numguia, c.numdocref, c.codvendedor, c.observacion,
+    d.*
   from ${T.guiaCab} c
   join ${T.guiaDet} d on d.numero = c.numero
   where c.numero > @cursor
-  order by c.numero, d.linea
+  order by c.numero
 `;
 
-/** Catálogo inteiro. São ~113 linhas; ler tudo é mais barato que detectar mudança. */
-export const allArticles = `
-  select a.codigo, a.des, a.codfamilia, a.codunidad, a.usaserie, a.usalote, a.precio1, a.codigosunat, a.stockM
-  from ${T.articulo} a
-`;
+/** Catálogo inteiro. `select *` pela mesma razão: nomes de coluna variam. */
+export const allArticles = `select * from ${T.articulo}`;
 
 export const allWarehouses = `select codigo, des from ${T.almacen}`;
 export const allSellers = `select codigo, des from ${T.vendedor}`;
