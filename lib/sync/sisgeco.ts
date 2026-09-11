@@ -87,8 +87,14 @@ export async function applySisgecoBatch(db: Db, batch: SisgecoBatch, agent: stri
 
     if (batch.articles?.length) counts.products = await upsertArticles(db, batch.articles, families);
 
+    /* O Nº Interno vem como TEXTO do Sisgeco (coluna nvarchar). Sem normalizar,
+       "265295" (string) nunca casa com 265295 (número) na hora de ligar cada
+       linha ao seu movimento — e a linha entra com movement_id nulo. Converte
+       uma vez, aqui, e todo o resto trabalha com número. */
+    const movements = (batch.movements ?? []).map((m) => ({ ...m, numero: Number(m.numero) }));
+
     /* Só o que ainda não foi aplicado, em ordem. */
-    const pending = [...(batch.movements ?? [])].filter((m) => m.numero > cursor).sort((a, b) => a.numero - b.numero);
+    const pending = movements.filter((m) => Number.isFinite(m.numero) && m.numero > cursor).sort((a, b) => a.numero - b.numero);
     if (pending.length) {
       const applied = await applyMovements(db, pending, stores, families);
       counts.movements = applied.movements;
