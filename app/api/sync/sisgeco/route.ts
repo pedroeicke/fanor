@@ -11,11 +11,17 @@ import { applySisgecoBatch, readCursor, type SisgecoBatch } from "@/lib/sync/sis
  *
  * Quem escreve no banco é este servidor, com a chave de serviço — a chave
  * nunca vai para o PC da loja. O leitor só prova que é ele: cada pedido vem
- * assinado com HMAC sobre `timestamp.corpo`, e o timestamp tem de estar a
- * menos de 5 minutos do nosso relógio. Repetir um pedido gravado não passa.
+ * assinado com HMAC sobre `timestamp.corpo`, e o timestamp tem de estar
+ * dentro de uma janela do nosso relógio.
+ *
+ * A janela é larga (12h) de propósito: o leitor roda num servidor de loja,
+ * cujo relógio pode estar fora de hora, e recusar por causa disso derrubaria
+ * a sincronização inteira. O que protege de replay não é a janela apertada —
+ * é o segredo forte de 256 bits e a idempotência (POST por Nº Interno, GET
+ * só lê). A janela existe só para barrar um timestamp claramente absurdo.
  */
 
-const MAX_SKEW_MS = 5 * 60_000;
+const MAX_SKEW_MS = 12 * 60 * 60_000;
 
 function verify(request: Request, body: string) {
   const secret = process.env.SYNC_SHARED_SECRET?.trim();
