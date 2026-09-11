@@ -127,10 +127,18 @@ async function loadFamilies(db: Db) {
 }
 
 function storeFor(almacen: string, serie: string | null, stores: Map<string, string>) {
+  /* A torta (com série) sempre cai na loja certa pelo prefixo da série. */
   const prefix = serie?.[0] ?? ALMACEN_PREFIX[almacen];
   const id = prefix ? stores.get(prefix) : undefined;
-  if (!id) throw new Error(`Almacén "${almacen}" (série ${serie ?? "—"}) sem loja correspondente em stores.serial_prefix`);
-  return id;
+  if (id) return id;
+
+  /* Almacén que não é loja de varejo — o "0" é a Oficina, e o Sisgeco pode ter
+     outros (insumos, produção central). Movimento de lá não pode derrubar o
+     lote inteiro: atribui à loja principal e segue. A torta nunca é afetada
+     por isto, porque ela decide a loja pela série, acima. */
+  const fallback = stores.get("G") ?? [...stores.values()][0];
+  if (fallback) return fallback;
+  throw new Error("Nenhuma loja cadastrada em stores.serial_prefix");
 }
 
 /** Mapa sku → id para os códigos pedidos, criando como `draft` os que faltam. */
