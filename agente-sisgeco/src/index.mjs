@@ -19,30 +19,81 @@
 import sql from "mssql";
 import fs from "node:fs";
 import os from "node:os";
+import path from "node:path";
 import { createHmac } from "node:crypto";
 import { allArticles, health, movementsAfter } from "./queries.mjs";
 
 const VERSION = "0.1.0";
+
+/**
+ * Pasta do programa. Empacotado como executável único (SEA), é a pasta do
+ * `.exe`; rodando com Node normal, o diretório atual. Config e estado moram
+ * aqui, para o leitor não depender de qual pasta ele foi iniciado — como
+ * serviço do Windows isso não é previsível.
+ */
+const APP_DIR = (() => {
+  try {
+    const sea = require("node:sea");
+    if (sea.isSea()) return path.dirname(process.execPath);
+  } catch {
+    /* Node normal. */
+  }
+  return process.cwd();
+})();
+
+/**
+ * Carrega a configuração de um arquivo `fanor-lector.env` ao lado do programa.
+ *
+ * Empacotado como executável único, não há `.env` nem terminal para exportar
+ * variáveis: quem instala na loja só edita um bloco de notas. Cada linha é
+ * `CHAVE=valor`; o que já veio pelo ambiente tem prioridade, para dar para
+ * sobrepor em teste.
+ */
+function loadConfigFile() {
+  for (const name of ["fanor-lector.env", ".env"]) {
+    const file = path.join(APP_DIR, name);
+    if (!fs.existsSync(file)) continue;
+    for (const raw of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
+      const line = raw.trim();
+      if (!line || line.startsWith("#")) continue;
+      const eq = line.indexOf("=");
+      if (eq < 1) continue;
+      const key = line.slice(0, eq).trim();
+      let value = line.slice(eq + 1).trim();
+      if (value.length >= 2 && ((value[0] === '"' && value.endsWith('"')) || (value[0] === "'" && value.endsWith("'")))) {
+        value = value.slice(1, -1);
+      }
+      if (process.env[key] === undefined) process.env[key] = value;
+    }
+    console.log(new Date().toISOString(), `configuração carregada de ${file}`);
+    return;
+  }
+}
+
 const env = (name, fallback) => process.env[name] ?? fallback ?? missing(name);
 const missing = (name) => { throw new Error(`Falta a variável ${name}`); };
 
+/* Carrega o arquivo de config ANTES de montar `cfg` — senão as variáveis
+   ainda não existem quando cada `env(...)` é lido. */
+loadConfigFile();
+
 const cfg = {
   sql: {
-    server: env("SISGECO_SQL_SERVER", "localhost"),
+    server: env("SISGECO_SQL_SERVER", "SRV00Y"),
     port: Number(env("SISGECO_SQL_PORT", "1433")),
     database: env("SISGECO_SQL_DATABASE", "Fanor"),
-    user: env("SISGECO_SQL_USER"),
+    user: env("SISGECO_SQL_USER", "fanor_lectura"),
     password: env("SISGECO_SQL_PASSWORD"),
     options: { encrypt: false, trustServerCertificate: true },
     pool: { max: 2 },
   },
-  syncUrl: env("SYNC_URL"),
+  syncUrl: env("SYNC_URL", "https://fanor.vercel.app/api/sync/sisgeco"),
   secret: env("SYNC_SHARED_SECRET"),
   pollMs: Number(env("POLL_MS", "5000")),
   batch: Number(env("BATCH", "200")),
   /* Catálogo vai inteiro de tempos em tempos: são ~113 linhas. */
   catalogEveryMs: Number(env("CATALOG_EVERY_MS", String(10 * 60_000))),
-  stateFile: env("STATE_FILE", "./state.json"),
+  stateFile: env("STATE_FILE", path.join(APP_DIR, "state.json")),
 };
 
 const agent = `${os.hostname()}/agente-sisgeco@${VERSION}`;
