@@ -175,6 +175,13 @@ async function ensureProducts(db: Db, wanted: Map<string, string>, families: Map
   return ids;
 }
 
+/* O `codfamilia` do Sisgeco nem sempre é o prefixo que usamos como código de
+   família (T, PS, ADL). Tenta o do Sisgeco e cai para o prefixo — sem isso os
+   364 artigos chegaram sem família, e o fluxo novo não sabia o que é torta. */
+function familyOf(families: Map<string, Family>, a: SisgecoArticle) {
+  return (a.familia ? families.get(a.familia) : undefined) ?? families.get(familyCode(a.codigo));
+}
+
 async function upsertArticles(db: Db, articles: SisgecoArticle[], families: Map<string, Family>) {
   const valid = articles.filter((a) => a.codigo);
   if (!valid.length) return 0;
@@ -188,7 +195,7 @@ async function upsertArticles(db: Db, articles: SisgecoArticle[], families: Map<
      existente — são poucos e cada um tem valores próprios. */
   await Promise.all(
     valid.filter((a) => ids.has(a.codigo)).map((a) => {
-      const family = families.get(a.familia ?? familyCode(a.codigo));
+      const family = familyOf(families, a);
       return db.from("products").update({
         family_id: family?.id ?? null, tracks_serial: a.usaSerie, sunat_code: a.codigoSunat, stock_min: a.stockMin,
       }).eq("id", ids.get(a.codigo)!).then(({ error: e }) => fail(`products(${a.codigo})`, e));
@@ -197,7 +204,7 @@ async function upsertArticles(db: Db, articles: SisgecoArticle[], families: Map<
 
   /* Novos, só balcão: nascem `draft` — o site só mostra `active`. Um INSERT. */
   const rows = valid.filter((a) => !ids.has(a.codigo)).map((a) => {
-    const family = families.get(a.familia ?? familyCode(a.codigo));
+    const family = familyOf(families, a);
     return {
       slug: slugFor(a.codigo), sku: a.codigo, name: productName(a.des) || a.codigo, status: "draft", kind: "simple",
       base_price: a.precio > 0 ? a.precio : null, sold_online: false, sold_at_counter: true,
@@ -239,7 +246,7 @@ async function applyMovements(db: Db, movements: SisgecoMovement[], stores: Map<
   const movementId = new Map((inserted ?? []).map((r) => [Number(r.source_number), r.id as string]));
 
   /* 4. Tortas (com série) e saldos (sem série), acumulados por lote. */
-  type CakeRow = { serial: string; product_id: string; store_id: string; produced_on: string; expires_on: string; status: string };
+  type CakeRow = { serial: string; product_id: string; store_id: string; produced_on: string; expires_on: string; status: string; source: "sisgeco" };
   const cakes = new Map<string, CakeRow>();
   const levelDelta = new Map<string, { store_id: string; product_id: string; delta: number }>();
   const lineRows: { movement_id: string; product_id: string; quantity: number; cake_unit_serial: string | null; lot_date: string | null; unit_cost: number | null }[] = [];
@@ -258,7 +265,7 @@ async function applyMovements(db: Db, movements: SisgecoMovement[], stores: Map<
         /* A mesma série pode entrar e sair no mesmo lote: o último movimento
            manda no estado. */
         cakes.set(l.serie, {
-          serial: l.serie, product_id: productId, store_id: storeFor(m.almacen, l.serie, stores),
+          serial: l.serie, source: "sisgeco", product_id: productId, store_id: storeFor(m.almacen, l.serie, stores),
           produced_on: produced, expires_on: isoDate(l.vence) ?? produced,
           status: kind === "sale" ? "sold" : kind === "production" ? "in_stock" : "discarded",
         });
