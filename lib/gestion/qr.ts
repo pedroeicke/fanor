@@ -33,5 +33,8 @@ export function parseQr(raw: string): ParsedQr | null {
     const code = text.slice(DISPATCH_PREFIX.length).trim();
     return /^[A-F0-9]{8}$/.test(code) ? { type: "dispatch", code } : null;
   }
-  return SERIAL.test(text) ? { type: "cake", serial: text } : null;
+  if (SERIAL.test(text)) return { type: "cake", serial: text };
+  /* O código vem impresso embaixo do QR da guia; quem digita não põe o
+     prefixo. Oito hexadecimais não colidem com série (letra + 10 dígitos). */
+  return /^[A-F0-9]{8}$/.test(text) ? { type: "dispatch", code: text } : null;
 }

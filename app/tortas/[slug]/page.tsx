@@ -6,6 +6,7 @@ import { TrustBar } from "@/components/product/TrustBar";
 import { ProductCard } from "@/components/product/ProductCard";
 import { SectionHeading, Stars } from "@/components/ui/primitives";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { AvailableTodayBadge } from "@/components/vitrina/AvailableTodayBadge";
 import { displayPrice, relatedProducts, toCard } from "@/lib/catalog";
 import { getProduct, getProducts } from "@/lib/catalog-db";
 import { REVIEWS, SHOW_REVIEWS, reviewsForProduct } from "@/data/reviews";
@@ -129,6 +130,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="mt-6">
               <ProductPurchase product={product} />
             </div>
+
+            {/* Estoque do balcão pedido pelo navegador: a página segue estática.
+                Logo abaixo da compra, e não acima, para o selo não empurrar o
+                formulário quando a resposta chega. */}
+            <AvailableTodayBadge slug={product.slug} className="mt-5" />
           </div>
         </div>
 

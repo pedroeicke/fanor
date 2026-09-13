@@ -15,6 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     { path: "/", priority: 1 },
     { path: "/tortas", priority: 0.9 },
+    /* Muda ao longo do dia: "daily" pede ao buscador que volte mais vezes. */
+    { path: "/vitrina", priority: 0.8, changeFrequency: "daily" as const },
     { path: "/ocasiones", priority: 0.8 },
     { path: "/personalizadas", priority: 0.9 },
     { path: "/nosotros", priority: 0.5 },
@@ -29,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages.map((p) => ({
       url: `${siteUrl}${p.path}`,
       lastModified: now,
-      changeFrequency: "weekly" as const,
+      changeFrequency: p.changeFrequency ?? ("weekly" as const),
       priority: p.priority,
     })),
     ...OCCASIONS.map((o) => ({

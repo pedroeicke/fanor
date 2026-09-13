@@ -24,6 +24,8 @@ import { useHydrated } from "@/lib/use-hydrated";
 const NAV = [
   { href: "/", label: "Inicio" },
   { href: "/tortas", label: "Tortas" },
+  /* O que está no balcão agora, por loja — ver app/vitrina. */
+  { href: "/vitrina", label: "Disponibles hoy" },
   { href: "/ocasiones", label: "Ocasiones", children: OCCASIONS },
   { href: "/personalizadas", label: "Personalizadas" },
   { href: "/nosotros", label: "Nosotros" },
@@ -80,13 +82,16 @@ export function Header() {
           <Logo priority className="h-11 sm:h-12 lg:h-14" />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-8 lg:flex" aria-label="Principal">
+        {/* Seis itens não cabem com o espaçamento antigo a 1024 px: logo, busca
+            e o total do carrinho já ocupam ~400 px. Entre lg e xl o texto
+            desce 1 px e o respiro encolhe, em vez de o menu quebrar linha. */}
+        <nav className="ml-auto hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Principal">
           {NAV.map((item) => (
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
                 className={cx(
-                  "relative flex items-center gap-1 py-6 text-[15px] font-medium transition-colors",
+                  "relative flex items-center gap-1 whitespace-nowrap py-6 text-[14px] font-medium transition-colors xl:text-[15px]",
                   isActive(item.href) ? "text-cacao" : "text-cacao-700 hover:text-cacao",
                 )}
               >

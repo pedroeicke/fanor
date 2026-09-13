@@ -1,7 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "crons": [
-    { "path": "/api/cron/expirar-pagos", "schedule": "15 * * * *" },
-    { "path": "/api/cron/limpiar-fotos", "schedule": "20 3 * * *" }
+    {
+      "path": "/api/cron/expirar-pagos",
+      "schedule": "15 * * * *"
+    },
+    {
+      "path": "/api/cron/limpiar-fotos",
+      "schedule": "20 3 * * *"
+    },
+    {
+      "path": "/api/cron/alertas",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/respaldo",
+      "schedule": "30 8 * * *"
+    }
   ]
 }

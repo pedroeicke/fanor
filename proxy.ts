@@ -43,11 +43,17 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(login);
   }
 
+  /* Só manda o login para o painel quem ainda está em `admins`. Vendedora
+     que perdeu o acesso continua com cookie de sessão: sem esta conferência,
+     o proxy a mandava para /admin e o layout de volta para o login, em loop. */
   if (pathname === "/admin/login" && user) {
-    const admin = request.nextUrl.clone();
-    admin.pathname = "/admin";
-    admin.search = "";
-    return NextResponse.redirect(admin);
+    const { data: admin } = await supabase.from("admins").select("user_id").eq("user_id", user.id).maybeSingle();
+    if (admin) {
+      const panel = request.nextUrl.clone();
+      panel.pathname = "/admin";
+      panel.search = "";
+      return NextResponse.redirect(panel);
+    }
   }
 
   return response;

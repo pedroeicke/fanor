@@ -165,7 +165,8 @@ async function ensureProducts(db: Db, wanted: Map<string, string>, families: Map
       return {
         slug: slugFor(code), sku: code, name: productName(wanted.get(code) ?? "") || code, status: "draft", kind: "simple",
         sold_online: false, sold_at_counter: true, family_id: family?.id ?? null, tracks_serial: family?.tracks_serial ?? false,
-        shelf_life_days: family?.shelf_life_days ?? null,
+        /* Nulo = herda da família (product_shelf_life). Copiar congelaria o valor. */
+        shelf_life_days: null,
       };
     });
     const { data: created, error: e } = await db.from("products").insert(rows).select("id, sku");
@@ -209,7 +210,7 @@ async function upsertArticles(db: Db, articles: SisgecoArticle[], families: Map<
       slug: slugFor(a.codigo), sku: a.codigo, name: productName(a.des) || a.codigo, status: "draft", kind: "simple",
       base_price: a.precio > 0 ? a.precio : null, sold_online: false, sold_at_counter: true,
       family_id: family?.id ?? null, tracks_serial: a.usaSerie, sunat_code: a.codigoSunat, stock_min: a.stockMin,
-      shelf_life_days: family?.shelf_life_days ?? null,
+      shelf_life_days: null,
       unit: a.unidad === "NIU" || a.unidad === "UND" || !a.unidad ? "UNIDAD_BIENES" : a.unidad,
     };
   });

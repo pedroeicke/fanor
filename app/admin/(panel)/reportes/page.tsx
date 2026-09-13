@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getServerSupabase } from "@/lib/supabase-server";
 import { soles } from "@/lib/format";
+import { ReportTabs } from "@/components/admin/reportes/ReportTabs";
 
 export const metadata: Metadata = { title: "Reportes de ventas" };
 
@@ -66,6 +67,7 @@ export default async function ReportsPage({
 
   return (
     <div className="space-y-6">
+      <ReportTabs active="web" />
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="text-2xl">Reportes de ventas</h2>

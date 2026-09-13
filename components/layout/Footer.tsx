@@ -10,6 +10,7 @@ import { isTransferEnabled } from "@/lib/payment-config";
 
 const SHOP_LINKS = [
   { href: "/tortas", label: "Todas las tortas" },
+  { href: "/vitrina", label: "Disponibles hoy" },
   { href: "/personalizadas", label: "Tortas personalizadas" },
   { href: "/tortas?filtro=chocolate", label: "Chocolate" },
   { href: "/tortas?filtro=tres-leches", label: "Tres leches" },

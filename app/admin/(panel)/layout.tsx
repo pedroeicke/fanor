@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { getAdminUser } from "@/lib/supabase-server";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { AlertBell } from "@/components/admin/AlertBell";
 
 /**
  * Tudo dentro deste grupo exige sessão de administrador.
@@ -28,6 +30,10 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         </div>
 
         <div className="flex items-center gap-3 text-sm">
+          {/* Suspense: as contagens de alerta não seguram o resto do painel. */}
+          <Suspense fallback={null}>
+            <AlertBell />
+          </Suspense>
           <Link href="/" className="text-cacao-500 underline underline-offset-4 hover:text-cacao">
             Ver la tienda
           </Link>

@@ -14,7 +14,9 @@ import { IconWhatsapp } from "@/components/ui/icons";
  */
 export function WhatsappFab() {
   const pathname = usePathname();
-  if (pathname.startsWith("/checkout") || pathname.startsWith("/pedido")) return null;
+  /* No painel ele cobria o fim dos botões de largura inteira no celular — e
+     quem opera o painel não é o cliente que precisa de ajuda. */
+  if (pathname.startsWith("/checkout") || pathname.startsWith("/pedido") || pathname.startsWith("/admin")) return null;
 
   return (
     <a
