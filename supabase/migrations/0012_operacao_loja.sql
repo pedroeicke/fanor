@@ -1688,7 +1688,7 @@ begin
   end loop;
 
   -- Encomenda para hoje/amanhã ainda não despachada.
-  for r in select po.id, c.number, po.store_id, po.for_date from production_orders po
+  for r in select c.id, c.number, po.store_id, po.for_date from production_orders po
              join contracts c on c.id = po.contract_id
             where po.kind = 'contract' and po.status = 'planned' and po.for_date <= v_today + 1 loop
     v_key := 'contract_due:' || r.id;
