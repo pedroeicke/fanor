@@ -47,7 +47,10 @@ export default async function InventoryPage() {
          conferir, e a série cresce com o tempo — maior série, mais nova. */
       .in("status", ["in_stock", "reserved"]).order("produced_on", { ascending: false }).order("serial", { ascending: false }),
     db.from("stock_levels").select("quantity, products(name, sku), stores(name)").neq("quantity", 0).order("quantity", { ascending: false }),
-    db.from("stock_movements").select("source_number, kind, reference, created_at, stores(name), stock_movement_lines(id)")
+    /* `stores!…_store_id_fkey`: movimento tem duas ligações com loja (origem e
+       destino de traslado). Sem dizer qual, o PostgREST recusa a consulta e a
+       lista aparecia vazia em silêncio. */
+    db.from("stock_movements").select("source_number, kind, reference, created_at, stores!stock_movements_store_id_fkey(name), stock_movement_lines(id)")
       .order("created_at", { ascending: false }).limit(20),
     db.from("sync_runs").select("finished_at, movements, cake_units, products, error, agent").order("id", { ascending: false }).limit(1),
     db.from("sync_state").select("value").eq("key", "sisgeco:guias").maybeSingle(),

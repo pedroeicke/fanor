@@ -1,5 +1,55 @@
 # Pendências — Site Fanor
 
+## Fase 1 — operação da loja (13/09/2026)
+
+Especificação, fluxo e **pauta da reunião com o Joseka**: `docs/fase-1-operacao.md`.
+Banco: migrações 0011–0015, aplicadas e testadas de ponta a ponta (dados de teste apagados).
+
+**Pronto:** catálogos e ajustes, pedido da loja → taller → despacho com etiqueta QR →
+recepção → Mi vitrina → devolução/redecoração, venda de balcão, encomendas ligadas à torta
+exata, CRM automático, leads com tempo de resposta, alertas, `/vitrina` pública, fotos com IA,
+relatório de operação, backup diário. Build de produção e 167 consultas conferidas contra o banco.
+
+**A vitrine pública continua lendo o Sisgeco** (`system_settings.stock_source = "sisgeco"`).
+Só virar em /admin/ajustes depois que a boleta sair pelo sistema novo.
+
+### Para ligar em produção (Vercel)
+
+| Variável | Para quê | Sem ela |
+|---|---|---|
+| `CRON_SECRET` | rotinas de alertas e backup | rotinas recusam |
+| `ANTHROPIC_API_KEY` | análise de foto pelo Claude | só ajuste automático |
+| `RESPALDO_TOKEN` | baixador do backup no PC do Joseka | rota fica fechada |
+| `ALERTS_EMAIL` / `ALERTS_WEBHOOK_URL` | aviso de alerta urgente | alertas só no painel |
+| `META_VERIFY_TOKEN` / `META_APP_SECRET` | lead automático do WhatsApp/Messenger | webhook inerte |
+
+Plano: a rotina de alertas a cada 5 min e o backup com `maxDuration = 300` pedem Vercel Pro
+(ou Fluid Compute). No Hobby, trocar o alerta para agendador externo com o mesmo Bearer.
+
+### Depende do Joseka (reunião)
+
+Close2U (credenciais e série), formato do Siscont e plano de contas, impressora de etiqueta,
+validade da redecorada, prazos dos alertas, permissões por papel, escopo de custos, número/app da
+Meta, instalação do backup no PC dele, data da virada. Lista completa no doc.
+
+### Ficou para depois (conhecido)
+
+- **Nenhum produto publicado do site tem `sku`**: a vitrine mostra as tortas do Sisgeco sem foto
+  nem link. Vincular `products.sku` (T26, T53…) aos produtos curados liga foto, preço e o selo.
+- Ñ perdido em 6 nomes que vêm do Sisgeco ("PI�A"): a vitrine corrige na tela; o certo é o
+  leitor ler em windows-1252 (exige gerar o `.exe` de novo).
+- Webhook da Meta: duas entregas simultâneas da mesma mensagem podem criar 2 leads (falta chave
+  única por id de mensagem). Só importa quando a Meta for ligada.
+- Venda de balcão sem chave de idempotência no banco: a tela procura a venda recente antes de
+  cobrar de novo, o que cobre queda de rede; uma coluna `client_ref` única fecharia de vez.
+- "Devolver al taller" aceita qualquer torta em vitrina no servidor (a tela limita às vencidas).
+  Esperar a regra: torta danificada ainda na validade pode voltar?
+- Telas do painel não foram abertas logadas no navegador por mim (o login é do cliente).
+
+---
+
+## Site (estado de 02/09/2026)
+
 Estado em 02/09/2026, após a rodada de busca de endereço, mapa e logo. Cruzado com o `checklist_implementacao_site_fanor.md`.
 
 ---
