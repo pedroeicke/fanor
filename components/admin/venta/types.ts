@@ -82,6 +82,8 @@ export type PaymentLine = {
 };
 
 export type RegisterSaleInput = {
+  /** Chave do carrinho: cobrar duas vezes com ela devolve a mesma venda. */
+  clientRef: string;
   storeId: string;
   sellerId: string | null;
   customerId: string | null;

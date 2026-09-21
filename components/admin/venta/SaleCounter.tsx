@@ -235,6 +235,7 @@ export function SaleCounter({
   function charge() {
     if (blocker || charging || chargeLock.current) return;
     const input: RegisterSaleInput = {
+      clientRef: draft.clientRef,
       storeId,
       sellerId: sellerId || null,
       customerId: draft.customer?.id ?? null,

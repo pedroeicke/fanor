@@ -31,6 +31,13 @@ type DraftData = {
    * A venda pode estar gravada: o próximo "Cobrar" procura antes de repetir.
    */
   unconfirmed: boolean;
+  /**
+   * Identifica este carrinho no banco. Cobrar duas vezes com a mesma chave
+   * devolve a venda já gravada em vez de criar outra — é o que fecha a
+   * janela entre gravar e a resposta chegar. Nasce com o carrinho e só muda
+   * quando começa uma venda nova.
+   */
+  clientRef: string;
 };
 
 type DraftActions = {
@@ -54,13 +61,33 @@ type DraftActions = {
   newSale: () => void;
 };
 
-const EMPTY_CART = { lines: [], payments: [], customer: null, notes: "", kind: "counter" as SaleKind };
-
 function newKey() {
   return typeof crypto !== "undefined" && "randomUUID" in crypto
     ? crypto.randomUUID()
     : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 }
+
+/* O banco guarda a chave como uuid; navegador sem randomUUID (http em rede
+   local, versão antiga) monta um no mesmo formato a partir de números
+   aleatórios. */
+function newClientRef() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) return crypto.randomUUID();
+  const hex = Array.from({ length: 16 }, () => Math.floor(Math.random() * 256));
+  hex[6] = (hex[6] & 0x0f) | 0x40;
+  hex[8] = (hex[8] & 0x3f) | 0x80;
+  const s = hex.map((b) => b.toString(16).padStart(2, "0")).join("");
+  return `${s.slice(0, 8)}-${s.slice(8, 12)}-${s.slice(12, 16)}-${s.slice(16, 20)}-${s.slice(20)}`;
+}
+
+/* Função, não constante: cada carrinho novo precisa da sua própria chave. */
+const emptyCart = () => ({
+  lines: [],
+  payments: [],
+  customer: null,
+  notes: "",
+  kind: "counter" as SaleKind,
+  clientRef: newClientRef(),
+});
 
 export const useSaleDraft = create<DraftData & DraftActions>()(
   persist(
@@ -69,7 +96,7 @@ export const useSaleDraft = create<DraftData & DraftActions>()(
       sellerId: null,
       receipt: null,
       unconfirmed: false,
-      ...EMPTY_CART,
+      ...emptyCart(),
 
       /* Cliente e nota não são da loja: continuam. */
       setStore: (storeId) => set({ storeId, sellerId: null, lines: [], payments: [] }),
@@ -182,8 +209,8 @@ export const useSaleDraft = create<DraftData & DraftActions>()(
       setNotes: (notes) => set({ notes }),
       setUnconfirmed: (unconfirmed) => set({ unconfirmed }),
 
-      finish: (receipt) => set({ receipt, unconfirmed: false, ...EMPTY_CART }),
-      newSale: () => set({ receipt: null, unconfirmed: false, ...EMPTY_CART }),
+      finish: (receipt) => set({ receipt, unconfirmed: false, ...emptyCart() }),
+      newSale: () => set({ receipt: null, unconfirmed: false, ...emptyCart() }),
     }),
     {
       name: "fanor-venta",
@@ -199,6 +226,9 @@ export const useSaleDraft = create<DraftData & DraftActions>()(
         notes: s.notes,
         receipt: s.receipt,
         unconfirmed: s.unconfirmed,
+        /* Sem isto, recarregar a aba geraria chave nova e a cobrança repetida
+           voltaria a duplicar. */
+        clientRef: s.clientRef,
       }),
     },
   ),

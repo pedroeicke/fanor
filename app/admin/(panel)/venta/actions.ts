@@ -299,6 +299,7 @@ export async function createCustomer(input: { name: string; phone: string; doc: 
 type OpSaleResult = { id: string; number: number | string; total: number | string; paid: number | string; change: number | string };
 
 type PreparedSale = {
+  clientRef: string | null;
   storeId: string;
   kind: "counter" | "staff";
   sellerId: string | null;
@@ -323,6 +324,10 @@ function prepareSale(input: RegisterSaleInput): ActionResult<PreparedSale> {
   if (!input || typeof input !== "object") return fail("Datos inválidos.");
 
   if (!isUuid(input.storeId)) return fail("Elige la tienda.");
+  /* Chave do carrinho: é ela que impede cobrar duas vezes quando a resposta
+     se perde. Navegador antigo sem chave não trava a venda — só perde a
+     proteção, e a busca por venda recente continua valendo. */
+  const clientRef = isUuid(input.clientRef) ? input.clientRef : null;
   const kind = input.kind === "staff" ? "staff" : input.kind === "counter" ? "counter" : null;
   if (!kind) return fail("Tipo de venta inválido.");
 
@@ -407,6 +412,7 @@ function prepareSale(input: RegisterSaleInput): ActionResult<PreparedSale> {
   return {
     ok: true,
     data: {
+      clientRef,
       storeId: input.storeId,
       kind,
       sellerId,
@@ -485,6 +491,7 @@ export async function registerSale(input: RegisterSaleInput): Promise<ActionResu
     p_customer: sale.customerId,
     p_kind: sale.kind,
     p_notes: notes || null,
+    p_client_ref: sale.clientRef,
   });
   if (!result.ok) return result;
 

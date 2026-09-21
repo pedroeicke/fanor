@@ -119,8 +119,13 @@ async function ingest(db: SupabaseClient, message: MetaInboundMessage): Promise<
   const leadId = await findOpenLead(db, message);
 
   if (leadId) {
-    const { error } = await db.rpc("op_lead_note", { p_lead: leadId, p_notes: note });
-    if (error) throw new Error(`op_lead_note: ${error.message}`);
+    const { error } = await db.rpc("op_lead_note", { p_lead: leadId, p_notes: note, p_external_id: message.messageId });
+    /* 23505 = a mesma mensagem chegou duas vezes ao mesmo tempo e a chave
+       única barrou a segunda. É repetida, não é erro. */
+    if (error) {
+      if (error.code === "23505") return "duplicate";
+      throw new Error(`op_lead_note: ${error.message}`);
+    }
     return "noted";
   }
   if (!message.startsLead) return "ignored";
@@ -130,13 +135,19 @@ async function ingest(db: SupabaseClient, message: MetaInboundMessage): Promise<
     p_phone: message.phone ? displayPhone(message.phone) : null,
     p_source: message.channel,
     p_context: message.text,
+    p_external_id: message.messageId,
   });
-  if (createError) throw new Error(`op_lead_create: ${createError.message}`);
+  if (createError) {
+    if (createError.code === "23505") return "duplicate";
+    throw new Error(`op_lead_create: ${createError.message}`);
+  }
 
   /* A primeira mensagem também vira nota: é ela que carrega o id (reenvio não
      duplica o lead) e, no Messenger, o remetente para agrupar a conversa. */
   const id = (created as { id?: string } | null)?.id;
   if (id) {
+    /* O id da mensagem já ficou no evento 'created'; a nota inicial guarda o
+       texto e, por isso, vai sem chave. */
     const { error } = await db.rpc("op_lead_note", { p_lead: id, p_notes: note });
     if (error) console.error("[webhook/meta] nota inicial", id, error.message);
   }
