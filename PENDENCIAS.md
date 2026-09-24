@@ -8,8 +8,9 @@ A prévia de importação de `Codigos_Fanor2026.xlsx` já está em
 `scripts/preview-codigos-fanor.py`; ela valida 1.256 códigos e 52 fórmulas sem
 alterar o banco. Encontrou um rendimento ausente e dois pontos para revisão.
 A tela `/admin/recetas` mostra a prévia dessas fórmulas em espanhol, com busca,
-ingredientes e pendências. O arquivo é carregado localmente em desenvolvimento
-ou selecionado pelo administrador; as receitas ainda não movimentam estoque.
+ingredientes e pendências. A prévia fica na chave `production_recipes_preview` de
+`system_settings`, protegida por RLS; o script `publish-recipes-preview.mjs` a
+publica sem expor o JSON no GitHub. As receitas ainda não movimentam estoque.
 
 **Próximos insumos do Joseka:** o Excel completo `RECETAS 2026` visto nos vídeos,
 correção do rendimento e da fórmula de separação do ovo, unidades/apresentações
