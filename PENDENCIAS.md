@@ -1,5 +1,22 @@
 # Pendências — Site Fanor
 
+## Fase 2 — produção, receitas e custos (24/09/2026)
+
+Levantamento das gravações com Joseka, medida da prancha (50 × 70 cm), fluxo de
+produção e relação com o Siscont: `docs/levantamento-producao-joseka-2026-09-21.md`.
+A prévia de importação de `Codigos_Fanor2026.xlsx` já está em
+`scripts/preview-codigos-fanor.py`; ela valida 1.256 códigos e 52 fórmulas sem
+alterar o banco. Encontrou um rendimento ausente e dois pontos para revisão.
+A tela `/admin/recetas` mostra a prévia dessas fórmulas em espanhol, com busca,
+ingredientes e pendências. O arquivo é carregado localmente em desenvolvimento
+ou selecionado pelo administrador; as receitas ainda não movimentam estoque.
+
+**Próximos insumos do Joseka:** o Excel completo `RECETAS 2026` visto nos vídeos,
+correção do rendimento e da fórmula de separação do ovo, unidades/apresentações
+de compra, exemplo de exportação para Siscont e plano de contas.
+
+---
+
 ## Fase 1 — operação da loja (13/09/2026)
 
 Especificação, fluxo e **pauta da reunião com o Joseka**: `docs/fase-1-operacao.md`.
