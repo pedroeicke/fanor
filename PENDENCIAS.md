@@ -1,5 +1,15 @@
 # Pendências — Site Fanor
 
+## Etiquetas de produção (29/09/2026)
+
+Impressora confirmada: TSC TE200. Formato padrão atualizado para 50 × 25 mm,
+com margem interna de 3 mm e desenho baseado no gabarito enviado. Prova com
+os 11 exemplos em `/admin/etiquetas/prueba`; Moca e Delicia Tropical sem linha
+de sabores. Detalhes: `docs/etiquetas-tortas-50x25mm.md`.
+Antes de um despacho real: configurar os códigos de tortas de três sabores
+no catálogo operacional e cadastrar suas combinações. Falta conferir a
+impressão física e a calibração do rolo na TE200.
+
 ## Fase 2 — produção, receitas e custos (24/09/2026)
 
 Levantamento das gravações com Joseka, medida da prancha (50 × 70 cm), fluxo de
@@ -46,7 +56,7 @@ Plano: a rotina de alertas a cada 5 min e o backup com `maxDuration = 300` pedem
 
 ### Depende do Joseka (reunião)
 
-Close2U (credenciais e série), formato do Siscont e plano de contas, impressora de etiqueta,
+Close2U (credenciais e série), formato do Siscont e plano de contas, teste físico das etiquetas na TE200,
 validade da redecorada, prazos dos alertas, permissões por papel, escopo de custos, número/app da
 Meta, instalação do backup no PC dele, data da virada. Lista completa no doc.
 

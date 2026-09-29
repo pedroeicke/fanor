@@ -9,6 +9,8 @@ import { qrSvg } from "@/lib/gestion/qr-svg";
 import { cx } from "@/lib/format";
 import { isUuid } from "@/components/admin/pedidos-tienda/catalog";
 import { PrintButton } from "@/components/admin/taller/PrintButton";
+import { CakeLabel } from "@/components/admin/taller/CakeLabel";
+import { CAKE_LABEL_CSS, cakeLabelContent } from "@/lib/gestion/cake-label";
 
 export const metadata: Metadata = { title: "Etiquetas" };
 export const dynamic = "force-dynamic";
@@ -20,9 +22,9 @@ export const dynamic = "force-dynamic";
  * Fora do grupo (panel) de propósito: o menu do painel não pode sair no
  * papel. A sessão é conferida aqui mesmo, e o RLS confere de novo na leitura.
  *
- * Dois formatos, porque a impressora do taller ainda não está definida:
- * `?formato=a4` (padrão, grade de 3 colunas para cortar) e `?formato=58`
- * (fita térmica de 58 mm, uma etiqueta por "página" de 58 × 40 mm).
+ * Padrão: TSC TE200, etiquetas de 50 × 25 mm, margem interna de 3 mm.
+ * A guia sai separada em A4; ?formato=a4 também conserva a grade para cortar.
+ * ?formato=58 continua aceito para reimpressões no tamanho anterior.
  */
 
 type DispatchRow = {
@@ -40,8 +42,9 @@ type CakeRow = {
   produced_on: string;
   expires_on: string;
   redecorated: boolean;
-  products: { name: string; sku: string | null } | null;
+  products: { name: string; sku: string | null; min_flavors: number; max_flavors: number } | null;
   flavors: { name: string } | null;
+  cake_types: { name: string } | null;
   contracts: { number: number } | null;
 };
 
@@ -134,7 +137,7 @@ export default async function LabelsPage({
   const { id } = await params;
   if (!isUuid(id)) notFound();
   const sp = await searchParams;
-  const format = sp.formato === "58" ? "58" : "a4";
+  const format = sp.formato === "a4" ? "a4" : sp.formato === "58" ? "58" : "50";
 
   const db = await getServerSupabase();
   if (!db) return <p className="p-6 text-sm">Falta configurar la base de datos.</p>;
@@ -143,7 +146,7 @@ export default async function LabelsPage({
     db.from("dispatches").select("id, number, code, dispatched_at, stores(name), production_orders(number, kind, contracts(number))").eq("id", id).maybeSingle(),
     db
       .from("cake_units")
-      .select("id, serial, produced_on, expires_on, redecorated, products(name, sku), flavors(name), contracts(number)")
+      .select("id, serial, produced_on, expires_on, redecorated, products(name, sku, min_flavors, max_flavors), flavors(name), cake_types(name), contracts(number)")
       .eq("dispatch_id", id)
       .order("serial"),
     db.from("dispatch_lines").select("id, quantity, products(name)").eq("dispatch_id", id),
@@ -172,11 +175,9 @@ export default async function LabelsPage({
     Promise.all(cakes.map((c) => qrSvg(cakeQrValue(c.serial)))),
   ]);
 
-  const other = format === "a4" ? "58" : "a4";
-
   return (
     <div className="etq-root mx-auto max-w-5xl px-4 py-6">
-      <style dangerouslySetInnerHTML={{ __html: BASE_CSS + (format === "a4" ? A4_PRINT_CSS : THERMAL_PRINT_CSS) }} />
+      <style dangerouslySetInnerHTML={{ __html: BASE_CSS + (format === "a4" ? A4_PRINT_CSS : format === "50" ? CAKE_LABEL_CSS : THERMAL_PRINT_CSS) }} />
 
       <div className="no-print mb-6 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -188,7 +189,7 @@ export default async function LabelsPage({
           </Link>
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex rounded-full border border-crema-300 bg-crema-100 p-1" role="group" aria-label="Formato de impresión">
-              {(["a4", "58"] as const).map((f) => (
+              {(["50", "a4"] as const).map((f) => (
                 <Link
                   key={f}
                   href={`/admin/etiquetas/${dispatch.id}?formato=${f}`}
@@ -198,30 +199,34 @@ export default async function LabelsPage({
                     f === format ? "bg-white text-cacao shadow-[0_1px_2px_rgb(59_35_20/0.1)]" : "text-cacao-500 hover:text-cacao",
                   )}
                 >
-                  {f === "a4" ? "Hoja A4" : "Térmica 58 mm"}
+                  {f === "a4" ? "Hoja A4" : "TSC · 50 × 25 mm"}
                 </Link>
               ))}
             </div>
-            <PrintButton />
+            <Link href="/admin/etiquetas/prueba" className="inline-flex h-11 items-center px-3 text-sm font-semibold underline underline-offset-4">Probar 11 etiquetas</Link>
+            {cakes.length > 0 || format !== "50" ? <PrintButton label={format === "50" ? "Imprimir tortas" : "Imprimir"} /> : null}
           </div>
         </div>
         <div>
           <h1 className="font-display text-2xl">Etiquetas · Despacho #{dispatch.number}</h1>
           <p className="mt-1 text-sm text-cacao-500">
-            {cakes.length} {cakes.length === 1 ? "etiqueta" : "etiquetas"} de torta y la guía para {store}. Imprime a escala 100 % y sin
+            {cakes.length} {cakes.length === 1 ? "etiqueta" : "etiquetas"} de torta para {store}. Imprime a escala 100 % y sin
             encabezados del navegador.{" "}
             {format === "a4" ? (
-              <>¿Impresora de etiquetas? <Link href={`/admin/etiquetas/${dispatch.id}?formato=${other}`} className="underline underline-offset-2">Usa el formato de 58 mm</Link>.</>
+              <Link href={`/admin/etiquetas/${dispatch.id}?formato=50`} className="underline underline-offset-2">Usa etiquetas de 50 × 25 mm en la TSC TE200.</Link>
+            ) : format === "50" ? (
+              <>Elige la TSC TE200 y papel de 50 × 25 mm, sin márgenes adicionales. Margen interno: 3 mm.</>
             ) : (
               <>En la impresora, elige papel de 58 × 40 mm.</>
             )}
           </p>
+          {format === "50" && <p className="mt-2 text-sm text-cacao-500">La guía de recepción se imprime en <Link href={`/admin/etiquetas/${dispatch.id}?formato=a4`} className="underline underline-offset-2">Hoja A4</Link>. Los campos Vendedora y BV / Factura quedan para completar en tienda.</p>}
         </div>
       </div>
 
       <div className="etq-scroll overflow-x-auto pb-2">
-        <div className={cx("etq-sheet", format === "a4" ? "etq-a4" : "etq-58")}>
-          <article className="etq-label etq-guide">
+        <div className={cx("etq-sheet", format === "a4" ? "etq-a4" : format === "50" ? "etq-50" : "etq-58")}>
+          {format !== "50" && <article className="etq-label etq-guide">
             <div className="etq-qr" dangerouslySetInnerHTML={{ __html: guideQr }} />
             <div className="etq-text">
               <p className="etq-title">Guía de despacho #{dispatch.number}</p>
@@ -239,17 +244,31 @@ export default async function LabelsPage({
                 <p>{lines.map((l) => `${Number(l.quantity)} × ${l.products?.name ?? "Producto"}`).join(" · ")}</p>
               )}
             </div>
-          </article>
+          </article>}
 
           {cakes.map((c, i) => {
             const days = daysBetween(c.produced_on, c.expires_on);
+            const content = cakeLabelContent({
+              name: c.products?.name ?? "Torta",
+              minFlavors: c.products?.min_flavors ?? 0,
+              maxFlavors: c.products?.max_flavors ?? 0,
+              flavorName: c.flavors?.name,
+            });
+            if (format === "50") return <CakeLabel key={c.id} label={{
+              ...content,
+              store: store.replace(/^Calle\s+/i, "").toUpperCase(),
+              serial: c.serial,
+              qrValue: cakeQrValue(c.serial),
+              detail: c.cake_types?.name,
+              redecorated: c.redecorated,
+            }} />;
             return (
               <article key={c.id} className="etq-label etq-cake">
                 <div className="etq-qr" dangerouslySetInnerHTML={{ __html: cakeQrs[i] }} />
                 <div className="etq-text">
                   <p className="etq-serial">{c.serial}</p>
                   <p className="etq-name">{c.products?.name ?? "Torta"}</p>
-                  <p>{c.flavors?.name ?? "Sin sabor"}</p>
+                  {content.flavors && <p>{content.flavors}</p>}
                   <p>
                     Prod. {ddmm(c.produced_on)} · Vence {ddmm(c.expires_on)}
                   </p>
@@ -270,7 +289,7 @@ export default async function LabelsPage({
       </div>
 
       {cakes.length === 0 && (
-        <p className="no-print mt-6 text-sm text-cacao-500">Este despacho no lleva tortas con serie: solo se imprime la guía.</p>
+        <p className="no-print mt-6 text-sm text-cacao-500">Este despacho no lleva tortas con serie. Usa Hoja A4 para imprimir la guía.</p>
       )}
     </div>
   );

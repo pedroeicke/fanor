@@ -1,0 +1,13 @@
+[
+  { "name": "Torta 1½P", "flavors": ["Pasión", "Moca", "Delicia"] },
+  { "name": "Torta 10P", "flavors": ["Chocolate", "Naranja", "Moca"] },
+  { "name": "Torta 26", "flavors": ["Chocolate", "Vainilla", "Tentación"] },
+  { "name": "Torta 26 Delicia Tropical", "flavors": [] },
+  { "name": "Torta 26 Moca", "flavors": [] },
+  { "name": "Torta 26", "flavors": ["Naranja", "Vainilla", "Delicia"] },
+  { "name": "Torta Alteza", "flavors": ["Chocolate", "Vainilla", "Chocochip"] },
+  { "name": "Torta Alteza", "flavors": ["Vainilla", "Chocochip", "Delicia"] },
+  { "name": "Bracito", "flavors": ["Chocolate", "Pasión", "Delicia"] },
+  { "name": "Torta Corazón 20x18", "flavors": ["Chocolate", "Naranja", "Moca"] },
+  { "name": "Torta Guagua 35x19", "flavors": ["Naranja", "Pasión", "Moca"] }
+]

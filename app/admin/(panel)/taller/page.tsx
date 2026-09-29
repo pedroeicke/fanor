@@ -171,12 +171,20 @@ export default async function WorkshopPage() {
         title="Taller"
         description="Encomiendas y pedidos de las tiendas por atender, lo que volvió de las tiendas y los despachos del día."
         actions={
-          <Link
-            href="/admin/taller/despachar"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-cacao/25 bg-white px-5 text-sm font-semibold text-cacao transition-colors hover:border-cacao"
-          >
-            Despacho sin pedido
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/admin/etiquetas/prueba"
+              className="inline-flex h-11 items-center justify-center rounded-full border border-cacao/25 bg-white px-5 text-sm font-semibold text-cacao transition-colors hover:border-cacao"
+            >
+              Probar etiquetas
+            </Link>
+            <Link
+              href="/admin/taller/despachar"
+              className="inline-flex h-11 items-center justify-center rounded-full border border-cacao/25 bg-white px-5 text-sm font-semibold text-cacao transition-colors hover:border-cacao"
+            >
+              Despacho sin pedido
+            </Link>
+          </div>
         }
       />
 

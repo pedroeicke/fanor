@@ -46,6 +46,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .data/
+/output/
+/tmp/
 public/uploads/
 
 # Material bruto do cliente: conversa de WhatsApp com o Joseka, áudios
