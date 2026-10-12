@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "project": {
+    "name": "fanor",
+    "productType": null,
+    "stack": [
+      "nextjs",
+      "react",
+      "tailwind-v4"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "app/globals.css"
+    ],
+    "components": [
+      "components/ui"
+    ],
+    "assets": [
+      "public/assets"
+    ],
+    "instructions": [
+      "AGENTS.md",
+      "CLAUDE.md"
+    ]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "--color-crema": {
+        "value": "#fffcf5",
+        "source": "app/globals.css"
+      },
+      "--color-crema-100": {
+        "value": "#fdf7ea",
+        "source": "app/globals.css"
+      },
+      "--color-crema-200": {
+        "value": "#f9efdc",
+        "source": "app/globals.css"
+      },
+      "--color-crema-300": {
+        "value": "#f0e2c8",
+        "source": "app/globals.css"
+      },
+      "--color-cacao": {
+        "value": "#3b2314",
+        "source": "app/globals.css"
+      },
+      "--color-cacao-700": {
+        "value": "#5a3a24",
+        "source": "app/globals.css"
+      },
+      "--color-cacao-500": {
+        "value": "#806047",
+        "source": "app/globals.css"
+      },
+      "--color-cacao-300": {
+        "value": "#8a6c54",
+        "source": "app/globals.css"
+      },
+      "--color-dorado": {
+        "value": "#f7c118",
+        "source": "app/globals.css"
+      },
+      "--color-dorado-600": {
+        "value": "#e2a900",
+        "source": "app/globals.css"
+      },
+      "--color-dorado-200": {
+        "value": "#fbe6a3",
+        "source": "app/globals.css"
+      },
+      "--color-dorado-100": {
+        "value": "#fdf3d4",
+        "source": "app/globals.css"
+      },
+      "--color-terracota": {
+        "value": "#c23a17",
+        "source": "app/globals.css"
+      },
+      "--color-terracota-700": {
+        "value": "#9c2f11",
+        "source": "app/globals.css"
+      },
+      "--color-verde": {
+        "value": "#376b4a",
+        "source": "app/globals.css"
+      },
+      "--color-verde-100": {
+        "value": "#e6f2ea",
+        "source": "app/globals.css"
+      }
+    },
+    "typography": {
+      "--font-display": {
+        "value": "var(--font-fraunces), Georgia, \"Times New Roman\", serif",
+        "source": "app/globals.css"
+      },
+      "--font-sans": {
+        "value": "var(--font-jakarta), ui-sans-serif, system-ui, sans-serif",
+        "source": "app/globals.css"
+      }
+    },
+    "spacing": {},
+    "radius": {
+      "--radius-card": {
+        "value": "16px",
+        "source": "app/globals.css"
+      }
+    },
+    "shadows": {
+      "--shadow-card": {
+        "value": "0 1px 2px rgb(59 35 20 / 0.04), 0 8px 24px -12px rgb(59 35 20 / 0.12)",
+        "source": "app/globals.css"
+      },
+      "--shadow-lift": {
+        "value": "0 2px 4px rgb(59 35 20 / 0.06), 0 18px 40px -18px rgb(59 35 20 / 0.22)",
+        "source": "app/globals.css"
+      }
+    },
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [
+      "Breadcrumbs",
+      "icons",
+      "PaymentMarks",
+      "primitives",
+      "Prose",
+      "Skeleton"
+    ],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [],
+  "evidence": [
+    {
+      "fact": "components.installed",
+      "source": "components/ui"
+    },
+    {
+      "fact": "design.colorMode:light",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "design.tokens",
+      "source": "app/globals.css"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    },
+    {
+      "fact": "project.instructions",
+      "source": "CLAUDE.md"
+    },
+    {
+      "fact": "project.stack:nextjs",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:tailwind-v4",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-10-12T14:32:14.910Z"
+}

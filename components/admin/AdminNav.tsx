@@ -49,6 +49,7 @@ const GROUPS: Group[] = [
     links: [
       { href: "/admin/productos", label: "Productos" },
       { href: "/admin/recetas", label: "Recetas" },
+      { href: "/admin/simulacion-taller", label: "Simulación del taller" },
       { href: "/admin/catalogos", label: "Catálogos" },
       { href: "/admin/estoque", label: "Inventario Sisgeco" },
       { href: "/admin/reportes", label: "Reportes" },

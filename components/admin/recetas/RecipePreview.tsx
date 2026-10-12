@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState, type ChangeEvent } from "react";
 import { EmptyState, Notice, PageHeader, Section, StatCard, inputClass } from "@/components/admin/ui";
 import { cx } from "@/lib/format";
@@ -87,10 +88,13 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
         title="Recetas de producción"
         description="Revisión del catálogo, las conversiones y las fórmulas del Excel antes de activarlos en producción."
         actions={
-          <label className="inline-flex h-11 cursor-pointer items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-semibold text-cacao hover:border-cacao/35 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-dorado">
-            Cargar vista previa
-            <input type="file" accept=".json,application/json" onChange={loadFile} className="sr-only" aria-label="Abrir archivo de vista previa de recetas" />
-          </label>
+          <>
+            <Link href="/admin/simulacion-taller" className="inline-flex h-11 items-center rounded-full bg-cacao px-5 text-sm font-semibold text-white hover:bg-cacao-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">Simular el taller</Link>
+            <label className="inline-flex h-11 cursor-pointer items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-semibold text-cacao hover:border-cacao/35 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-dorado">
+              Cargar vista previa
+              <input type="file" accept=".json,application/json" onChange={loadFile} className="sr-only" aria-label="Abrir archivo de vista previa de recetas" />
+            </label>
+          </>
         }
       />
 

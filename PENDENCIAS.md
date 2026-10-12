@@ -10,21 +10,25 @@ Antes de um despacho real: configurar os códigos de tortas de três sabores
 no catálogo operacional e cadastrar suas combinações. Falta conferir a
 impressão física e a calibração do rolo na TE200.
 
-## Fase 2 — produção, receitas e custos (24/09/2026)
+## Fase 2 — produção, receitas e custos (12/10/2026)
 
 Levantamento das gravações com Joseka, medida da prancha (50 × 70 cm), fluxo de
 produção e relação com o Siscont: `docs/levantamento-producao-joseka-2026-09-21.md`.
-A prévia de importação de `Codigos_Fanor2026.xlsx` já está em
-`scripts/preview-codigos-fanor.py`; ela valida 1.256 códigos e 52 fórmulas sem
-alterar o banco. Encontrou um rendimento ausente e dois pontos para revisão.
-A tela `/admin/recetas` mostra a prévia dessas fórmulas em espanhol, com busca,
-ingredientes e pendências. A prévia fica na chave `production_recipes_preview` de
-`system_settings`, protegida por RLS; o script `publish-recipes-preview.mjs` a
-publica sem expor o JSON no GitHub. As receitas ainda não movimentam estoque.
+A planilha ampliada `Códigos _ Recetas_Fanor2026.xlsx` foi recebida. A prévia
+publicada valida 1.749 códigos, 1.032 fórmulas e 6.150 linhas de ingredientes;
+13 ocorrências impedem a ativação operacional. Detalhes em
+`docs/revisao-codigos-recetas-fanor-2026-10-12.md`. A tela `/admin/recetas`
+mostra catálogo, fórmulas, conversões e pendências. A prévia fica na chave
+`production_recipes_preview` de `system_settings`, protegida por RLS. As
+receitas ainda não movimentam estoque.
 
-**Próximos insumos do Joseka:** o Excel completo `RECETAS 2026` visto nos vídeos,
-correção do rendimento e da fórmula de separação do ovo, unidades/apresentações
-de compra, exemplo de exportação para Siscont e plano de contas.
+`/admin/simulacion-taller` demonstra, sem gravar dados, o percurso de uma torta
+pelos setores e o de uma empanada pela pastelería. A tela distingue as etapas
+internas ainda por implementar das telas de despacho e loja já existentes.
+
+**Próximos insumos do Joseka:** corrigir os rendimentos e códigos ausentes,
+confirmar fatores ambíguos e a separação do ovo, definir a origem dos custos,
+enviar exemplo de exportação para Siscont e plano de contas.
 
 ---
 
