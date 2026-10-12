@@ -12,16 +12,16 @@ function quantity(value: number | null, unit: string | null) {
 }
 
 function issueLabel(issue: PreviewIssue) {
-  if (issue.kind === "missing_or_invalid_yield") return "Falta el rendimiento";
   if (issue.kind === "old_code_in_recipe") return "Código antiguo en la fórmula";
-  if (issue.kind === "egg_separation_direction") return "Confirmar separación del huevo";
   return issue.message;
 }
 
 export function RecipePreview({ initialData }: { initialData?: RecipePreviewData | null }) {
   const [data, setData] = useState<RecipePreviewData | null>(initialData ?? null);
-  const [selectedCode, setSelectedCode] = useState(initialData?.recipes[0]?.code ?? "");
+  const [selectedRow, setSelectedRow] = useState(initialData?.recipes[0]?.row ?? 0);
   const [search, setSearch] = useState("");
+  const [catalogSearch, setCatalogSearch] = useState("");
+  const [catalogPage, setCatalogPage] = useState(0);
   const [onlyIssues, setOnlyIssues] = useState(false);
   const [loadError, setLoadError] = useState("");
 
@@ -31,7 +31,7 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
     if (!data) return result;
     data.recipes.forEach((recipe, index) => {
       const nextRow = data.recipes[index + 1]?.row ?? Number.POSITIVE_INFINITY;
-      result.set(recipe.row, data.issues.filter((issue) => issue.sheet === "RECETAS INTERMEDIOS TORTAS" && issue.row >= recipe.row && issue.row < nextRow));
+      result.set(recipe.row, data.issues.filter((issue) => issue.sheet === (data.recipe_sheet ?? "RECETAS INTERMEDIOS TORTAS") && issue.row >= recipe.row && issue.row < nextRow));
     });
     return result;
   }, [data]);
@@ -47,7 +47,18 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
     });
   }, [catalog, data, onlyIssues, recipeIssues, search]);
 
-  const selected = visible.find((recipe) => recipe.code === selectedCode) ?? visible[0] ?? null;
+  const visibleCatalog = useMemo(() => {
+    const term = catalogSearch.trim().toLocaleLowerCase("es-PE");
+    if (!data) return [];
+    return term
+      ? data.catalog.filter((item) => `${item.code} ${item.description} ${item.type ?? ""}`.toLocaleLowerCase("es-PE").includes(term))
+      : data.catalog;
+  }, [catalogSearch, data]);
+  const catalogPageCount = Math.max(1, Math.ceil(visibleCatalog.length / 50));
+  const currentCatalogPage = Math.min(catalogPage, catalogPageCount - 1);
+  const catalogRows = visibleCatalog.slice(currentCatalogPage * 50, (currentCatalogPage + 1) * 50);
+
+  const selected = visible.find((recipe) => recipe.row === selectedRow) ?? visible[0] ?? null;
   const selectedItem = selected ? catalog.get(selected.code ?? "") : null;
   const selectedIssues = selected ? recipeIssues.get(selected.row) ?? [] : [];
 
@@ -59,8 +70,10 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
       const parsed: unknown = JSON.parse(await file.text());
       if (!isRecipePreviewData(parsed)) throw new Error("El archivo no tiene el formato de vista previa.");
       setData(parsed);
-      setSelectedCode(parsed.recipes[0]?.code ?? "");
+      setSelectedRow(parsed.recipes[0]?.row ?? 0);
       setSearch("");
+      setCatalogSearch("");
+      setCatalogPage(0);
       setOnlyIssues(false);
       setLoadError("");
     } catch (error) {
@@ -72,7 +85,7 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
     <div className="space-y-6">
       <PageHeader
         title="Recetas de producción"
-        description="Revisión de fórmulas e ingredientes del Excel antes de cargarlos al inventario. Las cantidades mantienen la unidad definida por cada código."
+        description="Revisión del catálogo, las conversiones y las fórmulas del Excel antes de activarlos en producción."
         actions={
           <label className="inline-flex h-11 cursor-pointer items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-semibold text-cacao hover:border-cacao/35 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-dorado">
             Cargar vista previa
@@ -92,12 +105,38 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
         </Section>
       ) : (
         <>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Resumen de la vista previa">
-            <StatCard label="Fórmulas" value={data.summary.recipes} hint="Recetas intermedias del archivo" />
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5" aria-label="Resumen de la vista previa">
+            <StatCard label="Códigos" value={data.summary.catalog_items} hint="Artículos del catálogo" />
+            <StatCard label="Fórmulas" value={data.summary.recipes} hint="Recetas del archivo" />
             <StatCard label="Ingredientes" value={data.summary.ingredient_lines} hint="Líneas de insumos" />
-            <StatCard label="Falta completar" value={data.summary.blockers} hint="Rendimiento pendiente" tone="warn" />
-            <StatCard label="Por revisar" value={data.summary.reviews} hint="Código y transformación" tone="warn" />
+            <StatCard label="Falta completar" value={data.summary.blockers} hint="Inconsistencias del Excel" tone="warn" />
+            <StatCard label="Por revisar" value={data.summary.reviews} hint="Conversiones y procesos" tone="warn" />
           </ul>
+
+          {data.summary.converted_ingredient_lines !== undefined && (
+            <Notice tone="ok">
+              {data.summary.converted_ingredient_lines} cantidades convertidas con el factor explícito de su código, conservando la cantidad y unidad originales.
+            </Notice>
+          )}
+          {!!data.summary.items_without_cost && (
+            <Notice tone="warn">{data.summary.items_without_cost} códigos sin costo en este archivo. La vista previa no calcula costos de producción.</Notice>
+          )}
+
+          {data.issues.length > 0 && (
+            <Section title="Pendientes del archivo" aside={`${data.issues.length} observaciones`}>
+              <ul className="divide-y divide-crema-200">
+                {data.issues.map((issue) => (
+                  <li key={`${issue.sheet}-${issue.row}-${issue.kind}`} className="flex flex-wrap items-start gap-x-4 gap-y-1 px-5 py-3 text-sm">
+                    <span className={cx("min-w-24 font-bold", issue.severity === "blocker" ? "text-terracota" : "text-cacao-500")}>
+                      {issue.severity === "blocker" ? "Completar" : "Revisar"}
+                    </span>
+                    <span className="min-w-0 flex-1 text-cacao">{issueLabel(issue)}</span>
+                    <span className="text-xs text-cacao-500">{issue.sheet}, fila {issue.row}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
 
           <div className="grid gap-5 lg:grid-cols-[minmax(18rem,0.95fr)_minmax(0,1.7fr)]">
             <Section title="Fórmulas" aside={`${visible.length} de ${data.recipes.length}`}>
@@ -128,7 +167,7 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
                         <li key={`${recipe.row}-${recipe.code}`}>
                           <button
                             type="button"
-                            onClick={() => setSelectedCode(recipe.code ?? "")}
+                            onClick={() => setSelectedRow(recipe.row)}
                             aria-current={selected?.row === recipe.row ? "true" : undefined}
                             className={cx(
                               "w-full px-5 py-3 text-left transition-colors hover:bg-crema-100 focus-visible:outline-2 focus-visible:outline-inset focus-visible:outline-dorado",
@@ -180,7 +219,14 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
                             <tr key={ingredient.row}>
                               <td className="px-4 py-3 font-mono text-xs text-cacao-500">{ingredient.code ?? ingredient.source_code}</td>
                               <td className="px-4 py-3 text-cacao">{catalog.get(ingredient.code ?? "")?.description ?? "Sin descripción"}</td>
-                              <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-cacao">{quantity(ingredient.quantity, ingredient.unit)}</td>
+                              <td className="whitespace-nowrap px-4 py-3 text-right font-semibold text-cacao">
+                                {quantity(ingredient.quantity, ingredient.unit)}
+                                {ingredient.conversion_factor && (
+                                  <span className="block text-xs font-normal text-cacao-500">
+                                    Desde {quantity(ingredient.source_quantity ?? null, ingredient.source_unit ?? null)} × {number.format(ingredient.conversion_factor)}
+                                  </span>
+                                )}
+                              </td>
                             </tr>
                           ))}
                         </tbody>
@@ -191,7 +237,55 @@ export function RecipePreview({ initialData }: { initialData?: RecipePreviewData
               </Section>
             )}
           </div>
-          <p className="text-xs text-cacao-500">Fuente: {data.source_file}. La unidad se toma del catálogo del código; las conversiones de envases se definirán por producto.</p>
+
+          <Section title="Catálogo de códigos" aside={`${visibleCatalog.length} de ${data.catalog.length}`}>
+            <div className="border-b border-crema-200 p-4">
+              <label htmlFor="catalog-search" className="sr-only">Buscar código, descripción o tipo</label>
+              <input
+                id="catalog-search"
+                type="search"
+                placeholder="Buscar código, descripción o tipo"
+                className={inputClass}
+                value={catalogSearch}
+                onChange={(event) => { setCatalogSearch(event.target.value); setCatalogPage(0); }}
+              />
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[44rem] text-sm">
+                <thead className="bg-crema-100 text-left text-xs font-bold uppercase tracking-wide text-cacao-500">
+                  <tr>
+                    <th scope="col" className="px-4 py-3">Código</th>
+                    <th scope="col" className="px-4 py-3">Descripción</th>
+                    <th scope="col" className="px-4 py-3">Tipo</th>
+                    <th scope="col" className="px-4 py-3">Unidad de stock</th>
+                    <th scope="col" className="px-4 py-3">Unidad de receta</th>
+                    <th scope="col" className="px-4 py-3 text-right">Factor</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-crema-200">
+                  {catalogRows.map((item) => (
+                    <tr key={item.code}>
+                      <td className="px-4 py-3 font-mono text-xs font-semibold text-cacao">{item.code}</td>
+                      <td className="px-4 py-3 text-cacao">{item.description}</td>
+                      <td className="px-4 py-3 text-cacao-500">{item.type ?? "—"}</td>
+                      <td className="px-4 py-3 text-cacao-500">{item.stock_unit ?? item.unit}</td>
+                      <td className="px-4 py-3 text-cacao-500">{item.unit}</td>
+                      <td className="px-4 py-3 text-right tabular-nums text-cacao">{item.conversion_factor == null ? "—" : number.format(item.conversion_factor)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {visibleCatalog.length === 0 && <EmptyState>No hay códigos que coincidan con la búsqueda.</EmptyState>}
+            </div>
+            {visibleCatalog.length > 50 && (
+              <div className="flex items-center justify-between gap-3 border-t border-crema-200 px-4 py-3 text-sm text-cacao-500">
+                <button type="button" className="font-semibold text-cacao disabled:opacity-40" disabled={currentCatalogPage === 0} onClick={() => setCatalogPage(currentCatalogPage - 1)}>Anterior</button>
+                <span>Página {currentCatalogPage + 1} de {catalogPageCount}</span>
+                <button type="button" className="font-semibold text-cacao disabled:opacity-40" disabled={currentCatalogPage + 1 >= catalogPageCount} onClick={() => setCatalogPage(currentCatalogPage + 1)}>Siguiente</button>
+              </div>
+            )}
+          </Section>
+          <p className="text-xs text-cacao-500">Fuente: {data.source_file}. Código, descripción y unidades se toman del catálogo; el factor convierte de unidad de stock a unidad de receta.</p>
         </>
       )}
     </div>

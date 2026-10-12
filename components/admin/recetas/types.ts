@@ -12,6 +12,11 @@ export type PreviewCatalogItem = {
   code: string;
   description: string;
   unit: string;
+  type?: string;
+  stock_unit?: string;
+  conversion_factor?: number | null;
+  cost?: number | null;
+  minimum_lot?: number | null;
 };
 
 export type PreviewIngredient = {
@@ -20,6 +25,10 @@ export type PreviewIngredient = {
   code: string | null;
   quantity: number | null;
   unit: string | null;
+  source_quantity?: number | null;
+  source_unit?: string | null;
+  conversion_factor?: number | null;
+  source_calculation?: string | number | null;
 };
 
 export type PreviewRecipe = {
@@ -28,16 +37,21 @@ export type PreviewRecipe = {
   code: string | null;
   yield_quantity: number | null;
   yield_unit: string | null;
+  source_weight?: number | null;
   ingredients: PreviewIngredient[];
 };
 
 export type RecipePreviewData = {
   source_file: string;
+  source_sha256?: string;
+  recipe_sheet?: string;
   summary: {
     catalog_items: number;
     items_with_old_code: number;
     recipes: number;
     ingredient_lines: number;
+    converted_ingredient_lines?: number;
+    items_without_cost?: number;
     blockers: number;
     reviews: number;
   };

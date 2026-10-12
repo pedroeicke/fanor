@@ -1,5 +1,7 @@
 # Produção, receitas e custos — levantamento com Joseka
 
+> Atualização de 12/10/2026: foi recebida a planilha ampliada `Códigos _ Recetas_Fanor2026.xlsx`. As contagens e pendências abaixo descrevem apenas o arquivo antigo; consulte [a revisão atual](revisao-codigos-recetas-fanor-2026-10-12.md) para a base vigente.
+
 Reunião gravada em 21/09/2026. Fontes locais: `materiais-cliente/josekazuo-2026-09-24/josekazuo/` (três áudios e duas gravações de tela) e `materiais-cliente/josekazuo-2026-09-24/Codigos_Fanor2026.xlsx`. Os áudios foram transcritos automaticamente em `materiais-cliente/josekazuo-2026-09-24/transcricoes/` para apoiar a leitura; nomes, códigos e números precisam ser conferidos na planilha e nos quadros da gravação. Os intervalos citados abaixo são aproximados.
 
 O ZIP também contém `joseka.mp4`, cópia idêntica da primeira gravação de tela; ela foi vista uma vez. Os vídeos mostram o Excel `RECETAS 2026`: intermediários e batidas na primeira gravação, receitas de confeitaria perto do fim, e catálogo/abas de tortas na segunda. Isso confirmou a estrutura de fórmulas por etapas e mostrou que a planilha de códigos recebida não é o arquivo completo exibido na reunião.

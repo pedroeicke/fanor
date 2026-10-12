@@ -5,8 +5,8 @@
  * Uso: node --env-file=.env.local scripts/publish-recipes-preview.mjs [arquivo.json] [--apply]
  * Sem --apply, apenas verifica e resume o arquivo.
  */
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 
 const key = "production_recipes_preview";
@@ -38,6 +38,14 @@ const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !serviceKey) throw new Error("Faltam variáveis de conexão com o Supabase.");
 
 const db = createClient(url, serviceKey, { auth: { persistSession: false } });
+const { data: previous, error: readError } = await db.from("system_settings").select("value").eq("key", key).maybeSingle();
+if (readError) throw new Error(`Falha ao ler prévia anterior: ${readError.code} ${readError.message}`);
+if (previous?.value) {
+  const backupPath = join(dirname(source), `previous-published-preview-${new Date().toISOString().replace(/[:.]/g, "-")}.json`);
+  mkdirSync(dirname(backupPath), { recursive: true });
+  writeFileSync(backupPath, `${JSON.stringify(previous.value, null, 2)}\n`, "utf8");
+  console.log(`Prévia anterior salva em ${backupPath}.`);
+}
 const { error } = await db.from("system_settings").upsert({ key, value: preview, updated_at: new Date().toISOString() });
 if (error) throw new Error(`Falha ao publicar prévia: ${error.code} ${error.message}`);
 console.log("Prévia de leitura publicada para administradores.");
