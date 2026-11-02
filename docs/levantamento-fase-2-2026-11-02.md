@@ -64,6 +64,11 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 4. **Validade na etiqueta da porção:** a etiqueta sai antes de se saber a data do corte. A validade fica só no sistema, lida pelo QR, ou a vendedora anota na embalagem?
 5. **Gastos e custo indireto:** ele disse que o indireto fica fora do sistema, no Excel da contabilidade, mas a tela de gastos seria usada "no cálculo de custo". A tela só registra e acompanha, ou também alimenta o rateio?
 6. **Base do rateio:** usa o que foi vendido ou o que foi produzido no período?
+7. **Rendimento das batidas:** em `BAT-TENTAC` (15.030 / 19.720), `BAT-CHOCHI` (14.280 / 18.970) e `BAT-REDVEL` (5.066 / 4.240), o rendimento difere do peso. Nas demais os dois coincidem. Qual está certo? Isso não afeta o cálculo de insumos, mas afeta o custo por peso.
+8. **Produtos sem fórmula:** 290 produtos finais não têm fórmula na planilha, entre eles os da pastelería (`PT9-*`). Sem fórmula, o sistema não calcula a produção deles. As fórmulas vêm depois ou esses itens não são produzidos pelo taller?
+9. **Margem de consumo:** o Joseka pediu que o consumo fique "próximo" da receita, sem fixar número. O sistema começou com ±5% (`production_tolerance_pct`), com folga de uma unidade para matéria-prima contada. Esse valor serve?
+10. **Preparados:** almíbar, chantilly e peças de decoração são feitos na medida do pedido ou em lote inteiro, guardando o resto? Por padrão a ordem calcula na medida, e existe uma opção de lote inteiro. Uma torta pediria 12 mariposas, 3% de um lote de 400.
+11. **Pedido da loja e código:** a loja pede por produto do site (`T26`) e a produção usa o código completo (`T26-CHNRMC`). Nenhum código coincide. Existe uma tabela de equivalência, ou a vendedora deve pedir pelo código completo?
 
 ## Planilha de 02/11/2026
 
@@ -98,22 +103,45 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 | Devolução ao taller e uma redecoração | Pronto |
 | Estoque por loja e despacho com QR | Pronto |
 | Consulta de códigos e fórmulas | Pronto, só leitura |
-| Artigos e fórmulas em tabelas operacionais | Falta |
-| Ordem de produção com mistura de formatos e cálculo de insumos | Falta |
-| Checkout por etapa, refação e consumo real | Falta (a simulação só demonstra) |
-| Transformação do ovo e rendimento de processo | Falta |
+| Artigos e fórmulas em tabelas operacionais | Pronto: 1.831 artigos, 1.022 fórmulas |
+| Ordem de produção com mistura de formatos e cálculo de insumos | Pronto em `/admin/produccion` |
+| Checkout por etapa, refação e consumo real | Pronto em `/admin/produccion` |
+| Separação do ovo com duas saídas e contagem real de ovos | Pronto |
+| Inventário inicial e entrada de compras de insumos | Falta. Sem isso, o saldo de matéria-prima fica negativo |
+| Ligar a torta decorada à série e ao despacho | Falta. O despacho continua manual |
+| Perfis por área (forno, decoração) | Falta. Hoje todo acesso é de administrador |
 | Vínculo produto–caixa e baixa na venda | Falta |
 | Fracionamento, etiquetas de porção e bloqueio na venda | Falta |
 | Tela de gastos com perfil restrito | Falta |
 | Custo direto e relatório de participação | Falta, depende de custos e fatores |
 | Exportação para o Siscont | Falta, depende de exemplo e plano de contas |
 
-## Ordem sugerida
+## Como a produção funciona hoje
 
-1. **Base:** corrigir os 17 bloqueios e levar artigos e fórmulas para tabelas operacionais.
-2. **Produção:** ordem a partir da demanda, cálculo de insumos, checkout por etapa, refação e baixa do consumo real.
+- **Etapas:** saem do prefixo do código. `IN*` e `MP*` são preparados, `BAT-` batidas, `CAKE-`, `CK*`, `C*`, `COR-` e `GUA-` horno, `E*` empate, e o restante decoração. `TP*` são porções, que não entram em ordem do taller.
+- **Batida:** vale como 1 lote, e os cakes consomem frações dela. O número da coluna de rendimento fica guardado como peso.
+- **Arredondamento:** cake, empate e torta saem inteiros, e a sobra fica no saldo do taller para a próxima ordem. Batida e preparado por peso aceitam fração.
+- **Trava entre etapas:** uma etapa só fecha depois das que ela consome.
+- **Consumo:** baixa pelo real, mesmo quando a fornada queima. O saldo pode ficar negativo enquanto não houver inventário inicial.
+- **Reserva:** só conta como sobra o que nenhuma etapa pendente vai consumir. Assim, uma refação ou outra ordem não usa a massa dos cakes de hoje.
+- **Falta de material:** se uma etapa anterior foi perdida sem refação, a seguinte só fecha com explicação de onde saiu o material. Vale para o que o taller produz, não para matéria-prima.
+- **Refação:** o que faltou desce pelas fórmulas e aproveita o saldo livre. Diferença de até 2% é tratada como digitação. Na decoração, a tela pergunta se a mesma torta será decorada de novo ou refeita inteira.
+- **Fechar em bloco:** cada área tem "Salió todo como estaba previsto". O que depende de quem executa, como o ovo contado, continua aberto.
+- **Pedido da loja:** a ordem aponta para os pedidos que atende, mas quem escolhe sabores e formatos continua sendo o taller.
+- **Fórmulas com pendência:** as 10 da planilha ficam de fora até serem corrigidas.
+
+Para atualizar a base depois de uma planilha nova:
+
+```powershell
+node --env-file=.env.local scripts/import-production-base.mjs .data/recipes-2026/preview-2026-11-02.json --apply
+```
+
+## Ordem sugerida para o que falta
+
+1. **Inventário:** saldo inicial e entrada de compras, para o estoque de insumos valer de verdade.
+2. **Ligação com o despacho:** a torta decorada vira série e etiqueta sem digitar de novo.
 3. **Loja:** vínculo com caixas e fracionamento com etiquetas. O fracionamento depende das dúvidas 1 a 4.
-4. **Gastos:** tela restrita. Pode andar em paralelo à produção, porque os códigos já vieram na planilha.
+4. **Gastos:** tela restrita. Os códigos já vieram na planilha.
 5. **Custos e Siscont:** dependem dos custos, dos fatores do Peru, do exemplo de importação e do plano de contas.
 
 ## Limites desta leitura

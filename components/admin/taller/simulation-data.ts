@@ -47,6 +47,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
         records: "Código de la receta, lote, cantidades realmente usadas, rendimiento y sobrante.",
         sends: "Almíbar y rellenos identificados por código para las etapas siguientes.",
         outputLabel: "almíbar reservado", outputUnit: "ml", exampleQuantity: 650, recipeCode: "IN3-1ALMIB",
+        existingScreen: "/admin/produccion",
         note: "La fórmula E26-CHNRMC consume 650 ml de almíbar; esto no define el rendimiento total del lote.",
       },
       {
@@ -55,7 +56,8 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
         records: "Consumo real de cada insumo, peso producido y cuánto se asigna a cada molde o pedido.",
         sends: "Porciones de batida de chocolate, naranja y moca al horno.",
         outputLabel: "batidas de prueba", outputUnit: "lotes", exampleQuantity: 3, recipeCode: "BAT-CHOCOL",
-        note: "El rendimiento real puede variar. La simulación no interpreta como peso el rendimiento en 'un.' del Excel.",
+        existingScreen: "/admin/produccion",
+        note: "El rendimiento real puede variar. Los cakes consumen fracciones de la batida: el número del Excel es su peso.",
       },
       {
         id: "horno", area: "Horno", actor: "Equipo del horno", title: "Registrar los cakes obtenidos",
@@ -63,6 +65,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
         records: "Cuántos cakes salieron, peso real, pérdidas y lote de origen.",
         sends: "CAKE-T26CH, CAKE-T26NR y CAKE-T26MC al empate.",
         outputLabel: "cakes de prueba", outputUnit: "un.", exampleQuantity: 3, recipeCode: "CAKE-T26CH",
+        existingScreen: "/admin/produccion",
         note: "Cada cake debe conservar la relación con la batida que lo produjo.",
       },
       {
@@ -71,6 +74,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
         records: "Partes realmente usadas y las mitades que quedan disponibles.",
         sends: "Un empate E26-CHNRMC a decoración.",
         outputLabel: "empate obtenido", outputUnit: "un.", exampleQuantity: 1, recipeCode: "E26-CHNRMC",
+        existingScreen: "/admin/produccion",
         note: "La fórmula usa 0,5 de CAKE-T26CH, 0,5 de CAKE-T26NR y 0,5 de CAKE-T26MC.",
       },
       {
@@ -79,6 +83,7 @@ export const SIMULATION_SCENARIOS: SimulationScenario[] = [
         records: "Consumos de decoración, torta terminada, fecha de validez y serie única.",
         sends: "Torta terminada con etiqueta QR al despacho.",
         outputLabel: "torta terminada", outputUnit: "un.", exampleQuantity: 1, recipeCode: "T26-CHNRMC",
+        existingScreen: "/admin/produccion",
         note: "El QR identifica la torta física; no se genera una torta distinta 'con caja'.",
       },
       {

@@ -5,8 +5,13 @@
 Regras do Joseka para produção, checkout por etapa, caixas, porções e gastos, com
 as dúvidas em aberto e o que falta construir: `docs/levantamento-fase-2-2026-11-02.md`.
 Planilha atualizada: 1.831 códigos, 1.032 fórmulas, 5.988 linhas e 17 bloqueios
-(`docs/revisao-codigos-recetas-fanor-2026-10-12.md`). A prévia publicada no painel
-ainda é a de 12/10.
+(`docs/revisao-codigos-recetas-fanor-2026-10-12.md`), já publicada na prévia do painel.
+
+**Construído:** migração 0017 aplicada, com artigos e fórmulas em tabelas próprias, e
+`/admin/produccion` com ordem por formatos, cálculo de insumos, checkout por etapa,
+refação e baixa do consumo real. Fluxo testado de ponta a ponta no banco; as telas com
+sessão real de administrador ainda precisam ser abertas. Falta inventário inicial,
+ligação com o despacho, caixas, porções, gastos, custos e Siscont.
 
 **BarTender:** funcionando com a tabela de teste (confirmado em 02/11/2026). Falta
 ligar às tortas reais, mantendo os mesmos campos. O acesso de teste foi criado com

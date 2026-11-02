@@ -3,7 +3,7 @@
 **Recebido em:** 12/10/2026; versão atualizada em 02/11/2026
 **Fonte:** `Códigos _ Recetas_Fanor2026 (1).xlsx`, abas `Códigos` e `RECETAS`.
 
-Esta planilha amplia a versão `Codigos_Fanor2026.xlsx` analisada em setembro. O painel `/admin/recetas` mostra a prévia de leitura publicada no Supabase (`system_settings.production_recipes_preview`), que ainda é a de 12/10. A prévia permite consultar os dados e as pendências; ainda não lança estoque, produção ou custos.
+Esta planilha amplia a versão `Codigos_Fanor2026.xlsx` analisada em setembro. O painel `/admin/recetas` mostra a prévia de leitura publicada no Supabase (`system_settings.production_recipes_preview`), já com a versão de 02/11. A prévia só serve para consultar os dados e as pendências. A execução usa as tabelas `articles` e `formulas`, descritas no [levantamento da Fase 2](levantamento-fase-2-2026-11-02.md).
 
 ## Volume e regras já aproveitáveis
 

@@ -93,6 +93,14 @@ export const BACKUP_TABLES: TableSpec[] = [
   { name: "photo_treatments", key: "id" },
   { name: "sync_state", key: "key" },
   { name: "sync_runs", key: "id" },
+  { name: "articles", key: "code" },
+  { name: "formulas", key: "id" },
+  { name: "formula_lines", key: "id" },
+  { name: "production_batches", key: "id" },
+  { name: "production_batch_targets", key: "id" },
+  { name: "production_tasks", key: "id" },
+  { name: "production_task_inputs", key: "id" },
+  { name: "article_movements", key: "id" },
 ];
 
 export type BackupTrigger = "cron" | "manual";
