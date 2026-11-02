@@ -33,6 +33,8 @@ const VERSION = "0.1.0";
  */
 const APP_DIR = (() => {
   try {
+    // `require` só existe no executável empacotado; no Node normal cai no catch.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const sea = require("node:sea");
     if (sea.isSea()) return path.dirname(process.execPath);
   } catch {

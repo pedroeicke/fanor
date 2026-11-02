@@ -49,13 +49,18 @@ def build_preview(path):
         code, item_type, description, stock_unit, recipe_unit = map(text, (code, item_type, description, stock_unit, recipe_unit))
         if not any((code, item_type, description, stock_unit, factor, recipe_unit, cost, minimum_lot)):
             continue
-        if not code or not description or not stock_unit or not recipe_unit:
+        # Serviços e consumíveis administrativos não têm estoque nem entram em
+        # fórmulas: alimentam os gastos, então podem vir sem unidade e sem fator.
+        expense_only = item_type in ("CS", "SV") and not stock_unit and not recipe_unit and factor is None
+        if not code or not description or (not expense_only and (not stock_unit or not recipe_unit)):
             issue(issues, "blocker", "incomplete_catalog_item", "Códigos", row,
                   "Código, descripción y unidades son obligatorios.")
         if code in by_code:
             issue(issues, "blocker", "duplicate_code", "Códigos", row,
                   f"El código {code} ya aparece en la fila {by_code[code]['row']}.")
-        if not positive(factor):
+        if expense_only:
+            pass
+        elif not positive(factor):
             issue(issues, "blocker", "invalid_conversion_factor", "Códigos", row,
                   f"El factor de conversión de {code} debe ser positivo.")
         elif stock_unit == recipe_unit and factor != 1:

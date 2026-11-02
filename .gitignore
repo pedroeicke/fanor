@@ -57,6 +57,9 @@ public/uploads/
 materiais-cliente/
 references/cliente/
 
+# Dados de acesso e base de teste do BarTender: contêm senha do banco.
+/BarTender-*
+
 # mídia de instalador que se auto-extrai onde é executado
 SQLEXPR_x64_ENU/
 *.msi

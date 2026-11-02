@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Gerados localmente, fora do Git:
+    "agente-sisgeco/build/**",
+    ".data/**",
+    "output/**",
   ]),
 ]);
 

@@ -1,5 +1,17 @@
 # Pendências — Site Fanor
 
+## Fase 2 — levantamento atualizado (02/11/2026)
+
+Regras do Joseka para produção, checkout por etapa, caixas, porções e gastos, com
+as dúvidas em aberto e o que falta construir: `docs/levantamento-fase-2-2026-11-02.md`.
+Planilha atualizada: 1.831 códigos, 1.032 fórmulas, 5.988 linhas e 17 bloqueios
+(`docs/revisao-codigos-recetas-fanor-2026-10-12.md`). A prévia publicada no painel
+ainda é a de 12/10.
+
+**BarTender:** funcionando com a tabela de teste (confirmado em 02/11/2026). Falta
+ligar às tortas reais, mantendo os mesmos campos. O acesso de teste foi criado com
+validade até 31/10/2026; se parar de conectar, renovar pelo banco.
+
 ## Etiquetas de produção (29/09/2026)
 
 Impressora confirmada: TSC TE200. Formato padrão atualizado para 50 × 25 mm,
@@ -14,10 +26,8 @@ impressão física e a calibração do rolo na TE200.
 
 Levantamento das gravações com Joseka, medida da prancha (50 × 70 cm), fluxo de
 produção e relação com o Siscont: `docs/levantamento-producao-joseka-2026-09-21.md`.
-A planilha ampliada `Códigos _ Recetas_Fanor2026.xlsx` foi recebida. A prévia
-publicada valida 1.749 códigos, 1.032 fórmulas e 6.150 linhas de ingredientes;
-13 ocorrências impedem a ativação operacional. Detalhes em
-`docs/revisao-codigos-recetas-fanor-2026-10-12.md`. A tela `/admin/recetas`
+A prévia publicada em 12/10 valida 1.749 códigos, 1.032 fórmulas e 6.150 linhas
+de ingredientes; a versão de 02/11 está na seção acima. A tela `/admin/recetas`
 mostra catálogo, fórmulas, conversões e pendências. A prévia fica na chave
 `production_recipes_preview` de `system_settings`, protegida por RLS. As
 receitas ainda não movimentam estoque.
