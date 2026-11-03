@@ -12,6 +12,7 @@ import {
   UUID_PATTERN,
   codeError,
   emailError,
+  PRODUCTION_AREAS,
   isSellerRole,
   isSimpleCatalogKind,
   nameError,
@@ -57,7 +58,7 @@ function text(value: unknown) {
 /* -------------------------------------------------------------------------- */
 
 export async function createCatalogItem(kind: string, input: { code: string; name: string }): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isSimpleCatalogKind(kind)) return { ok: false, error: "Catálogo inválido." };
   const config = SIMPLE_CATALOGS[kind];
@@ -92,7 +93,7 @@ export async function createCatalogItem(kind: string, input: { code: string; nam
 }
 
 export async function updateCatalogItem(kind: string, id: string, input: { code: string; name: string }): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isSimpleCatalogKind(kind) || !isUuid(id)) return { ok: false, error: "Registro inválido." };
   const config = SIMPLE_CATALOGS[kind];
@@ -118,7 +119,7 @@ export async function updateCatalogItem(kind: string, id: string, input: { code:
 }
 
 export async function setCatalogItemActive(kind: string, id: string, active: boolean): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isSimpleCatalogKind(kind) || !isUuid(id) || typeof active !== "boolean") {
     return { ok: false, error: "Registro inválido." };
@@ -142,7 +143,7 @@ export async function setCatalogItemActive(kind: string, id: string, active: boo
  * renumerada na ordem nova, e só as linhas que mudaram são gravadas.
  */
 export async function moveCatalogItem(kind: string, id: string, direction: "up" | "down"): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isSimpleCatalogKind(kind) || !isUuid(id) || (direction !== "up" && direction !== "down")) {
     return { ok: false, error: "Registro inválido." };
@@ -188,7 +189,7 @@ export async function moveCatalogItem(kind: string, id: string, direction: "up" 
 /*  Vendedoras                                                                */
 /* -------------------------------------------------------------------------- */
 
-type SellerFields = { code: string; name: string; store_id: string | null; role: string; phone: string | null };
+type SellerFields = { code: string; name: string; store_id: string | null; role: string; production_stages: string[]; phone: string | null };
 
 async function parseSeller(
   db: Db,
@@ -204,6 +205,10 @@ async function parseSeller(
   const invalid = nameError(name, SELLER_NAME_MAX) ?? codeError(code) ?? phoneError(phone);
   if (invalid) return { ok: false, error: invalid };
   if (!isSellerRole(role)) return { ok: false, error: "Elige el rol." };
+  /* Área só faz sentido no taller. Na ordem da lista: a comparação com o que está
+     gravado não pode acusar mudança só porque marcaram em outra ordem. */
+  const sent = Array.isArray(input?.stages) ? input.stages : [];
+  const stages = role === "workshop" ? PRODUCTION_AREAS.map((area) => area.key as string).filter((key) => sent.includes(key)) : [];
 
   /* Só lojas que recebem torta: é a loja padrão das telas de recepção e
      balcão, e uma loja sem prefixo de série não tem vitrine para mostrar.
@@ -214,11 +219,11 @@ async function parseSeller(
     if (!stores.some((s) => s.id === storeId)) return { ok: false, error: "Tienda inválida." };
   }
 
-  return { ok: true, row: { code, name, store_id: storeId || null, role, phone: phone || null } };
+  return { ok: true, row: { code, name, store_id: storeId || null, role, production_stages: stages, phone: phone || null } };
 }
 
 export async function createSeller(input: SellerInput): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
 
   const parsed = await parseSeller(op.db, input);
@@ -236,11 +241,11 @@ export async function createSeller(input: SellerInput): Promise<ActionResult> {
 }
 
 export async function updateSeller(id: string, input: SellerInput): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isUuid(id)) return { ok: false, error: "Registro inválido." };
 
-  const { data: before } = await op.db.from("sellers").select("code, name, store_id, role, phone").eq("id", id).maybeSingle();
+  const { data: before } = await op.db.from("sellers").select("code, name, store_id, role, production_stages, phone").eq("id", id).maybeSingle();
   if (!before) return { ok: false, error: "No se encontró la vendedora." };
 
   const parsed = await parseSeller(op.db, input, before.store_id as string | null);
@@ -248,7 +253,8 @@ export async function updateSeller(id: string, input: SellerInput): Promise<Acti
 
   /* Nada mudou: não grava nem suja a trilha com um "antes = depois". */
   const fields = ["code", "name", "store_id", "role", "phone"] as const;
-  if (fields.every((key) => (before[key] ?? null) === parsed.row[key])) return { ok: true, data: undefined };
+  const sameStages = ((before.production_stages ?? []) as string[]).join() === parsed.row.production_stages.join();
+  if (sameStages && fields.every((key) => (before[key] ?? null) === parsed.row[key])) return { ok: true, data: undefined };
 
   const { error } = await op.db.from("sellers").update(parsed.row).eq("id", id);
   if (error) {
@@ -262,7 +268,7 @@ export async function updateSeller(id: string, input: SellerInput): Promise<Acti
 }
 
 export async function setSellerActive(id: string, active: boolean): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isUuid(id) || typeof active !== "boolean") return { ok: false, error: "Registro inválido." };
 
@@ -304,7 +310,7 @@ function temporaryPassword() {
  * — nem na trilha de auditoria.
  */
 export async function grantSellerAccess(sellerId: string, rawEmail: string): Promise<ActionResult<{ email: string; password: string }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (op.user.role !== "owner") return { ok: false, error: "Solo el dueño puede dar acceso al panel." };
   if (!isUuid(sellerId)) return { ok: false, error: "Registro inválido." };
@@ -377,7 +383,7 @@ export async function grantSellerAccess(sellerId: string, rawEmail: string): Pro
  * despachou e recebeu aponta para ela.
  */
 export async function revokeSellerAccess(sellerId: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (op.user.role !== "owner") return { ok: false, error: "Solo el dueño puede quitar el acceso al panel." };
   if (!isUuid(sellerId)) return { ok: false, error: "Registro inválido." };
@@ -425,7 +431,7 @@ export async function revokeSellerAccess(sellerId: string): Promise<ActionResult
  * torta que já está na vitrine guarda a data de vencimento com que nasceu.
  */
 export async function setFamilyShelfLife(familyId: string, days: number | null): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/catalogos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isUuid(familyId)) return { ok: false, error: "Registro inválido." };
   if (days !== null && (typeof days !== "number" || !Number.isInteger(days) || days < 0 || days > SHELF_LIFE_MAX)) {

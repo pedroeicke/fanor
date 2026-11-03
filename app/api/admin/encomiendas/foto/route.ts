@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAdminUser, getServerSupabase } from "@/lib/supabase-server";
+import { getServerSupabase } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
 import { CUSTOMER_BUCKET, deleteImage, uploadImage } from "@/lib/storage";
 
 /**
@@ -14,7 +15,7 @@ import { CUSTOMER_BUCKET, deleteImage, uploadImage } from "@/lib/storage";
 const PATH = /^encomiendas\/[0-9a-f-]{36}\.(jpg|png|webp|avif|heic)$/;
 
 export async function POST(request: Request) {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/encomiendas"))?.user;
   if (!user) return NextResponse.json({ error: "Sesión expirada. Vuelve a entrar." }, { status: 401 });
 
   let form: FormData;
@@ -44,7 +45,7 @@ export async function POST(request: Request) {
  * clique numa tela de rascunho.
  */
 export async function DELETE(request: Request) {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/encomiendas"))?.user;
   if (!user) return NextResponse.json({ error: "Sesión expirada. Vuelve a entrar." }, { status: 401 });
 
   const path = new URL(request.url).searchParams.get("path") ?? "";

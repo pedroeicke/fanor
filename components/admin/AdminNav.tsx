@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { canOpenPath, type Profile } from "@/lib/gestion/access";
 import { cx } from "@/lib/format";
 
 /**
@@ -63,9 +64,9 @@ const GROUPS: Group[] = [
 
 /** Link ativo = o de caminho mais longo que casa por segmento inteiro.
     Sem isso, "/admin/pedidos" acenderia junto em "/admin/pedidos-tienda". */
-function activeHref(pathname: string) {
+function activeHref(pathname: string, groups: Group[]) {
   let best: string | null = null;
-  for (const group of GROUPS) {
+  for (const group of groups) {
     for (const { href } of group.links) {
       const hit = href === "/admin" ? pathname === "/admin" : pathname === href || pathname.startsWith(`${href}/`);
       if (hit && (!best || href.length > best.length)) best = href;
@@ -74,38 +75,42 @@ function activeHref(pathname: string) {
   return best;
 }
 
-export function AdminNav() {
+export function AdminNav({ profile }: { profile: Profile }) {
   const pathname = usePathname();
-  const current = activeHref(pathname);
-  const currentGroup = GROUPS.find((g) => g.links.some((l) => l.href === current))?.id ?? "operacion";
+  /* Link que a pessoa não pode abrir nem aparece; grupo sem link nenhum some. */
+  const groups = GROUPS.map((g) => ({ ...g, links: g.links.filter((l) => canOpenPath(profile, l.href)) })).filter((g) => g.links.length > 0);
+  const current = activeHref(pathname, groups);
+  const currentGroup = groups.find((g) => g.links.some((l) => l.href === current))?.id ?? groups[0]?.id ?? "operacion";
   /* O grupo escolhido à mão só vale até a próxima navegação: ao abrir uma
      tela, o menu mostra o grupo dela. */
   const [picked, setPicked] = useState<{ group: string; at: string } | null>(null);
   const openGroup = picked && picked.at === pathname ? picked.group : currentGroup;
-  const group = GROUPS.find((g) => g.id === openGroup) ?? GROUPS[0];
+  const group = groups.find((g) => g.id === openGroup) ?? groups[0];
 
   return (
     <nav className="mt-5 space-y-2" aria-label="Secciones del panel">
-      <div className="flex gap-1 rounded-full border border-crema-300 bg-crema-100 p-1 sm:inline-flex" role="tablist">
-        {GROUPS.map((g) => (
-          <button
-            key={g.id}
-            type="button"
-            role="tab"
-            aria-selected={g.id === openGroup}
-            onClick={() => setPicked({ group: g.id, at: pathname })}
-            className={cx(
-              "h-10 flex-1 rounded-full px-4 text-sm font-semibold transition-colors sm:flex-none",
-              g.id === openGroup ? "bg-white text-cacao shadow-[0_1px_2px_rgb(59_35_20/0.1)]" : "text-cacao-500 hover:text-cacao",
-            )}
-          >
-            {g.label}
-          </button>
-        ))}
-      </div>
+      {groups.length > 1 && (
+        <div className="flex gap-1 rounded-full border border-crema-300 bg-crema-100 p-1 sm:inline-flex" role="tablist">
+          {groups.map((g) => (
+            <button
+              key={g.id}
+              type="button"
+              role="tab"
+              aria-selected={g.id === openGroup}
+              onClick={() => setPicked({ group: g.id, at: pathname })}
+              className={cx(
+                "h-10 flex-1 rounded-full px-4 text-sm font-semibold transition-colors sm:flex-none",
+                g.id === openGroup ? "bg-white text-cacao shadow-[0_1px_2px_rgb(59_35_20/0.1)]" : "text-cacao-500 hover:text-cacao",
+              )}
+            >
+              {g.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
-        {group.links.map((link) => {
+        {group?.links.map((link) => {
           const active = link.href === current;
           return (
             <Link

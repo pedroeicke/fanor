@@ -1,10 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getAdminUser, getServerSupabase } from "@/lib/supabase-server";
+import { getServerSupabase } from "@/lib/supabase-server";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { backupFileName, runBackup, signBackupUrl } from "@/lib/backup";
-import type { ActionResult } from "@/lib/gestion/server";
+import { getOperator, type ActionResult } from "@/lib/gestion/server";
 
 /**
  * Ações da tela de respaldos.
@@ -17,7 +17,7 @@ import type { ActionResult } from "@/lib/gestion/server";
 const ONLY_OWNER = "Solo el dueño de la cuenta puede generar o descargar respaldos.";
 
 export async function runBackupNow(): Promise<ActionResult<{ tables: number; rows: number; bytes: number; skipped: string[] }>> {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/respaldos"))?.user;
   if (!user) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (user.role !== "owner") return { ok: false, error: ONLY_OWNER };
 
@@ -31,7 +31,7 @@ export async function runBackupNow(): Promise<ActionResult<{ tables: number; row
 export async function getBackupDownload(id: number): Promise<ActionResult<{ url: string; filename: string }>> {
   if (!Number.isSafeInteger(id) || id <= 0) return { ok: false, error: "Respaldo inválido." };
 
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/respaldos"))?.user;
   if (!user) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (user.role !== "owner") return { ok: false, error: ONLY_OWNER };
 

@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAdminUser, getServerSupabase, type AdminUser } from "@/lib/supabase-server";
+import { canAccess, profileOf, type Profile, type Section } from "@/lib/gestion/access";
 
 /**
  * Porta de entrada das telas de operação (taller, recepção, balcão,
@@ -21,10 +22,18 @@ export type Operator = {
   db: SupabaseClient;
   /** Vendedora ligada ao login, quando houver. Define a loja padrão das telas. */
   seller: { id: string; name: string; storeId: string | null; role: string } | null;
+  profile: Profile;
+  /** Áreas marcadas na ficha. Vazio é o taller inteiro. */
+  stages: string[];
 };
 
-/** Sessão de painel + vendedora do login. Null quando a sessão expirou. */
-export async function getOperator(): Promise<Operator | null> {
+/**
+ * Sessão de painel + vendedora do login. Null quando a sessão expirou.
+ *
+ * Com `section`, também é null para quem não tem aquela seção. Ação do servidor
+ * passa sempre: a chamada pode vir de qualquer tela, e o proxy só olha o caminho.
+ */
+export async function getOperator(section?: Section): Promise<Operator | null> {
   const user = await getAdminUser();
   if (!user) return null;
   const db = await getServerSupabase();
@@ -32,15 +41,21 @@ export async function getOperator(): Promise<Operator | null> {
 
   const { data: seller } = await db
     .from("sellers")
-    .select("id, name, store_id, role")
+    .select("id, name, store_id, role, production_stages")
     .eq("user_id", user.id)
     .eq("active", true)
     .maybeSingle();
+
+  const stages = (seller?.production_stages ?? []) as string[];
+  const profile = profileOf(user.role, seller ? { role: seller.role, stages } : null);
+  if (section && !canAccess(profile, section)) return null;
 
   return {
     user,
     db,
     seller: seller ? { id: seller.id, name: seller.name, storeId: seller.store_id, role: seller.role } : null,
+    profile,
+    stages,
   };
 }
 

@@ -81,6 +81,22 @@ export const SELLER_ROLES = {
 
 export type SellerRole = keyof typeof SELLER_ROLES;
 
+/* O que cada papel abre no painel: a regra mora em lib/gestion/access.ts. */
+export const SELLER_ROLE_HELP: Record<SellerRole, string> = {
+  seller: "Vitrina, recepción, venta, pedidos al taller, encomiendas, fotos, leads y clientes.",
+  workshop: "Taller y Producción. Si marcas áreas, solo ve Producción y cierra las etapas de esas áreas.",
+  manager: "Todo lo de tienda y taller, y los reportes. Sin Ajustes, Productos, Entrega ni Respaldos.",
+};
+
+/* Áreas que a ficha do taller pode marcar, na ordem do taller. */
+export const PRODUCTION_AREAS = [
+  { key: "preparados", label: "Preparados" },
+  { key: "batidas", label: "Batidas" },
+  { key: "horno", label: "Horno" },
+  { key: "empate", label: "Empate" },
+  { key: "decoracion", label: "Decoración" },
+] as const;
+
 export function isSellerRole(value: unknown): value is SellerRole {
   return typeof value === "string" && Object.prototype.hasOwnProperty.call(SELLER_ROLES, value);
 }
@@ -93,6 +109,7 @@ export type SellerRow = {
   storeId: string | null;
   phone: string | null;
   role: string;
+  stages: string[];
   hasAccess: boolean;
   /** A conta ligada é a de quem está usando o painel agora. */
   isSelf: boolean;
@@ -103,6 +120,7 @@ export type SellerInput = {
   name: string;
   storeId: string;
   role: string;
+  stages: string[];
   phone: string;
 };
 

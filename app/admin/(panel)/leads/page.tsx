@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getOperator, getSetting, listStores, runOp, shortStoreName, DEFAULT_SLA, type SlaSettings } from "@/lib/gestion/server";
+import { canAccess } from "@/lib/gestion/access";
 import { addDays, limaDateTime, limaToday } from "@/lib/gestion/dates";
 import { formatDateShort } from "@/lib/delivery";
 import { parseMessageNote } from "@/lib/gestion/meta";
@@ -295,12 +296,14 @@ export default async function LeadsPage({ searchParams }: { searchParams: Search
         title="Leads"
         description="Del Messenger a la venta, con reloj: a quién se pasó, cuánto tardó el primer mensaje y cómo terminó."
         actions={
-          <Link
-            href="/admin/alertas"
-            className="inline-flex h-11 items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-medium text-cacao-700 hover:border-cacao/35"
-          >
-            Ver alertas
-          </Link>
+          canAccess(op.profile, "/admin/alertas") && (
+            <Link
+              href="/admin/alertas"
+              className="inline-flex h-11 items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-medium text-cacao-700 hover:border-cacao/35"
+            >
+              Ver alertas
+            </Link>
+          )
         }
       />
 

@@ -36,7 +36,7 @@ function revalidateStock() {
 }
 
 export async function returnCakes(input: { serials: string[]; notes?: string }): Promise<ActionResult<{ returned: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/tienda");
   if (!op) return { ok: false, error: EXPIRED };
 
   if (!input || !Array.isArray(input.serials) || input.serials.length === 0) {
@@ -59,7 +59,7 @@ export async function returnCakes(input: { serials: string[]; notes?: string }):
 }
 
 export async function resolveMissingCake(input: { serial: string; found: boolean; notes?: string }): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/tienda");
   if (!op) return { ok: false, error: EXPIRED };
 
   const serial = input && typeof input.serial === "string" ? input.serial.trim().toUpperCase() : "";

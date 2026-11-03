@@ -64,7 +64,7 @@ function toSummary(c: CustomerRow): CustomerSummary {
 
 /** Busca por nome, celular ou documento. Devolve no máximo 8. */
 export async function searchCustomers(query: string): Promise<ActionResult<CustomerSummary[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
 
   /* O filtro `or` do PostgREST usa vírgula, ponto e parêntese como sintaxe:
@@ -100,7 +100,7 @@ export async function saveCustomer(input: {
   docType: string;
   docNumber: string;
 }): Promise<ActionResult<CustomerSummary>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
 
   const name = text(input?.name, 120);
@@ -145,7 +145,7 @@ export async function saveCustomer(input: {
 /* -------------------------------------------------------------------------- */
 
 export async function createContract(input: CreateContractInput): Promise<ActionResult<{ id: string; number: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
 
   if (!input || typeof input !== "object") return { ok: false, error: "Datos inválidos." };
@@ -291,7 +291,7 @@ type CakeLookupRow = {
  * ou é de outro lugar) e diz o motivo exato quando não pode sair.
  */
 export async function findDeliverableCake(contractId: string, serial: string): Promise<ActionResult<DeliverableCake>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isUuid(contractId)) return { ok: false, error: "Encomienda inválida." };
   const code = text(serial, 20).toUpperCase();
@@ -358,7 +358,7 @@ export async function deliverContract(input: {
   /** Saldo que a vendedora viu na tela. Se mudou, o vuelto que ela contou está errado. */
   expectedBalance: number;
 }): Promise<ActionResult<{ cakes: number; balance: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
   if (!input || !isUuid(input.contractId)) return { ok: false, error: "Encomienda inválida." };
 
@@ -433,7 +433,7 @@ export async function deliverContract(input: {
 /* -------------------------------------------------------------------------- */
 
 export async function cancelContract(contractId: string, reason: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/encomiendas");
   if (!op) return { ok: false, error: EXPIRED };
   if (!isUuid(contractId)) return { ok: false, error: "Encomienda inválida." };
 

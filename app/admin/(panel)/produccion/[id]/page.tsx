@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getOperator, getSetting } from "@/lib/gestion/server";
+import { canAccess, canCloseStage } from "@/lib/gestion/access";
 import { limaDateTime } from "@/lib/gestion/dates";
 import { STAGES, blockersOf, formatQuantity } from "@/lib/produccion/plan";
 import { formatDateShort } from "@/lib/delivery";
@@ -95,6 +96,9 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
   const batch = batchRes.data as unknown as BatchRow;
   const tasks = (tasksRes.data ?? []) as unknown as TaskRow[];
   const isOpen = batch.status === "open";
+  const closable = (stage: string) => canCloseStage(op.profile, op.stages, stage);
+  /* Quem cuida de uma área vê a dela primeiro; o resto fica como referência. */
+  const stageOrder = [...STAGES].sort((a, b) => Number(closable(b)) - Number(closable(a)));
 
   const lostTasks = tasks.filter((t) => Number(t.rejected_quantity ?? 0) > 0);
   const waitingDispatch = tasks
@@ -159,19 +163,21 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
       {waitingDispatch > 0 && (
         <Notice tone="info">
           {waitingDispatch === 1 ? "1 torta decorada espera" : `${waitingDispatch} tortas decoradas esperan`} despacho.{" "}
-          <Link href="/admin/taller" className="font-semibold underline underline-offset-2">
-            Ir al taller
-          </Link>
+          {canAccess(op.profile, "/admin/taller") && (
+            <Link href="/admin/taller" className="font-semibold underline underline-offset-2">
+              Ir al taller
+            </Link>
+          )}
         </Notice>
       )}
 
-      {STAGES.map((stage) => {
+      {stageOrder.map((stage) => {
         const stageTasks = tasks.filter((t) => t.stage === stage && t.status !== "cancelled");
         if (stageTasks.length === 0) return null;
         const left = stageTasks.filter((t) => t.status === "pending").length;
         return (
           <Section key={stage} title={STAGE_LABEL[stage]} aside={left ? `${left} por cerrar` : "Completa"}>
-            {isOpen && left > 1 && (
+            {isOpen && left > 1 && closable(stage) && (
               <div className="border-b border-crema-200 px-4 py-3 sm:px-5">
                 <ReasonAction
                   action={closeStage.bind(null, batch.id, stage)}
@@ -240,7 +246,7 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
                       })}
                     </ul>
 
-                    {task.status === "pending" && isOpen && (
+                    {task.status === "pending" && isOpen && closable(task.stage) && (
                       waitingFor.length > 0 ? (
                         <p className="rounded-xl bg-crema-100 px-3 py-2 text-[13px] text-cacao-500">Espera: {waitingFor.join(", ")}</p>
                       ) : (
@@ -325,7 +331,7 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
         </ul>
       </Section>
 
-      {isOpen && (
+      {isOpen && canAccess(op.profile, "/admin/produccion/nueva") && (
         <ReasonAction
           action={cancelOrder.bind(null, batch.id)}
           label="Cancelar orden"

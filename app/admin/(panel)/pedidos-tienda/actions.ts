@@ -21,7 +21,7 @@ import {
  */
 
 export async function createStoreRequest(input: CreateRequestInput): Promise<ActionResult<{ id: string; number: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/pedidos-tienda");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
 
   if (!input || !isUuid(input.storeId)) return { ok: false, error: "Elige la tienda." };
@@ -70,7 +70,7 @@ export async function createStoreRequest(input: CreateRequestInput): Promise<Act
 
 /** Só enquanto o taller não despachou nada; depois disso, o taller fecha o pedido. */
 export async function cancelStoreRequest(orderId: string, reason: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/pedidos-tienda");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!isUuid(orderId)) return { ok: false, error: "Pedido inválido." };
   /* O motivo fica nas notas do pedido; sem ele, ninguém sabe depois se foi

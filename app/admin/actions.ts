@@ -1,7 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getAdminUser, getServerSupabase } from "@/lib/supabase-server";
+import { getServerSupabase } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
+import type { Section } from "@/lib/gestion/access";
 import { sendOrderEmails } from "@/lib/email/dispatch";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { PRODUCT_BUCKET } from "@/lib/storage";
@@ -17,12 +19,17 @@ import { PRODUCT_BUCKET } from "@/lib/storage";
 const STATUSES = ["active", "draft", "unavailable"] as const;
 type Status = (typeof STATUSES)[number];
 
+/* Catálogo e entrega mudam o site público: só o dono. Pedido web também é da gerência. */
+async function userFor(section: Section) {
+  return (await getOperator(section))?.user ?? null;
+}
+
 export async function setProductStatus(id: string, status: string) {
   if (!STATUSES.includes(status as Status)) {
     return { ok: false as const, error: "Estado inválido." };
   }
 
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   const db = await getServerSupabase();
@@ -76,7 +83,7 @@ export type ProductPatch = {
 };
 
 export async function updateProduct(id: string, patch: ProductPatch) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   const db = await getServerSupabase();
@@ -161,7 +168,7 @@ export async function updateProduct(id: string, patch: ProductPatch) {
 /* -------------------------------------------------------------------------- */
 
 export async function resendOrderEmails(code: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/pedidos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   /* force: true ignora a trava de idempotência. É deliberado — reenviar é
@@ -201,7 +208,7 @@ function slugify(value: string) {
 }
 
 export async function createProduct(input: { name: string; kind: string; basePrice: string }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   const db = await getServerSupabase();
@@ -259,7 +266,7 @@ export async function createProduct(input: { name: string; kind: string; basePri
 }
 
 export async function deleteProduct(id: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   const db = await getServerSupabase();
@@ -316,7 +323,7 @@ function storagePathFromUrl(url: string) {
 }
 
 export async function deleteProductImage(imageId: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -346,7 +353,7 @@ export async function deleteProductImage(imageId: string) {
 
 /** Reordena a galeria. A primeira imagem é a capa em toda a loja. */
 export async function reorderProductImages(productId: string, orderedIds: string[]) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -385,7 +392,7 @@ export async function setOrderStatus(code: string, status: string) {
     return { ok: false as const, error: "Estado inválido." };
   }
 
-  const user = await getAdminUser();
+  const user = await userFor("/admin/pedidos");
   if (!user) return { ok: false as const, error: "Sesión expirada. Vuelve a entrar." };
 
   const db = await getServerSupabase();
@@ -453,7 +460,7 @@ export async function saveDeliveryZone(input: {
   fee: string;
   active: boolean;
 }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -490,7 +497,7 @@ export async function saveDeliveryZone(input: {
 }
 
 export async function deleteDeliveryZone(slug: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -519,7 +526,7 @@ export async function saveDeliverySlot(input: {
   weekdays: number[];
   active: boolean;
 }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -553,7 +560,7 @@ export async function saveDeliverySlot(input: {
 }
 
 export async function saveFreeDeliveryThreshold(value: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -578,7 +585,7 @@ export async function saveDistanceDeliverySettings(input: {
   feePerKm: string;
   maxDistanceKm: string;
 }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
   const db = await getServerSupabase();
   if (!db) return { ok: false as const, error: "Sin conexión." };
@@ -617,7 +624,7 @@ export async function saveDistanceDeliverySettings(input: {
 }
 
 export async function saveStoreCoordinates(input: { id: string; lat: string; lng: string }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
   const db = await getServerSupabase();
   if (!db) return { ok: false as const, error: "Sin conexión." };
@@ -648,7 +655,7 @@ export async function createDeliveryStore(input: {
   lat: string;
   lng: string;
 }) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
   const db = await getServerSupabase();
   if (!db) return { ok: false as const, error: "Sin conexión." };
@@ -683,7 +690,7 @@ export async function createDeliveryStore(input: {
 
 /** Feriado ou dia em que a operação não entrega. */
 export async function addBlackout(date: string, slotSlug: string | null, reason: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -725,7 +732,7 @@ export async function addBlackout(date: string, slotSlug: string | null, reason:
 }
 
 export async function removeBlackout(date: string, slotSlug: string | null) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -762,7 +769,7 @@ export async function addProductSize(
   productId: string,
   input: { label: string; serves: string; price: string },
 ) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -807,7 +814,7 @@ export async function addProductSize(
 }
 
 export async function deleteProductSize(productId: string, sizeId: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -832,7 +839,7 @@ export async function deleteProductSize(productId: string, sizeId: string) {
 }
 
 export async function addProductFlavor(productId: string, label: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -868,7 +875,7 @@ export async function addProductFlavor(productId: string, label: string) {
 }
 
 export async function deleteProductFlavor(productId: string, flavorId: string) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();
@@ -906,7 +913,7 @@ export async function deleteProductFlavor(productId: string, flavorId: string) {
 }
 
 export async function setProductCategories(productId: string, categoryIds: string[]) {
-  const user = await getAdminUser();
+  const user = await userFor("/admin/productos");
   if (!user) return { ok: false as const, error: "Sesión expirada." };
 
   const db = await getServerSupabase();

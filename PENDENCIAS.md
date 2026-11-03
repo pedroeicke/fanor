@@ -13,6 +13,13 @@ refação e baixa do consumo real. Migração 0019 aplicada: a torta decorada fi
 Taller e o despacho a escolhe, com produto vindo do artigo e validade contada da decoração.
 Falta inventário inicial, caixas, porções, gastos, custos e Siscont.
 
+**Perfis por área (migração 0020):** dono, encargada, vendedora, taller e taller com áreas
+marcadas, escolhidos na ficha em Catálogos → Vendedoras. A tabela é uma proposta, em
+`lib/gestion/access.ts`, e falta o Joseka confirmar. O proxy barra a navegação, as ações do
+servidor conferem de novo e o banco barra a produção (`access_can_stage`). Limites: as outras
+funções `op_*` e as leituras ainda só exigem conta do painel, então quem usar a API com a
+própria sessão passa por fora das telas; e a vendedora vê dados de todas as lojas.
+
 **Sisgeco não será mais usado (decisão de 03/11/2026).** O leitor está parado desde
 06/10/2026, e a vitrine pública já diz que não pode confirmar a disponibilidade em vez de
 mostrar número velho. Para desligar de vez:
@@ -35,8 +42,7 @@ usar de verdade:
 - medir o tempo de salvar em produção: em dev com este banco levou de 6 a 11 s.
 
 Não testado: impressão física, leitura por câmera, envio de foto, abrir WhatsApp, cancelar
-encomenda, venda de item sem série, lead ganho, escrita em Catálogos, Productos, Ajustes
-e Respaldos, e permissões por área (só existe o papel de dono).
+encomenda, venda de item sem série, lead ganho e escrita em Productos, Ajustes e Respaldos.
 
 **BarTender:** funcionando com a tabela de teste (confirmado em 02/11/2026). Falta
 ligar às tortas reais, mantendo os mesmos campos. O acesso de teste foi criado com

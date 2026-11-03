@@ -19,7 +19,7 @@ import {
  */
 
 export async function updateCustomer(id: string, input: unknown): Promise<ActionResult<CustomerPatch>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/clientes");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
 
   if (typeof id !== "string" || !UUID_RE.test(id)) return { ok: false, error: "Cliente inválido." };
@@ -85,7 +85,7 @@ export async function updateCustomer(id: string, input: unknown): Promise<Action
 }
 
 export async function addCustomerNote(customerId: string, body: unknown): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/clientes");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
 
   if (typeof customerId !== "string" || !UUID_RE.test(customerId)) return { ok: false, error: "Cliente inválido." };

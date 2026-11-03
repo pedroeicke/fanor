@@ -95,7 +95,7 @@ type CakeRow = {
 
 /** Confere uma torta escaneada: existe, é desta loja e está na vitrine. */
 export async function lookupCake(storeId: string, raw: string): Promise<ActionResult<CakeLookup>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
   if (!isUuid(storeId)) return fail("Elige la tienda antes de escanear.");
 
@@ -162,7 +162,7 @@ type ProductRow = {
  * nascem na tela de Encomiendas, ligados ao contrato.
  */
 export async function searchProducts(query: string): Promise<ActionResult<ProductHit[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
 
   const pattern = searchPattern(query);
@@ -212,7 +212,7 @@ function toCustomerRef(row: CustomerRow): CustomerRef {
 
 /** Por nome, celular ou documento. Oito resultados bastam no balcão. */
 export async function searchCustomers(query: string): Promise<ActionResult<CustomerRef[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
 
   /* Uma letra só traria meio cadastro. */
@@ -246,7 +246,7 @@ export async function searchCustomers(query: string): Promise<ActionResult<Custo
  * não vira uma segunda ficha só porque agora veio à loja.
  */
 export async function createCustomer(input: { name: string; phone: string; doc: string }): Promise<ActionResult<CustomerRef>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
   if (!input || typeof input !== "object") return fail("Datos inválidos.");
 
@@ -438,7 +438,7 @@ function itemSignature(productId: string, quantity: number, totalCents: number) 
 }
 
 export async function registerSale(input: RegisterSaleInput): Promise<ActionResult<SaleReceipt>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
 
   const prepared = prepareSale(input);
@@ -555,7 +555,7 @@ type RecentSaleRow = {
  * de cobrar outra vez.
  */
 export async function findRecentSale(input: RegisterSaleInput): Promise<ActionResult<SaleReceipt | null>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/venta");
   if (!op) return fail(SESSION_EXPIRED);
 
   /* Carrinho inválido não pode ter sido gravado; o cobrar mostra o erro. */

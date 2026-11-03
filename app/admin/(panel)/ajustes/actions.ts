@@ -25,7 +25,7 @@ import {
 const PATH = "/admin/ajustes";
 
 async function ownerOperator(): Promise<{ ok: true; op: Operator } | { ok: false; error: string }> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/ajustes");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (op.user.role !== "owner") return { ok: false, error: "Solo el dueño puede cambiar los ajustes." };
   return { ok: true, op };

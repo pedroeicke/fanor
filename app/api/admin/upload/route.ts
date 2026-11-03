@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getAdminUser, getServerSupabase } from "@/lib/supabase-server";
+import { getServerSupabase } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
 import { PRODUCT_BUCKET, uploadImage } from "@/lib/storage";
 
 /**
@@ -12,7 +13,7 @@ import { PRODUCT_BUCKET, uploadImage } from "@/lib/storage";
  * podem exigir 30 uploads manuais.
  */
 export async function POST(request: Request) {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/productos"))?.user;
   if (!user) return NextResponse.json({ error: "No autorizado." }, { status: 401 });
 
   const db = await getServerSupabase();

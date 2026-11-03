@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { getAdminUser } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { AlertBell } from "@/components/admin/AlertBell";
 
@@ -13,11 +13,12 @@ import { AlertBell } from "@/components/admin/AlertBell";
  * exporia dado.
  */
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
-  const user = await getAdminUser();
+  const op = await getOperator();
 
   /* Autenticado mas sem linha em `admins` também cai aqui: ter conta no
      Supabase não é o mesmo que ter acesso ao painel. */
-  if (!user) redirect("/admin/login");
+  if (!op) redirect("/admin/login");
+  const { user, profile } = op;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -48,7 +49,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         </div>
       </header>
 
-      <AdminNav />
+      <AdminNav profile={profile} />
 
       <main className="mt-8">{children}</main>
     </div>

@@ -14,7 +14,9 @@ import {
   CODE_MAX,
   EMAIL_MAX,
   SELLER_NAME_MAX,
+  PRODUCTION_AREAS,
   SELLER_ROLES,
+  SELLER_ROLE_HELP,
   codeError,
   emailError,
   isSellerRole,
@@ -33,7 +35,7 @@ const ACCESS = {
   inactive: { label: "Inactiva", tone: "muted" as const },
 };
 
-const EMPTY: SellerInput = { code: "", name: "", storeId: "", role: "seller", phone: "" };
+const EMPTY: SellerInput = { code: "", name: "", storeId: "", role: "seller", stages: [], phone: "" };
 
 type Issued = { sellerId: string; sellerName: string; email: string; password: string };
 
@@ -64,11 +66,12 @@ export function SellersCatalog({ sellers, stores, isOwner }: { sellers: SellerRo
 
   const renderSeller = (seller: SellerRow) => {
     const role = isSellerRole(seller.role) ? SELLER_ROLES[seller.role] : seller.role;
+    const areas = PRODUCTION_AREAS.filter((area) => seller.stages.includes(area.key)).map((area) => area.label).join(", ");
     return (
       <li key={seller.id} className="space-y-3 px-5 py-4">
         {editing === seller.id ? (
           <SellerForm
-            initial={{ code: seller.code, name: seller.name, storeId: seller.storeId ?? "", role: seller.role, phone: seller.phone ?? "" }}
+            initial={{ code: seller.code, name: seller.name, storeId: seller.storeId ?? "", role: seller.role, stages: seller.stages, phone: seller.phone ?? "" }}
             stores={stores}
             pending={pending}
             busy={busyKey === `edit:${seller.id}`}
@@ -90,7 +93,8 @@ export function SellersCatalog({ sellers, stores, isOwner }: { sellers: SellerRo
                   <span className="ml-2 font-mono text-[13px] font-medium text-cacao-300">{seller.code}</span>
                 </p>
                 <p className="mt-0.5 text-[13px] text-cacao-500">
-                  {role} · {storeLabel(seller.storeId)}
+                  {role}
+                  {areas && ` (${areas})`} · {storeLabel(seller.storeId)}
                   {seller.phone && (
                     <>
                       {" · "}
@@ -313,7 +317,9 @@ function SellerForm({
   onCancel: () => void;
 }) {
   const [values, setValues] = useState(initial);
-  const set = (key: keyof SellerInput, value: string) => setValues((v) => ({ ...v, [key]: value }));
+  const set = (key: Exclude<keyof SellerInput, "stages">, value: string) => setValues((v) => ({ ...v, [key]: value }));
+  const toggleStage = (key: string) =>
+    setValues((v) => ({ ...v, stages: v.stages.includes(key) ? v.stages.filter((stage) => stage !== key) : [...v.stages, key] }));
 
   const code = normalizeCode(values.code);
   const invalid =
@@ -325,6 +331,7 @@ function SellerForm({
     values.name.trim().replace(/\s+/g, " ") === initial.name &&
     values.storeId === initial.storeId &&
     values.role === initial.role &&
+    [...values.stages].sort().join() === [...initial.stages].sort().join() &&
     values.phone.trim() === initial.phone;
   /* Loja que deixou de receber torta (desativada, sem prefixo) não está na
      lista. Sem esta opção o seletor mostraria "Sin tienda fija" e mandaria
@@ -389,6 +396,20 @@ function SellerForm({
           onChange={(e) => set("phone", e.target.value)}
         />
       </label>
+      {isSellerRole(values.role) && <p className="text-[13px] text-cacao-500 sm:col-span-2 lg:col-span-5">{SELLER_ROLE_HELP[values.role]}</p>}
+      {values.role === "workshop" && (
+        <fieldset className="sm:col-span-2 lg:col-span-5">
+          <legend className={labelClass}>Áreas (sin marcar = todo el taller)</legend>
+          <div className="flex flex-wrap gap-2">
+            {PRODUCTION_AREAS.map((area) => (
+              <label key={area.key} className="inline-flex h-11 items-center gap-2 rounded-full border border-crema-300 bg-white px-4 text-sm text-cacao-700">
+                <input type="checkbox" checked={values.stages.includes(area.key)} onChange={() => toggleStage(area.key)} />
+                {area.label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
       <div className="flex flex-wrap items-end gap-2 sm:col-span-2 lg:col-span-3">
         <button type="submit" className={buttonClass.primary} disabled={pending || unchanged || Boolean(invalid)}>
           {busy ? "Guardando…" : submitLabel}

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { canOpenPath, homeFor, isPublicPanelPath, type Profile } from "@/lib/gestion/access";
 
 /**
  * Renova a sessão do Supabase e barra o painel.
@@ -9,6 +10,9 @@ import { createServerClient } from "@supabase/ssr";
  * segunda são as políticas de RLS, que devolvem vazio para quem não está em
  * `admins`. Uma falha aqui não expõe dado — só deixaria a pessoa ver uma
  * tela vazia.
+ *
+ * Também manda cada perfil para a tela dele. O layout não serve para isso: ele
+ * não renderiza de novo a cada navegação, e o proxy vê toda requisição.
  */
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -53,6 +57,19 @@ export async function proxy(request: NextRequest) {
       panel.pathname = "/admin";
       panel.search = "";
       return NextResponse.redirect(panel);
+    }
+  }
+
+  /* Sem perfil (conta fora de `admins`, como a do teste da simulação) passa: a
+     própria tela decide. Erro de leitura também: as ações conferem de novo. */
+  if (user && !isPublicPanelPath(pathname)) {
+    const { data } = await supabase.rpc("panel_access");
+    const profile = (data as { profile?: Profile } | null)?.profile;
+    if (profile && !canOpenPath(profile, pathname)) {
+      const home = request.nextUrl.clone();
+      home.pathname = homeFor(profile);
+      home.search = "";
+      return NextResponse.redirect(home);
     }
   }
 

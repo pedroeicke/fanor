@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getOperator } from "@/lib/gestion/server";
+import { canAccess } from "@/lib/gestion/access";
 import { limaDateTime } from "@/lib/gestion/dates";
 import { STOCK_MIN, formatQuantity } from "@/lib/produccion/plan";
 import { formatDateShort } from "@/lib/delivery";
@@ -63,9 +64,11 @@ export default async function ProductionPage() {
         title="Producción"
         description="Órdenes del taller: qué falta en cada etapa, qué se perdió y qué hay que rehacer."
         actions={
-          <Link href="/admin/produccion/nueva" className="inline-flex h-11 items-center justify-center rounded-full bg-dorado px-5 text-sm font-semibold text-cacao transition-colors hover:bg-dorado-600">
-            Nueva orden
-          </Link>
+          canAccess(op.profile, "/admin/produccion/nueva") && (
+            <Link href="/admin/produccion/nueva" className="inline-flex h-11 items-center justify-center rounded-full bg-dorado px-5 text-sm font-semibold text-cacao transition-colors hover:bg-dorado-600">
+              Nueva orden
+            </Link>
+          )
         }
       />
 

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { getAdminUser, getServerSupabase } from "@/lib/supabase-server";
+import { getServerSupabase } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { isSerial } from "@/lib/gestion/qr";
 import { detectImage } from "@/lib/photo/detect";
@@ -42,7 +43,7 @@ export const maxDuration = 60;
  * público); o registro em `photo_treatments` vai pela sessão, com RLS.
  */
 export async function POST(request: Request) {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/fotos"))?.user;
   if (!user) return fail("Sesión expirada. Vuelve a entrar.", 401);
 
   const db = await getServerSupabase();

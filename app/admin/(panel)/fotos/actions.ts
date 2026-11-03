@@ -30,14 +30,14 @@ import {
 const EXPIRED = "Sesión expirada. Vuelve a entrar.";
 
 export async function searchProducts(query: string): Promise<ActionResult<ProductOption[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/fotos");
   if (!op) return { ok: false, error: EXPIRED };
   const text = typeof query === "string" ? query.slice(0, 60) : "";
   return { ok: true, data: await searchProductOptions(op.db, text) };
 }
 
 export async function findCake(serial: string): Promise<ActionResult<CakeOption>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/fotos");
   if (!op) return { ok: false, error: EXPIRED };
   const value = typeof serial === "string" ? serial.trim().toUpperCase() : "";
   if (!isSerial(value)) return { ok: false, error: "Serie inválida. Debe ser como G0000100001." };
@@ -79,7 +79,7 @@ export async function applyPhotoToProduct(input: {
   productId: string;
   alt: string;
 }): Promise<ActionResult<{ productId: string; productName: string }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/fotos");
   if (!op) return { ok: false, error: EXPIRED };
   /* Ação de servidor é endpoint público: o corpo pode chegar em qualquer formato. */
   if (!input || typeof input !== "object") return { ok: false, error: "Solicitud inválida." };
@@ -163,7 +163,7 @@ export async function applyPhotoToCake(input: {
   serial: string;
   alt: string;
 }): Promise<ActionResult<{ serial: string; productName: string; unchanged: boolean }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/fotos");
   if (!op) return { ok: false, error: EXPIRED };
   if (!input || typeof input !== "object") return { ok: false, error: "Solicitud inválida." };
 

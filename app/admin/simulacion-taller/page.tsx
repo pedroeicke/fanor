@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { WorkshopSimulation } from "@/components/admin/taller/WorkshopSimulation";
+import { getOperator } from "@/lib/gestion/server";
 import { getServerSupabase } from "@/lib/supabase-server";
 
 export const metadata: Metadata = { title: "Simulación por áreas del taller" };
@@ -22,6 +23,7 @@ export default async function WorkshopSimulationPage() {
     .maybeSingle();
   const simulationOnly = !admin && user.app_metadata?.fanor_simulation_test === true;
   if (!admin && !simulationOnly) redirect("/admin/login?next=%2Fadmin%2Fsimulacion-taller");
+  const op = admin ? await getOperator() : null;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -39,7 +41,7 @@ export default async function WorkshopSimulationPage() {
           </form>
         </div>
       </header>
-      {admin && <AdminNav />}
+      {op && <AdminNav profile={op.profile} />}
       <div className="mt-8"><WorkshopSimulation simulationOnly={simulationOnly} /></div>
     </div>
   );

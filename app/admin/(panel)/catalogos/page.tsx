@@ -65,12 +65,12 @@ async function SimpleTab({ kind, op }: { kind: SimpleCatalogKind; op: Operator }
 
 async function SellersTab({ op }: { op: Operator }) {
   const [{ data, error }, stores] = await Promise.all([
-    op.db.from("sellers").select("id, code, name, active, store_id, phone, role, user_id").order("name"),
+    op.db.from("sellers").select("id, code, name, active, store_id, phone, role, production_stages, user_id").order("name"),
     listStores(op.db),
   ]);
   if (error) return <LoadError />;
 
-  type Row = { id: string; code: string; name: string; active: boolean; store_id: string | null; phone: string | null; role: string; user_id: string | null };
+  type Row = { id: string; code: string; name: string; active: boolean; store_id: string | null; phone: string | null; role: string; production_stages: string[]; user_id: string | null };
   /* O id da conta não desce para o navegador: a tela só precisa saber se
      existe acesso e se é o da própria pessoa logada. */
   const sellers: SellerRow[] = ((data ?? []) as Row[]).map((s) => ({
@@ -81,6 +81,7 @@ async function SellersTab({ op }: { op: Operator }) {
     storeId: s.store_id,
     phone: s.phone,
     role: s.role,
+    stages: s.production_stages ?? [],
     hasAccess: Boolean(s.user_id),
     isSelf: s.user_id === op.user.id,
   }));

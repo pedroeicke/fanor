@@ -110,7 +110,7 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 | Separação do ovo com duas saídas e contagem real de ovos | Pronto |
 | Inventário inicial e entrada de compras de insumos | Falta. Sem isso, o saldo de matéria-prima fica negativo |
 | Ligar a torta decorada à série e ao despacho | Pronto: fica "lista" no Taller e o despacho a escolhe. O caminho manual continua |
-| Perfis por área (forno, decoração) | Falta. Hoje todo acesso é de administrador |
+| Perfis por área (forno, decoração) | Pronto: perfil na ficha, com a tabela de acesso a confirmar pelo Joseka |
 | Vínculo produto–caixa e baixa na venda | Falta |
 | Fracionamento, etiquetas de porção e bloqueio na venda | Falta |
 | Tela de gastos com perfil restrito | Falta |

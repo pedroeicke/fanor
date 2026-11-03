@@ -45,7 +45,7 @@ function normalizeSerial(value: unknown) {
 export async function createDispatch(
   input: CreateDispatchInput,
 ): Promise<ActionResult<{ id: string; number: number; cakes: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   if (!input || !Array.isArray(input.cakes) || !Array.isArray(input.items)) {
@@ -200,7 +200,7 @@ export async function createDispatch(
 
 /** Torta lista que caiu ou venceu antes de sair do taller. Sai uma por vez, a mais antiga. */
 export async function discardReadyCake(code: string, reason: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   if (typeof code !== "string" || !code.trim()) return { ok: false, error: "Torta inválida." };
   const why = cleanText(reason, REASON_MAX);
@@ -215,7 +215,7 @@ export async function discardReadyCake(code: string, reason: string): Promise<Ac
 
 /** O taller decide não mandar o resto (faltou insumo). O que já saiu continua valendo. */
 export async function closeRequest(orderId: string, reason: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   if (!isUuid(orderId)) return { ok: false, error: "Pedido inválido." };
   /* O motivo vai para as notas do pedido: é o que explica à loja (e ao Joseka)
@@ -232,7 +232,7 @@ export async function closeRequest(orderId: string, reason: string): Promise<Act
 
 /** Torta devolvida em bom estado vira torta nova (série nova, validade curta) num despacho próprio. */
 export async function redecorateCake(input: RedecorateInput): Promise<ActionResult<{ dispatchId: string; serial: string }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   const serial = normalizeSerial(input?.serial);
@@ -263,7 +263,7 @@ export async function redecorateCake(input: RedecorateInput): Promise<ActionResu
 
 /** Descarte das devolvidas. Só `returned`: descartar torta da vitrine ou faltante tem tela própria. */
 export async function discardCakes(serials: string[], reason: string): Promise<ActionResult<{ discarded: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   if (!Array.isArray(serials) || serials.length === 0 || serials.length > 50) return { ok: false, error: "Elige las tortas a descartar." };
@@ -298,7 +298,7 @@ export async function discardCakes(serials: string[], reason: string): Promise<A
 
 /** Faltante: apareceu (volta a valer na loja) ou se deu por perdida (sai do estoque). */
 export async function resolveMissing(serial: string, found: boolean, notes: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/taller");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   const value = normalizeSerial(serial);

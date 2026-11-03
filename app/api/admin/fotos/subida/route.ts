@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAdminUser } from "@/lib/supabase-server";
+import { getOperator } from "@/lib/gestion/server";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { ORIGINALS_BUCKET, extensionFor, newOriginalPath } from "@/lib/photo/storage";
 import { MAX_ORIGINAL_BYTES, isAcceptedType } from "@/lib/photo/types";
@@ -15,7 +15,7 @@ export const runtime = "nodejs";
  * novo (limite de 15 MB e tipos aceitos), e a URL só vale para este caminho.
  */
 export async function POST(request: Request) {
-  const user = await getAdminUser();
+  const user = (await getOperator("/admin/fotos"))?.user;
   if (!user) return NextResponse.json({ error: "Sesión expirada. Vuelve a entrar." }, { status: 401 });
 
   let body: { type?: unknown; size?: unknown };

@@ -48,7 +48,7 @@ function toLookup(d: DispatchRow, cake: ScanLookup["cake"]): ScanLookup {
  * a guia no meio do papel.
  */
 export async function locateScan(raw: string): Promise<ActionResult<ScanLookup>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/recepcion");
   if (!op) return { ok: false, error: EXPIRED };
 
   if (typeof raw !== "string" || raw.length > 64) return { ok: false, error: "Código no reconocido." };
@@ -97,7 +97,7 @@ function cleanSerials(value: unknown): string[] | null {
  * não baterem: "N quedarán como FALTANTES" tem de ser exatamente o que acontece.
  */
 export async function receiveDispatch(input: ReceiveInput): Promise<ActionResult<ReceiveResult>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/recepcion");
   if (!op) return { ok: false, error: EXPIRED };
 
   if (!input || typeof input.dispatchId !== "string" || !UUID.test(input.dispatchId)) {

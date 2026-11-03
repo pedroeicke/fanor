@@ -101,7 +101,7 @@ export async function createLead(input: {
   storeId: string;
   sellerId: string;
 }): Promise<ActionResult<{ id: string; number: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/leads");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!input || typeof input !== "object") return { ok: false, error: "Datos inválidos." };
 
@@ -148,7 +148,7 @@ export async function createLead(input: {
 }
 
 export async function assignLead(leadId: string, storeId: string, sellerId: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/leads");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!isUuid(leadId)) return { ok: false, error: "Lead inválido." };
   if (!text(storeId)) return { ok: false, error: "Elige la tienda." };
@@ -172,7 +172,7 @@ export async function assignLead(leadId: string, storeId: string, sellerId: stri
  * isto só grava a hora — é a medida de tempo de resposta do relatório.
  */
 export async function contactLead(leadId: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/leads");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!isUuid(leadId)) return { ok: false, error: "Lead inválido." };
 
@@ -190,7 +190,7 @@ export async function contactLead(leadId: string): Promise<ActionResult> {
 }
 
 export async function addLeadNote(leadId: string, notes: string): Promise<ActionResult> {
-  if (!(await getOperator())) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
+  if (!(await getOperator("/admin/leads"))) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!isUuid(leadId)) return { ok: false, error: "Lead inválido." };
   const body = text(notes);
   if (!body) return { ok: false, error: "La nota está vacía." };
@@ -210,7 +210,7 @@ export async function closeLead(input: {
   reason: string;
   detail: string;
 }): Promise<ActionResult> {
-  if (!(await getOperator())) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
+  if (!(await getOperator("/admin/leads"))) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!input || typeof input !== "object" || !isUuid(input.leadId)) return { ok: false, error: "Lead inválido." };
   if (typeof input.won !== "boolean") return { ok: false, error: "Indica si se ganó o se perdió." };
 
@@ -256,7 +256,7 @@ export async function closeLead(input: {
  * "Cliente Messenger" solto e o cliente real sem o histórico do lead.
  */
 export async function setLeadPhone(leadId: string, phoneRaw: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/leads");
   if (!op) return { ok: false, error: "Sesión expirada. Vuelve a entrar." };
   if (!isUuid(leadId)) return { ok: false, error: "Lead inválido." };
 

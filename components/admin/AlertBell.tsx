@@ -12,7 +12,7 @@ import { getOperator } from "@/lib/gestion/server";
  * zero vira ruído que ninguém mais olha.
  */
 export async function AlertBell({ className }: { className?: string } = {}) {
-  const op = await getOperator();
+  const op = await getOperator("/admin/alertas");
   if (!op) return null;
 
   const [critical, warn] = await Promise.all([

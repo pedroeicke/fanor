@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getOperator, runOp, type ActionResult } from "@/lib/gestion/server";
+import { canCloseStage } from "@/lib/gestion/access";
 import { buildPlan, isCountableOutput, missingToRework, withoutCore, type PlanGraph, type PlanResult } from "@/lib/produccion/plan";
 import { closeStageAsPlanned, loadFreeBalances, loadPlanGraph, tasksForDb } from "@/lib/produccion/server";
 import { cleanText, isUuid } from "@/components/admin/pedidos-tienda/catalog";
@@ -25,6 +26,7 @@ import {
 
 const SESSION_EXPIRED = "Sesión expirada. Vuelve a entrar.";
 const LOAD_FAILED = "No se pudo calcular. Inténtalo de nuevo.";
+const OTHER_AREA = "Esta etapa es de otra área.";
 
 function revalidateFlow(batchId?: string) {
   revalidatePath("/admin/produccion");
@@ -92,7 +94,7 @@ function toPreview(graph: PlanGraph, plan: PlanResult): PlanPreview {
 
 /** Busca o que pode ser produzido. Cada palavra precisa aparecer no código ou na descrição. */
 export async function searchProducible(query: string): Promise<ActionResult<ArticleOption[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion/nueva");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   /* Vírgula e parêntese têm significado no filtro `or` do PostgREST. */
@@ -126,7 +128,7 @@ export async function searchProducible(query: string): Promise<ActionResult<Arti
 
 /** Formatos de uma batida, com quantos rende cada um. */
 export async function listBatidaFormats(batidaCode: string): Promise<ActionResult<BatidaFormat[]>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion/nueva");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   const { data, error } = await op.db
@@ -155,7 +157,7 @@ export async function listBatidaFormats(batidaCode: string): Promise<ActionResul
 }
 
 export async function previewPlan(input: { targets: Target[]; useStock: boolean; fullBatchPreparados: boolean }): Promise<ActionResult<PlanPreview>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion/nueva");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   const targets = cleanTargets(input?.targets);
   if (!targets) return { ok: false, error: "Revisa las cantidades." };
@@ -169,7 +171,7 @@ export async function previewPlan(input: { targets: Target[]; useStock: boolean;
 }
 
 export async function createOrder(input: OrderInput): Promise<ActionResult<{ id: string; number: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion/nueva");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
 
   const targets = cleanTargets(input?.targets);
@@ -202,7 +204,7 @@ export async function createOrder(input: OrderInput): Promise<ActionResult<{ id:
 }
 
 export async function checkoutTask(input: CheckoutTaskInput): Promise<ActionResult<{ reworkTasks: number; batchDone: boolean }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   if (!isUuid(input?.taskId)) return { ok: false, error: "Tarea inválida." };
 
@@ -228,6 +230,7 @@ export async function checkoutTask(input: CheckoutTaskInput): Promise<ActionResu
     production_task_inputs: { id: string; article_code: string; display_factor: number }[];
     formulas: { batch_yield: number; byproduct_code: string | null; byproduct_quantity: number | null } | null;
   };
+  if (!canCloseStage(op.profile, op.stages, task.stage)) return { ok: false, error: OTHER_AREA };
 
   if (isCountableOutput(task.stage, task.articles?.recipe_unit ?? null) && (!Number.isInteger(approved) || !Number.isInteger(rejected))) {
     return { ok: false, error: "Este producto se cuenta entero: no puede salir una fracción." };
@@ -284,9 +287,10 @@ export async function checkoutTask(input: CheckoutTaskInput): Promise<ActionResu
 
 /** Fecha as etapas de uma área como previstas. O texto de confirmação não é usado. */
 export async function closeStage(batchId: string, stage: string): Promise<ActionResult<{ closed: number; skipped: number }>> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   if (!isUuid(batchId) || typeof stage !== "string") return { ok: false, error: "Orden inválida." };
+  if (!canCloseStage(op.profile, op.stages, stage)) return { ok: false, error: OTHER_AREA };
 
   try {
     const result = await closeStageAsPlanned(op.db, batchId, stage);
@@ -300,7 +304,7 @@ export async function closeStage(batchId: string, stage: string): Promise<Action
 }
 
 export async function cancelOrder(batchId: string, reason: string): Promise<ActionResult> {
-  const op = await getOperator();
+  const op = await getOperator("/admin/produccion/nueva");
   if (!op) return { ok: false, error: SESSION_EXPIRED };
   if (!isUuid(batchId)) return { ok: false, error: "Orden inválida." };
   const why = cleanText(reason, REASON_MAX);
