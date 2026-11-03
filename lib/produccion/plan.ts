@@ -79,7 +79,7 @@ export type PlanResult = {
 const EPSILON = 1e-6;
 
 /* Abaixo disto é sobra de arredondamento, não material que alguém possa usar. */
-const STOCK_MIN = 0.001;
+export const STOCK_MIN = 0.001;
 /* Digitar 0,99 em vez de 1 não é perda: não vale uma refação. */
 const REWORK_MIN_SHARE = 0.02;
 
@@ -96,6 +96,29 @@ function isCountable(formula: PlanFormula, article: PlanArticle) {
 export function missingToRework(planned: number, approved: number) {
   const missing = planned - approved;
   return missing > planned * REWORK_MIN_SHARE ? missing : 0;
+}
+
+/** O que a tela sugere em "salió bien": a conta dá 966,666667 e ninguém mede isso. */
+export function suggestedOutput(planned: number) {
+  const scale = Math.abs(planned) < 1 ? 10_000 : 100;
+  return Math.round(planned * scale) / scale;
+}
+
+type GateTask = { id: string; article_code: string; status: string; requires: string[]; rework_of: string | null };
+
+/**
+ * O que ainda segura esta tarefa. A mesma regra de `op_production_checkout`: uma
+ * refação só segura a própria refação e, quando repõe o artigo que se perdeu,
+ * quem depende dele. A batida refeita para uma prancha não segura o outro cake.
+ */
+export function blockersOf<T extends GateTask>(task: GateTask, tasks: T[]) {
+  const byId = new Map(tasks.map((t) => [t.id, t]));
+  return tasks.filter(
+    (q) =>
+      q.status === "pending" &&
+      task.requires.includes(q.article_code) &&
+      (!q.rework_of || q.rework_of === task.rework_of || byId.get(q.rework_of)?.article_code === q.article_code),
+  );
 }
 
 function roundUp(value: number) {

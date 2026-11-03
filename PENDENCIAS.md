@@ -9,9 +9,23 @@ Planilha atualizada: 1.831 códigos, 1.032 fórmulas, 5.988 linhas e 17 bloqueio
 
 **Construído:** migração 0017 aplicada, com artigos e fórmulas em tabelas próprias, e
 `/admin/produccion` com ordem por formatos, cálculo de insumos, checkout por etapa,
-refação e baixa do consumo real. Fluxo testado de ponta a ponta no banco; as telas com
-sessão real de administrador ainda precisam ser abertas. Falta inventário inicial,
-ligação com o despacho, caixas, porções, gastos, custos e Siscont.
+refação e baixa do consumo real. Falta inventário inicial, ligação com o despacho,
+caixas, porções, gastos, custos e Siscont.
+
+**Teste com sessão real (02/11/2026):** produção nas 5 áreas, pedido da loja, despacho,
+recepção com faltante, vitrine, devolução, redecoração, venda, encomenda até a entrega e
+lead rodaram pelas telas, com dados removidos depois. Migração 0018 aplicada. Antes de
+usar de verdade:
+
+- cadastrar sabores, decoradoras, tipos de torta e vendedoras (estão vazios);
+- o leitor do Sisgeco parou há cerca de 28 dias, e a vitrine pública lê esse espelho;
+- responder o reclamo LR-2026-D6800F, aberto há 62 dias;
+- saldos sem série do Sisgeco vêm negativos e com nome quebrado (`HOJA DE PI�A`);
+- medir o tempo de salvar em produção: em dev com este banco levou de 6 a 11 s.
+
+Não testado: impressão física, leitura por câmera, envio de foto, abrir WhatsApp, cancelar
+encomenda, venda de item sem série, lead ganho, escrita em Catálogos, Productos, Ajustes
+e Respaldos, e permissões por área (só existe o papel de dono).
 
 **BarTender:** funcionando com a tabela de teste (confirmado em 02/11/2026). Falta
 ligar às tortas reais, mantendo os mesmos campos. O acesso de teste foi criado com

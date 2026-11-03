@@ -3,7 +3,7 @@
 import { useId, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { ActionResult } from "@/lib/gestion/server";
-import { consumptionMargin, formatQuantity, isCountableOutput, isOutOfTolerance, missingToRework, suggestedDisplayQuantity } from "@/lib/produccion/plan";
+import { consumptionMargin, formatQuantity, isCountableOutput, isOutOfTolerance, missingToRework, suggestedDisplayQuantity, suggestedOutput } from "@/lib/produccion/plan";
 import { cx } from "@/lib/format";
 import { Notice, inputClass, labelClass } from "@/components/admin/ui";
 import { NOTES_MAX, REASON_MAX, type CheckoutTaskInput } from "@/components/admin/produccion/types";
@@ -52,7 +52,7 @@ export function TaskCheckout({
 }) {
   const router = useRouter();
   const ids = useId();
-  const [approved, setApproved] = useState(String(plannedQuantity));
+  const [approved, setApproved] = useState(String(suggestedOutput(plannedQuantity)));
   const [rejected, setRejected] = useState("0");
   const [reason, setReason] = useState("");
   const [notes, setNotes] = useState("");
@@ -60,7 +60,7 @@ export function TaskCheckout({
   const [sameCore, setSameCore] = useState(true);
   const [adjusting, setAdjusting] = useState(false);
   const [actuals, setActuals] = useState<Record<string, string>>(() =>
-    Object.fromEntries(inputs.map((row) => [row.id, row.countOnExecution ? "" : String(suggestedDisplayQuantity(row, row.articleType))])),
+    Object.fromEntries(inputs.map((row) => [row.id, row.countOnExecution ? "" : String(suggestedOutput(suggestedDisplayQuantity(row, row.articleType)))])),
   );
   const [justifications, setJustifications] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);

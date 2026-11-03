@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getOperator } from "@/lib/gestion/server";
 import { limaDateTime } from "@/lib/gestion/dates";
-import { formatQuantity } from "@/lib/produccion/plan";
+import { STOCK_MIN, formatQuantity } from "@/lib/produccion/plan";
 import { formatDateShort } from "@/lib/delivery";
 import { AutoRefresh } from "@/components/admin/AutoRefresh";
 import { EmptyState, Notice, PageHeader, Section, StatCard, StatusPill } from "@/components/admin/ui";
@@ -48,7 +48,7 @@ export default async function ProductionPage() {
 
   /* Matéria-prima ainda não tem inventário inicial, então o saldo dela não diz
      nada. O que interessa aqui é o que o taller já fez e pode aproveitar. */
-  const codes = (balanceRes.data ?? []).map((row) => row.article_code as string);
+  const codes = (balanceRes.data ?? []).filter((row) => Number(row.quantity) >= STOCK_MIN).map((row) => row.article_code as string);
   const { data: articleRows } = codes.length
     ? await db.from("articles").select("code, description, recipe_unit").eq("type", "PI").in("code", codes.slice(0, 150))
     : { data: [] as { code: string; description: string; recipe_unit: string | null }[] };

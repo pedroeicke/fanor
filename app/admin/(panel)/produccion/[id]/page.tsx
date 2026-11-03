@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getOperator, getSetting } from "@/lib/gestion/server";
 import { limaDateTime } from "@/lib/gestion/dates";
-import { STAGES, formatQuantity } from "@/lib/produccion/plan";
+import { STAGES, blockersOf, formatQuantity } from "@/lib/produccion/plan";
 import { formatDateShort } from "@/lib/delivery";
 import { isUuid } from "@/components/admin/pedidos-tienda/catalog";
 import { AutoRefresh } from "@/components/admin/AutoRefresh";
@@ -95,7 +95,6 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
   const tasks = (tasksRes.data ?? []) as unknown as TaskRow[];
   const isOpen = batch.status === "open";
 
-  const pendingCodes = new Map(tasks.filter((t) => t.status === "pending").map((t) => [t.article_code, t.articles?.description ?? t.article_code]));
   const lostTasks = tasks.filter((t) => Number(t.rejected_quantity ?? 0) > 0);
 
   /* Saldo só do que o taller produz; matéria-prima ainda não tem inventário inicial. */
@@ -175,7 +174,7 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
             <ul className="divide-y divide-crema-200">
               {stageTasks.map((task) => {
                 const unit = task.articles?.recipe_unit ?? null;
-                const waitingFor = task.requires.filter((code) => pendingCodes.has(code)).map((code) => pendingCodes.get(code));
+                const waitingFor = [...new Set(blockersOf(task, tasks).map((q) => q.articles?.description ?? q.article_code))];
                 const plannedLabel = quantityLabel(task.stage, Number(task.planned_quantity), unit);
                 return (
                   <li key={task.id} className="space-y-3 px-4 py-4 sm:px-5">
