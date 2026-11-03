@@ -31,6 +31,7 @@ const SESSION_EXPIRED = "Sesión expirada. Vuelve a entrar.";
    o que tem na vitrine (Mi vitrina) e o estado da encomenda. */
 function revalidateFlow() {
   revalidatePath("/admin/taller");
+  revalidatePath("/admin/produccion");
   revalidatePath("/admin/pedidos-tienda");
   revalidatePath("/admin/recepcion");
   revalidatePath("/admin/tienda");
@@ -97,11 +98,13 @@ export async function createDispatch(
   const flavorIds = new Set<string>();
   const decoratorIds = new Set<string>();
 
-  const lineFor = (lineId: unknown, productId: string) => {
+  /* `productId` nulo é torta lista do taller: a loja pede "T26" e o taller entrega
+     "T26-CHNRMC", então o produto não tem como bater com o da linha. */
+  const lineFor = (lineId: unknown, productId: string | null) => {
     if (lineId === null || lineId === undefined || lineId === "") return { ok: true as const, line: null };
     if (input.orderId === null || !isUuid(lineId)) return { ok: false as const };
     const line = orderLines.get(lineId);
-    if (!line || line.productId !== productId) return { ok: false as const };
+    if (!line || (productId !== null && line.productId !== productId)) return { ok: false as const };
     return { ok: true as const, line: { id: lineId, cakeTypeId: line.cakeTypeId } };
   };
 
@@ -110,7 +113,8 @@ export async function createDispatch(
   const cakes: Record<string, unknown>[] = [];
   let totalCakes = 0;
   for (const c of input.cakes) {
-    if (!c || !isUuid(c.productId)) return { ok: false, error: "Hay un producto inválido en el despacho." };
+    const articleCode = typeof c?.articleCode === "string" && c.articleCode.trim() ? c.articleCode.trim() : null;
+    if (!c || (articleCode === null && !isUuid(c.productId))) return { ok: false, error: "Hay un producto inválido en el despacho." };
     const qty = Number(c.quantity);
     if (!Number.isInteger(qty) || qty < 1 || qty > CAKES_PER_ENTRY_MAX) {
       return { ok: false, error: `Cada fila de tortas lleva entre 1 y ${CAKES_PER_ENTRY_MAX} unidades.` };
@@ -120,15 +124,16 @@ export async function createDispatch(
     if ((flavorId !== null && !isUuid(flavorId)) || (decoratorId !== null && !isUuid(decoratorId))) {
       return { ok: false, error: "Sabor o decoradora inválidos." };
     }
-    const link = lineFor(c.lineId, c.productId);
+    const link = lineFor(c.lineId, articleCode ? null : c.productId);
     if (!link.ok) return { ok: false, error: "Una línea no pertenece a este pedido. Recarga la página." };
 
-    productIds.add(c.productId);
+    if (!articleCode) productIds.add(c.productId);
     if (flavorId) flavorIds.add(flavorId);
     if (decoratorId) decoratorIds.add(decoratorId);
     totalCakes += qty;
     cakes.push({
-      product_id: c.productId,
+      product_id: articleCode ? null : c.productId,
+      article_code: articleCode,
       quantity: qty,
       flavor_id: flavorId,
       decorator_id: decoratorId,
@@ -170,6 +175,7 @@ export async function createDispatch(
   if ((decoratorCheck.data ?? []).length !== decoratorIds.size) return { ok: false, error: "Alguna decoradora ya no existe. Recarga la página." };
 
   for (const c of input.cakes) {
+    if (c.articleCode) continue;
     const p = products.get(c.productId)!;
     if (!p.product_families?.tracks_serial) return { ok: false, error: `${p.name} no lleva serie: despáchalo como ítem.` };
   }
@@ -190,6 +196,21 @@ export async function createDispatch(
 
   revalidateFlow();
   return { ok: true, data: { id: result.data.id, number: Number(result.data.number), cakes: Number(result.data.cakes) } };
+}
+
+/** Torta lista que caiu ou venceu antes de sair do taller. Sai uma por vez, a mais antiga. */
+export async function discardReadyCake(code: string, reason: string): Promise<ActionResult> {
+  const op = await getOperator();
+  if (!op) return { ok: false, error: SESSION_EXPIRED };
+  if (typeof code !== "string" || !code.trim()) return { ok: false, error: "Torta inválida." };
+  const why = cleanText(reason, REASON_MAX);
+  if (!why || why.length < 3) return { ok: false, error: "Indica el motivo." };
+
+  const result = await runOp("op_ready_discard", { p_code: code, p_reason: why });
+  if (!result.ok) return result;
+
+  revalidateFlow();
+  return { ok: true, data: undefined };
 }
 
 /** O taller decide não mandar o resto (faltou insumo). O que já saiu continua valendo. */

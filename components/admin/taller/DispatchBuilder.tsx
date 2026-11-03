@@ -8,7 +8,8 @@ import { Notice, inputClass, labelClass } from "@/components/admin/ui";
 import { ProductSearch } from "@/components/admin/pedidos-tienda/ProductSearch";
 import { QuantityStepper } from "@/components/admin/pedidos-tienda/QuantityStepper";
 import { NOTES_MAX, type CatalogProduct, type StoreOption } from "@/components/admin/pedidos-tienda/types";
-import { CAKES_PER_ENTRY_MAX, ITEM_QTY_MAX, type DispatchOrder, type DispatchOrderLine, type NamedOption } from "./types";
+import { formatDateShort } from "@/lib/delivery";
+import { CAKES_PER_ENTRY_MAX, ITEM_QTY_MAX, type DispatchOrder, type DispatchOrderLine, type NamedOption, type ReadyOption } from "./types";
 
 /**
  * Montagem do despacho.
@@ -21,9 +22,12 @@ import { CAKES_PER_ENTRY_MAX, ITEM_QTY_MAX, type DispatchOrder, type DispatchOrd
  * Mandar menos ou mais que o pedido é permitido (faltou insumo, sobrou
  * massa); a tela só avisa. Despacho não tem desfazer — cada torta ganha
  * série e etiqueta —, por isso o envio passa por uma confirmação.
+ *
+ * O que a produção já decorou aparece como "lista": escolher uma dispensa digitar
+ * o sabor, que está no código, e a validade conta da decoração.
  */
 
-type Entry = { key: string; flavorId: string; decoratorId: string; quantity: number };
+type Entry = { key: string; articleCode: string; flavorId: string; decoratorId: string; quantity: number };
 
 type LineState = {
   key: string;
@@ -37,6 +41,8 @@ type LineState = {
   info: DispatchOrderLine | null;
   entries: Entry[];
   itemQty: number;
+  /** Linha criada a partir de uma torta lista: o código não se troca nem se divide. */
+  fixedArticle?: boolean;
 };
 
 function initialLines(order: DispatchOrder | null): LineState[] {
@@ -53,7 +59,7 @@ function initialLines(order: DispatchOrder | null): LineState[] {
       missing,
       info: l,
       entries: l.tracksSerial
-        ? [{ key: `${l.id}-0`, flavorId: l.flavorId ?? "", decoratorId: l.decoratorId ?? "", quantity: Math.min(missing, CAKES_PER_ENTRY_MAX) }]
+        ? [{ key: `${l.id}-0`, articleCode: "", flavorId: l.flavorId ?? "", decoratorId: l.decoratorId ?? "", quantity: Math.min(missing, CAKES_PER_ENTRY_MAX) }]
         : [],
       itemQty: Math.min(missing, ITEM_QTY_MAX),
     };
@@ -66,6 +72,7 @@ function sent(line: LineState) {
 
 export function DispatchBuilder({
   order,
+  ready = [],
   stores = [],
   defaultStoreId = null,
   products = [],
@@ -74,6 +81,7 @@ export function DispatchBuilder({
 }: {
   /** Com pedido: linhas pré-carregadas e loja fixa. Sem pedido: escolher loja e produtos. */
   order: DispatchOrder | null;
+  ready?: ReadyOption[];
   stores?: StoreOption[];
   defaultStoreId?: string | null;
   products?: CatalogProduct[];
@@ -117,7 +125,7 @@ export function DispatchBuilder({
           const [first, ...rest] = l.entries;
           return first
             ? { ...l, entries: [{ ...first, quantity: Math.min(CAKES_PER_ENTRY_MAX, first.quantity + 1) }, ...rest] }
-            : { ...l, entries: [{ key, flavorId: "", decoratorId: "", quantity: 1 }] };
+            : { ...l, entries: [{ key, articleCode: "", flavorId: "", decoratorId: "", quantity: 1 }] };
         });
       }
       return [
@@ -131,8 +139,35 @@ export function DispatchBuilder({
           tracksSerial: p.tracksSerial,
           missing: null,
           info: null,
-          entries: p.tracksSerial ? [{ key, flavorId: "", decoratorId: "", quantity: 1 }] : [],
+          entries: p.tracksSerial ? [{ key, articleCode: "", flavorId: "", decoratorId: "", quantity: 1 }] : [],
           itemQty: p.tracksSerial ? 0 : 1,
+        },
+      ];
+    });
+  }
+
+  /** Torta lista fora de qualquer linha do pedido: vira uma linha própria, fixa naquele código. */
+  function addReady(cake: ReadyOption) {
+    const key = nextKey();
+    const lineKey = `article:${cake.code}`;
+    update((ls) => {
+      if (ls.some((l) => l.key === lineKey)) {
+        return ls.map((l) => (l.key === lineKey ? { ...l, entries: l.entries.map((e) => ({ ...e, quantity: Math.min(cake.quantity, e.quantity + 1) })) } : l));
+      }
+      return [
+        ...ls,
+        {
+          key: lineKey,
+          lineId: null,
+          productId: "",
+          productName: cake.description,
+          sku: cake.code,
+          tracksSerial: true,
+          missing: null,
+          info: null,
+          entries: [{ key, articleCode: cake.code, flavorId: "", decoratorId: "", quantity: 1 }],
+          itemQty: 0,
+          fixedArticle: true,
         },
       ];
     });
@@ -149,6 +184,7 @@ export function DispatchBuilder({
         ...l.entries,
         {
           key,
+          articleCode: "",
           flavorId: "",
           /* A mesma decoradora costuma fazer a fornada inteira. */
           decoratorId: last?.decoratorId ?? l.info?.decoratorId ?? "",
@@ -164,7 +200,7 @@ export function DispatchBuilder({
       if (l.tracksSerial) {
         for (const e of l.entries) {
           cakes += e.quantity;
-          if (!e.flavorId && e.quantity > 0) noFlavor += e.quantity;
+          if (!e.articleCode && !e.flavorId && e.quantity > 0) noFlavor += e.quantity;
         }
       } else {
         items += l.itemQty;
@@ -180,10 +216,20 @@ export function DispatchBuilder({
   const storeName = order?.storeName ?? stores.find((s) => s.id === storeId)?.name ?? null;
   const empty = totals.cakes + totals.items === 0;
 
+  /* A mesma torta lista pode estar em várias filas: o limite vale para a soma. */
+  const readyUsed = new Map<string, number>();
+  for (const l of lines) {
+    for (const e of l.entries) {
+      if (e.articleCode) readyUsed.set(e.articleCode, (readyUsed.get(e.articleCode) ?? 0) + e.quantity);
+    }
+  }
+  const overReady = ready.find((cake) => (readyUsed.get(cake.code) ?? 0) > cake.quantity);
+
   function review() {
     setError(null);
     if (!order && !storeId) return setError("Elige la tienda de destino.");
     if (empty) return setError("No hay nada para despachar: todas las cantidades están en cero.");
+    if (overReady) return setError(`Solo hay ${overReady.quantity} de ${overReady.description} listas en el taller.`);
     setConfirming(true);
   }
 
@@ -198,7 +244,14 @@ export function DispatchBuilder({
           l.tracksSerial
             ? l.entries
                 .filter((e) => e.quantity > 0)
-                .map((e) => ({ productId: l.productId, quantity: e.quantity, flavorId: e.flavorId || null, decoratorId: e.decoratorId || null, lineId: l.lineId }))
+                .map((e) => ({
+                  productId: l.productId,
+                  articleCode: e.articleCode || null,
+                  quantity: e.quantity,
+                  flavorId: e.articleCode ? null : e.flavorId || null,
+                  decoratorId: e.decoratorId || null,
+                  lineId: l.lineId,
+                }))
             : [],
         ),
         items: lines
@@ -216,10 +269,42 @@ export function DispatchBuilder({
     });
   }
 
-  const picked = Object.fromEntries(lines.filter((l) => !l.lineId).map((l) => [l.productId, sent(l)]));
+  const picked = Object.fromEntries(lines.filter((l) => !l.lineId && !l.fixedArticle).map((l) => [l.productId, sent(l)]));
 
   return (
     <div className="space-y-5">
+      {ready.length > 0 && (
+        <div className="card space-y-3 p-4 sm:p-5">
+          <div>
+            <p className="font-semibold text-cacao">Listas en el taller</p>
+            <p className="text-[13px] text-cacao-500">
+              {order ? "Elígelas en cada línea del pedido, o tócalas aquí para mandarlas aparte." : "Toca una torta para agregarla al despacho."}
+            </p>
+          </div>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {ready.map((cake) => {
+              const left = Math.max(0, cake.quantity - (readyUsed.get(cake.code) ?? 0));
+              return (
+                <li key={cake.code}>
+                  <button
+                    type="button"
+                    disabled={busy || left <= 0}
+                    onClick={() => addReady(cake)}
+                    className="flex min-h-14 w-full items-center justify-between gap-3 rounded-xl border border-crema-300 bg-white px-3 py-2 text-left transition-colors hover:border-cacao/35 disabled:cursor-not-allowed disabled:opacity-45"
+                  >
+                    <span className="min-w-0">
+                      <span className="block text-sm font-medium leading-snug text-cacao">{cake.description}</span>
+                      {cake.expiresOn && <span className="block text-[12px] text-cacao-500">Vence {formatDateShort(cake.expiresOn)}</span>}
+                    </span>
+                    <span className="shrink-0 text-lg font-semibold tabular-nums text-cacao">{left}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
       {!order && (
         <div className="card space-y-4 p-4 sm:p-5">
           <div>
@@ -301,26 +386,46 @@ export function DispatchBuilder({
               {line.tracksSerial ? (
                 <div className="mt-3 space-y-2">
                   {line.entries.map((entry, index) => {
-                    const differs = line.info?.flavorId && entry.flavorId && entry.flavorId !== line.info.flavorId;
+                    const differs = !entry.articleCode && line.info?.flavorId && entry.flavorId && entry.flavorId !== line.info.flavorId;
                     return (
                       <div key={entry.key} className="space-y-2 rounded-xl border border-crema-200 bg-crema-100 p-3">
-                        <div className="grid gap-2 sm:grid-cols-2">
+                        {ready.length > 0 && !line.fixedArticle && (
                           <select
-                            aria-label={`Sabor, fila ${index + 1}`}
-                            value={entry.flavorId}
+                            aria-label={`Torta lista, fila ${index + 1}`}
+                            value={entry.articleCode}
                             disabled={busy}
                             onChange={(e) =>
-                              patchLine(line.key, (l) => ({ ...l, entries: l.entries.map((x) => (x.key === entry.key ? { ...x, flavorId: e.target.value } : x)) }))
+                              patchLine(line.key, (l) => ({ ...l, entries: l.entries.map((x) => (x.key === entry.key ? { ...x, articleCode: e.target.value } : x)) }))
                             }
                             className={inputClass}
                           >
-                            <option value="">Sin sabor</option>
-                            {flavors.map((f) => (
-                              <option key={f.id} value={f.id}>
-                                {f.name}
+                            <option value="">Sin orden de producción (elegir sabor)</option>
+                            {ready.map((cake) => (
+                              <option key={cake.code} value={cake.code}>
+                                {cake.description} · {cake.quantity} {cake.quantity === 1 ? "lista" : "listas"}
                               </option>
                             ))}
                           </select>
+                        )}
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          {!entry.articleCode && (
+                            <select
+                              aria-label={`Sabor, fila ${index + 1}`}
+                              value={entry.flavorId}
+                              disabled={busy}
+                              onChange={(e) =>
+                                patchLine(line.key, (l) => ({ ...l, entries: l.entries.map((x) => (x.key === entry.key ? { ...x, flavorId: e.target.value } : x)) }))
+                              }
+                              className={inputClass}
+                            >
+                              <option value="">Sin sabor</option>
+                              {flavors.map((f) => (
+                                <option key={f.id} value={f.id}>
+                                  {f.name}
+                                </option>
+                              ))}
+                            </select>
+                          )}
                           <select
                             aria-label={`Decoradora, fila ${index + 1}`}
                             value={entry.decoratorId}
@@ -364,14 +469,16 @@ export function DispatchBuilder({
                       </div>
                     );
                   })}
-                  <button
-                    type="button"
-                    disabled={busy}
-                    onClick={() => addEntry(line)}
-                    className="flex h-11 w-full items-center justify-center rounded-xl border border-dashed border-cacao/25 text-sm font-semibold text-cacao-700 hover:border-cacao/50 disabled:opacity-45"
-                  >
-                    + Otro sabor
-                  </button>
+                  {!line.fixedArticle && (
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => addEntry(line)}
+                      className="flex h-11 w-full items-center justify-center rounded-xl border border-dashed border-cacao/25 text-sm font-semibold text-cacao-700 hover:border-cacao/50 disabled:opacity-45"
+                    >
+                      + Otro sabor
+                    </button>
+                  )}
                 </div>
               ) : (
                 <div className="mt-3 flex items-center justify-between gap-3">

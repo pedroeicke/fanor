@@ -37,8 +37,14 @@ export type DispatchOrder = {
   lines: DispatchOrderLine[];
 };
 
+/** Torta decorada esperando no taller, como a tela de despacho a oferece. */
+export type ReadyOption = { code: string; description: string; quantity: number; expiresOn: string | null };
+
 export type DispatchCakeInput = {
+  /** Vazio quando vem da lista do taller: aí o produto sai do artigo. */
   productId: string;
+  /** Torta lista do taller. O sabor já está no código; a validade conta da decoração. */
+  articleCode: string | null;
   quantity: number;
   flavorId: string | null;
   decoratorId: string | null;

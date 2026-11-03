@@ -9,8 +9,21 @@ Planilha atualizada: 1.831 códigos, 1.032 fórmulas, 5.988 linhas e 17 bloqueio
 
 **Construído:** migração 0017 aplicada, com artigos e fórmulas em tabelas próprias, e
 `/admin/produccion` com ordem por formatos, cálculo de insumos, checkout por etapa,
-refação e baixa do consumo real. Falta inventário inicial, ligação com o despacho,
-caixas, porções, gastos, custos e Siscont.
+refação e baixa do consumo real. Migração 0019 aplicada: a torta decorada fica "lista" no
+Taller e o despacho a escolhe, com produto vindo do artigo e validade contada da decoração.
+Falta inventário inicial, caixas, porções, gastos, custos e Siscont.
+
+**Sisgeco não será mais usado (decisão de 03/11/2026).** O leitor está parado desde
+06/10/2026, e a vitrine pública já diz que não pode confirmar a disponibilidade em vez de
+mostrar número velho. Para desligar de vez:
+
+- Close2U: a boleta ainda não sai pelo sistema novo e, sem o Sisgeco, não sai por lugar nenhum;
+- preços: os dos 364 produtos do Sisgeco são sem IGV, e a planilha de artigos não traz preço.
+  Torta vinda da produção hoje pede o valor na venda;
+- virar `stock_source` para o sistema novo em /admin/ajustes quando houver torta real na
+  vitrine (a página passa a mostrar as lojas, mesmo vazias) e, com isso, encerrar a alerta do leitor;
+- 605 tortas "disponíveis" do espelho, todas vencidas, e os saldos negativos sem série em Mi vitrina;
+- remover `agente-sisgeco/`, `/api/sync/sisgeco`, "Inventario Sisgeco" e os textos que citam o sistema.
 
 **Teste com sessão real (02/11/2026):** produção nas 5 áreas, pedido da loja, despacho,
 recepção com faltante, vitrine, devolução, redecoração, venda, encomenda até a entrega e
@@ -18,9 +31,7 @@ lead rodaram pelas telas, com dados removidos depois. Migração 0018 aplicada. 
 usar de verdade:
 
 - cadastrar sabores, decoradoras, tipos de torta e vendedoras (estão vazios);
-- o leitor do Sisgeco parou há cerca de 28 dias, e a vitrine pública lê esse espelho;
 - responder o reclamo LR-2026-D6800F, aberto há 62 dias;
-- saldos sem série do Sisgeco vêm negativos e com nome quebrado (`HOJA DE PI�A`);
 - medir o tempo de salvar em produção: em dev com este banco levou de 6 a 11 s.
 
 Não testado: impressão física, leitura por câmera, envio de foto, abrir WhatsApp, cancelar
@@ -71,8 +82,8 @@ recepção → Mi vitrina → devolução/redecoração, venda de balcão, encom
 exata, CRM automático, leads com tempo de resposta, alertas, `/vitrina` pública, fotos com IA,
 relatório de operação, backup diário. Build de produção e 167 consultas conferidas contra o banco.
 
-**A vitrine pública continua lendo o Sisgeco** (`system_settings.stock_source = "sisgeco"`).
-Só virar em /admin/ajustes depois que a boleta sair pelo sistema novo.
+**A vitrine pública ainda aponta para o Sisgeco** (`system_settings.stock_source = "sisgeco"`).
+Virar em /admin/ajustes junto com a boleta pelo sistema novo.
 
 ### Para ligar em produção (Vercel)
 

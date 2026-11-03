@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getOperator, listStores, shortStoreName } from "@/lib/gestion/server";
+import { limaToday } from "@/lib/gestion/dates";
+import { loadReadyCakes } from "@/lib/produccion/server";
 import { formatDateShort } from "@/lib/delivery";
 import { Notice, PageHeader } from "@/components/admin/ui";
 import { isUuid, loadCatalog } from "@/components/admin/pedidos-tienda/catalog";
 import { DispatchBuilder } from "@/components/admin/taller/DispatchBuilder";
-import type { DispatchOrder, NamedOption } from "@/components/admin/taller/types";
+import type { DispatchOrder, NamedOption, ReadyOption } from "@/components/admin/taller/types";
 
 export const metadata: Metadata = { title: "Armar despacho" };
 export const dynamic = "force-dynamic";
@@ -85,12 +87,16 @@ export default async function DispatchBuilderPage({
   const orderId = typeof sp.pedido === "string" ? sp.pedido : null;
   const wantedStore = typeof sp.tienda === "string" ? sp.tienda : null;
 
-  const [{ data: flavorRows }, { data: decoratorRows }] = await Promise.all([
+  const [{ data: flavorRows }, { data: decoratorRows }, readyCakes] = await Promise.all([
     op.db.from("flavors").select("id, name").eq("active", true).order("sort_order").order("name"),
     op.db.from("decorators").select("id, name").eq("active", true).order("name"),
+    loadReadyCakes(op.db, limaToday()),
   ]);
   let flavors = (flavorRows ?? []) as NamedOption[];
   let decorators = (decoratorRows ?? []) as NamedOption[];
+  const ready: ReadyOption[] = readyCakes
+    .filter((cake) => cake.quantity > 0)
+    .map(({ code, description, quantity, expiresOn }) => ({ code, description, quantity, expiresOn }));
 
   const catalogHint =
     flavors.length === 0 || decorators.length === 0 ? (
@@ -219,7 +225,7 @@ export default async function DispatchBuilderPage({
         {order.lines.length === 0 ? (
           <Notice tone="warn">Este pedido no tiene líneas para despachar.</Notice>
         ) : (
-          <DispatchBuilder order={order} flavors={flavors} decorators={decorators} />
+          <DispatchBuilder order={order} ready={ready} flavors={flavors} decorators={decorators} />
         )}
       </div>
     );
@@ -234,10 +240,10 @@ export default async function DispatchBuilderPage({
       <BackLink />
       <PageHeader
         title="Despacho sin pedido"
-        description="Para mandar tortas o productos que ninguna tienda pidió: elige la tienda, agrega los productos y divide las tortas en sabores."
+        description="Para mandar tortas o productos que ninguna tienda pidió: elige la tienda y agrega lo que está listo en el taller o busca el producto."
       />
       {catalogHint}
-      <DispatchBuilder order={null} stores={options} defaultStoreId={defaultStoreId} products={catalog} flavors={flavors} decorators={decorators} />
+      <DispatchBuilder order={null} ready={ready} stores={options} defaultStoreId={defaultStoreId} products={catalog} flavors={flavors} decorators={decorators} />
     </div>
   );
 }

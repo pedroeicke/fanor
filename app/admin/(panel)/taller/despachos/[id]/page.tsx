@@ -173,7 +173,7 @@ export default async function DispatchDetailPage({ params }: { params: Promise<{
                   <p className="font-mono text-[15px] font-semibold tracking-wide text-cacao">{c.serial}</p>
                   <p className="text-sm text-cacao-700">{c.products?.name ?? "Torta"}</p>
                   <p className="text-[13px] text-cacao-500">
-                    {[c.flavors?.name ?? "Sin sabor", c.decorators?.name && `decora ${c.decorators.name}`, c.cake_types?.name].filter(Boolean).join(" · ")}
+                    {[c.flavors?.name, c.decorators?.name && `decora ${c.decorators.name}`, c.cake_types?.name].filter(Boolean).join(" · ")}
                   </p>
                   <p className={cx("text-[13px]", c.redecorated ? "font-semibold text-cacao-700" : "text-cacao-500")}>
                     {c.redecorated && `Redecorada${c.origin ? ` de ${c.origin.serial}` : ""} · `}

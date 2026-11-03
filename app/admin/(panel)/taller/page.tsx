@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { DEFAULT_SLA, getOperator, getSetting, listStores, shortStoreName, type SlaSettings } from "@/lib/gestion/server";
+import { loadReadyCakes } from "@/lib/produccion/server";
 import { addDays, formatDuration, limaDateTime, limaDay, limaTime, limaToday, minutesBetween } from "@/lib/gestion/dates";
 import { DISPATCH_STATUS, REQUEST_STATUS } from "@/lib/gestion/labels";
 import { formatDateShort } from "@/lib/delivery";
@@ -11,7 +12,7 @@ import { EmptyState, Notice, PageHeader, Section, StatCard, StatusPill } from "@
 import { ReasonAction } from "@/components/admin/taller/ReasonAction";
 import { RedecorateAction } from "@/components/admin/taller/RedecorateAction";
 import type { NamedOption } from "@/components/admin/taller/types";
-import { closeRequest, discardCakes, resolveMissing } from "./actions";
+import { closeRequest, discardCakes, discardReadyCake, resolveMissing } from "./actions";
 
 export const metadata: Metadata = { title: "Taller" };
 export const dynamic = "force-dynamic";
@@ -102,7 +103,7 @@ export default async function WorkshopPage() {
 
   const cakeSelect = "id, serial, store_id, decorator_id, redecorated, returned_at, updated_at, products(name, sku), flavors(name), stores(name), dispatches(id, number)";
 
-  const [queueRes, returnedRes, missingRes, recentRes, stores, decoratorRes, sla] = await Promise.all([
+  const [queueRes, returnedRes, missingRes, recentRes, stores, decoratorRes, sla, ready] = await Promise.all([
     db
       .from("production_orders")
       .select(
@@ -132,6 +133,7 @@ export default async function WorkshopPage() {
     listStores(db),
     db.from("decorators").select("id, name").eq("active", true).order("name"),
     getSetting<SlaSettings>(db, "sla", DEFAULT_SLA),
+    loadReadyCakes(db, today),
   ]);
 
   const loadError = queueRes.error || returnedRes.error || missingRes.error || recentRes.error;
@@ -162,6 +164,8 @@ export default async function WorkshopPage() {
   const storeOptions = stores.map((s) => ({ id: s.id, name: shortStoreName(s.name) }));
   const decorators = (decoratorRes.data ?? []) as NamedOption[];
   const slaMinutes = (Number(sla.request_attend_hours) || DEFAULT_SLA.request_attend_hours) * 60;
+  const readyCount = ready.reduce((sum, cake) => sum + cake.quantity, 0);
+  const expiredCount = ready.reduce((sum, cake) => sum + cake.expired, 0);
 
   return (
     <div className="space-y-6">
@@ -190,12 +194,59 @@ export default async function WorkshopPage() {
 
       {loadError && <Notice tone="bad">No se pudo cargar todo. La pantalla vuelve a intentar sola en unos segundos.</Notice>}
 
-      <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+        <StatCard label="Listas para despachar" value={readyCount} tone={expiredCount ? "warn" : undefined} />
         <StatCard label="Encomiendas" value={contractOrders.length} tone={contractOrders.some((o) => o.for_date <= today) ? "warn" : undefined} />
         <StatCard label="Pedidos de tienda" value={restockOrders.length} />
         <StatCard label="Devueltas" value={returned.length} tone={returned.length ? "warn" : undefined} />
         <StatCard label="Faltantes" value={missing.length} tone={missing.length ? "warn" : undefined} />
       </ul>
+
+      <Section title="Listas para despachar" aside={ready.length ? `${readyCount} de producción` : undefined}>
+        {ready.length === 0 ? (
+          <EmptyState>Ninguna torta decorada esperando. Aparecen aquí al cerrar la decoración en Producción.</EmptyState>
+        ) : (
+          <>
+            <ul className="divide-y divide-crema-200">
+              {ready.map((cake) => (
+                <li key={cake.code} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-5">
+                  <div className="min-w-0">
+                    <p className="font-medium text-cacao">
+                      {cake.quantity > 0 && <span className="tabular-nums">{cake.quantity} × </span>}
+                      {cake.description}
+                    </p>
+                    <p className="text-[13px] text-cacao-500">
+                      {cake.code}
+                      {cake.expiresOn && ` · vence ${formatDateShort(cake.expiresOn)}`}
+                      {cake.expired > 0 && <span className="font-semibold text-terracota-700"> · {cake.expired} vencida{cake.expired === 1 ? "" : "s"}</span>}
+                    </p>
+                  </div>
+                  <ReasonAction
+                    action={discardReadyCake.bind(null, cake.code)}
+                    label="Se perdió una"
+                    confirmLabel="Sí, dar de baja"
+                    prompt={`¿Dar de baja una ${cake.description}? Sale la más antigua.`}
+                    placeholder="Motivo"
+                    suggestions={["Se cayó", "Se dañó", "Venció en el taller"]}
+                    requireReason
+                    tone="danger"
+                  />
+                </li>
+              ))}
+            </ul>
+            {readyCount > 0 && (
+              <div className="border-t border-crema-200 px-4 py-3 sm:px-5">
+                <Link
+                  href="/admin/taller/despachar"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-dorado px-6 font-semibold text-cacao transition-colors hover:bg-dorado-600"
+                >
+                  Despachar sin pedido
+                </Link>
+              </div>
+            )}
+          </>
+        )}
+      </Section>
 
       <Section title="Encomiendas" aside={contractOrders.length ? `${contractOrders.length} por despachar` : undefined}>
         {contractOrders.length === 0 ? (

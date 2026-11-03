@@ -68,7 +68,8 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 8. **Produtos sem fórmula:** 290 produtos finais não têm fórmula na planilha, entre eles os da pastelería (`PT9-*`). Sem fórmula, o sistema não calcula a produção deles. As fórmulas vêm depois ou esses itens não são produzidos pelo taller?
 9. **Margem de consumo:** o Joseka pediu que o consumo fique "próximo" da receita, sem fixar número. O sistema começou com ±5% (`production_tolerance_pct`), com folga de uma unidade para matéria-prima contada. Esse valor serve?
 10. **Preparados:** almíbar, chantilly e peças de decoração são feitos na medida do pedido ou em lote inteiro, guardando o resto? Por padrão a ordem calcula na medida, e existe uma opção de lote inteiro. Uma torta pediria 12 mariposas, 3% de um lote de 400.
-11. **Pedido da loja e código:** a loja pede por produto do site (`T26`) e a produção usa o código completo (`T26-CHNRMC`). Nenhum código coincide. Existe uma tabela de equivalência, ou a vendedora deve pedir pelo código completo?
+11. **Pedido da loja e código:** a loja pede por produto do site ou do Sisgeco (`T11`) e a produção usa o código completo (`T26-CHNRMC`). Nenhum código coincide. Existe uma tabela de equivalência, ou a vendedora deve pedir pelo código completo? Hoje o taller escolhe a torta lista em cada linha do pedido, e o sistema não confere se ela corresponde ao que foi pedido.
+12. **Preço das tortas:** a planilha não traz preço, e o Sisgeco, que deixará de ser usado, tinha preços sem IGV por um código diferente. Sem tabela, a vendedora digita o valor na venda. De onde vem a tabela?
 
 ## Planilha de 02/11/2026
 
@@ -108,7 +109,7 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 | Checkout por etapa, refação e consumo real | Pronto em `/admin/produccion` |
 | Separação do ovo com duas saídas e contagem real de ovos | Pronto |
 | Inventário inicial e entrada de compras de insumos | Falta. Sem isso, o saldo de matéria-prima fica negativo |
-| Ligar a torta decorada à série e ao despacho | Falta. O despacho continua manual |
+| Ligar a torta decorada à série e ao despacho | Pronto: fica "lista" no Taller e o despacho a escolhe. O caminho manual continua |
 | Perfis por área (forno, decoração) | Falta. Hoje todo acesso é de administrador |
 | Vínculo produto–caixa e baixa na venda | Falta |
 | Fracionamento, etiquetas de porção e bloqueio na venda | Falta |
@@ -128,6 +129,7 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 - **Refação:** o que faltou desce pelas fórmulas e aproveita o saldo livre. Diferença de até 2% é tratada como digitação. Na decoração, a tela pergunta se a mesma torta será decorada de novo ou refeita inteira.
 - **Fechar em bloco:** cada área tem "Salió todo como estaba previsto". O que depende de quem executa, como o ovo contado, continua aberto.
 - **Pedido da loja:** a ordem aponta para os pedidos que atende, mas quem escolhe sabores e formatos continua sendo o taller.
+- **Saída para o despacho:** o que a decoração aprova fica em "Listas para despachar" no Taller. A torta nasce com a série no despacho, a mais antiga primeiro, ligada à etapa que a fez e com a validade contada da decoração. Vencida não sai, só dá baixa com motivo. O produto é criado a partir do artigo, em rascunho e sem preço, então não aparece no site.
 - **Fórmulas com pendência:** as 10 da planilha ficam de fora até serem corrigidas.
 
 Para atualizar a base depois de uma planilha nova:
@@ -139,7 +141,7 @@ node --env-file=.env.local scripts/import-production-base.mjs .data/recipes-2026
 ## Ordem sugerida para o que falta
 
 1. **Inventário:** saldo inicial e entrada de compras, para o estoque de insumos valer de verdade.
-2. **Ligação com o despacho:** a torta decorada vira série e etiqueta sem digitar de novo.
+2. **Saída do Sisgeco:** boleta pelo Close2U, tabela de preços e virada da vitrine. Lista em `PENDENCIAS.md`.
 3. **Loja:** vínculo com caixas e fracionamento com etiquetas. O fracionamento depende das dúvidas 1 a 4.
 4. **Gastos:** tela restrita. Os códigos já vieram na planilha.
 5. **Custos e Siscont:** dependem dos custos, dos fatores do Peru, do exemplo de importação e do plano de contas.

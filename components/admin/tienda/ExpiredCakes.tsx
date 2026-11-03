@@ -132,7 +132,8 @@ export function ExpiredCakes({ cakes }: { cakes: ExpiredCake[] }) {
                   <span className="min-w-0 flex-1">
                     <span className="block font-mono text-[15px] font-semibold text-cacao">{cake.serial}</span>
                     <span className="block text-sm text-cacao-700">
-                      {cake.product} · {cake.flavor ?? "Sin sabor"}
+                      {cake.product}
+                      {cake.flavor && ` · ${cake.flavor}`}
                       {cake.redecorated && <span className="font-semibold"> · REDECORADA</span>}
                     </span>
                     <span className="block text-[13px] font-medium text-terracota">{cake.expiredLabel}</span>

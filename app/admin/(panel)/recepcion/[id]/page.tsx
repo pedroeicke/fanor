@@ -312,7 +312,8 @@ export default async function ReceptionDetailPage({
                   <div className="min-w-0 flex-1">
                     <p className="font-mono text-[14px] font-semibold text-cacao">{c.serial}</p>
                     <p className="text-[13px] text-cacao-500">
-                      {c.products?.name ?? "Torta"} · {c.flavors?.name ?? "Sin sabor"}
+                      {c.products?.name ?? "Torta"}
+                      {c.flavors?.name && ` · ${c.flavors.name}`}
                       {c.redecorated && " · REDECORADA"}
                       {c.contracts && ` · Encomienda #${c.contracts.number}`}
                     </p>

@@ -376,7 +376,8 @@ async function build(op: Operator, filters: ReportFilters, sections: ReportSecti
   const productMap = new Map(products.map((p) => [p.id, { name: p.name, sku: p.sku }]));
   const flavorMap = new Map(flavors.map((f) => [f.id, f.name]));
   const productName = (id: string) => productMap.get(id) ?? { name: "Producto eliminado", sku: null };
-  const flavorName = (id: string | null) => (id ? flavorMap.get(id) ?? "Sabor eliminado" : "Sin sabor");
+  /* A torta da produção traz o sabor no nome do produto: agrupa aqui sem dizer que não tem. */
+  const flavorName = (id: string | null) => (id ? flavorMap.get(id) ?? "Sabor eliminado" : "Sabor según producto");
 
   const cakes: CakeCounts = { ...EMPTY_COUNTS };
   const produced = new Map<string, Ranked>();

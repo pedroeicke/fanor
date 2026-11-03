@@ -288,8 +288,7 @@ export function ReceiveChecklist({
                       <span className="block text-sm text-cacao-700">
                         {cake.product}
                         {cake.sku && <span className="text-cacao-300"> · {cake.sku}</span>}
-                        {" · "}
-                        {cake.flavor ?? "Sin sabor"}
+                        {cake.flavor && ` · ${cake.flavor}`}
                         {cake.cakeType && ` · ${cake.cakeType}`}
                       </span>
                       {cake.decorator && <span className="block text-[13px] text-cacao-500">Decoró: {cake.decorator}</span>}
@@ -419,7 +418,8 @@ export function ReceiveChecklist({
               <li key={c.serial} className="flex flex-wrap gap-x-2">
                 <span className="font-mono font-semibold text-cacao">{c.serial}</span>
                 <span className="text-cacao-500">
-                  {c.product} · {c.flavor ?? "Sin sabor"}
+                  {c.product}
+                  {c.flavor && ` · ${c.flavor}`}
                 </span>
               </li>
             ))}

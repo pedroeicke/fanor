@@ -121,6 +121,55 @@ export async function loadWorkshopBalances(db: SupabaseClient, codes: string[]) 
   return balances;
 }
 
+export type ReadyCake = {
+  code: string;
+  description: string;
+  /** Prontas e dentro do prazo: é o que o despacho pode levar. */
+  quantity: number;
+  /** Passaram do prazo no taller: só resta dar baixa. */
+  expired: number;
+  /** Validade mais próxima entre as que ainda valem. */
+  expiresOn: string | null;
+};
+
+/**
+ * Tortas decoradas que ainda não saíram do taller, por artigo. O saldo limita a
+ * conta: torta que virou ingrediente de outra continua "aprovada" na etapa dela.
+ */
+export async function loadReadyCakes(db: SupabaseClient, today: string): Promise<ReadyCake[]> {
+  const { data, error } = await db
+    .from("production_ready")
+    .select("article_code, description, quantity, expires_on")
+    .order("expires_on")
+    .limit(1000);
+  if (error) throw new Error(`[produccion] listas: ${error.message}`);
+
+  const groups = new Map<string, ReadyCake>();
+  for (const row of data ?? []) {
+    const code = row.article_code as string;
+    const group = groups.get(code) ?? { code, description: row.description as string, quantity: 0, expired: 0, expiresOn: null };
+    const quantity = Number(row.quantity);
+    const expiresOn = row.expires_on as string;
+    if (expiresOn < today) {
+      group.expired += quantity;
+    } else {
+      group.quantity += quantity;
+      if (!group.expiresOn || expiresOn < group.expiresOn) group.expiresOn = expiresOn;
+    }
+    groups.set(code, group);
+  }
+
+  const balances = await loadWorkshopBalances(db, [...groups.keys()]);
+  const ready: ReadyCake[] = [];
+  for (const group of groups.values()) {
+    const balance = Math.max(0, Math.floor(balances.get(group.code) ?? 0));
+    const quantity = Math.min(group.quantity, balance);
+    const expired = Math.min(group.expired, balance - quantity);
+    if (quantity + expired > 0) ready.push({ ...group, quantity, expired });
+  }
+  return ready.sort((a, b) => a.description.localeCompare(b.description, "es"));
+}
+
 /**
  * Saldo que ninguém prometeu ainda: o que está no taller menos o que as etapas
  * pendentes vão consumir. Sem isto, a batida feita para os cakes de hoje parecia

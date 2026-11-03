@@ -57,7 +57,8 @@ type Level = {
 type FlavorGroup = { name: string; cakes: Cake[] };
 type ProductGroup = { key: string; name: string; sku: string | null; count: number; flavors: FlavorGroup[] };
 
-const NO_FLAVOR = "Sin sabor";
+/* A torta da produção traz o sabor no nome do produto (T26-CHNRMC). */
+const NO_FLAVOR = "Sin sabor aparte";
 
 /** Relógio lido uma vez, fora do componente: render tem de ser puro. */
 function clock() {
@@ -80,7 +81,7 @@ function formatQty(n: number) {
 
 const byName = (a: string, b: string) => a.localeCompare(b, "es", { numeric: true, sensitivity: "base" });
 
-/** Produto → sabor → torta, com "Sin sabor" no fim de cada produto. */
+/** Produto → sabor → torta, com as sem sabor aparte no fim de cada produto. */
 function groupShowcase(cakes: Cake[]): ProductGroup[] {
   const products = new Map<string, { name: string; sku: string | null; flavors: Map<string, Cake[]> }>();
   for (const cake of cakes) {
@@ -287,14 +288,16 @@ export default async function StorePage({ searchParams }: { searchParams: Promis
             >
               {group.flavors.map((flavor) => (
                 <div key={flavor.name}>
-                  <p className="flex items-center justify-between bg-crema-100 px-4 py-2 text-[12px] font-bold uppercase tracking-[0.1em] text-cacao-500 sm:px-5">
-                    <span>{flavor.name}</span>
-                    <span className="tabular-nums">{flavor.cakes.length}</span>
-                  </p>
+                  {(flavor.name !== NO_FLAVOR || group.flavors.length > 1) && (
+                    <p className="flex items-center justify-between bg-crema-100 px-4 py-2 text-[12px] font-bold uppercase tracking-[0.1em] text-cacao-500 sm:px-5">
+                      <span>{flavor.name}</span>
+                      <span className="tabular-nums">{flavor.cakes.length}</span>
+                    </p>
+                  )}
                   <ul className="divide-y divide-crema-200">
                     {flavor.cakes.map((c) => (
                       <li key={c.id} className="flex items-center gap-3 px-4 py-3 sm:px-5">
-                        <CakeThumb url={c.photo_url} alt={`${group.name} ${flavor.name}, serie ${c.serial}`} />
+                        <CakeThumb url={c.photo_url} alt={`${group.name}${flavor.name === NO_FLAVOR ? "" : ` ${flavor.name}`}, serie ${c.serial}`} />
                         <div className="min-w-0 flex-1">
                           <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
                             <span className="font-mono text-[14px] font-semibold text-cacao">{c.serial}</span>
@@ -334,7 +337,8 @@ export default async function StorePage({ searchParams }: { searchParams: Promis
                 <div className="min-w-0 flex-1">
                   <p className="font-mono text-[14px] font-semibold text-cacao">{c.serial}</p>
                   <p className="text-[13px] text-cacao-700">
-                    {c.products?.name ?? "Torta"} · {c.flavors?.name ?? NO_FLAVOR}
+                    {c.products?.name ?? "Torta"}
+                    {c.flavors?.name && ` · ${c.flavors.name}`}
                   </p>
                   {c.contracts && (
                     <p className={cx("text-[13px]", c.contracts.deliver_on <= today ? "font-semibold text-terracota" : "text-cacao-500")}>
@@ -368,7 +372,8 @@ export default async function StorePage({ searchParams }: { searchParams: Promis
                 <div className="min-w-0 flex-1">
                   <p className="font-mono text-[14px] font-semibold text-cacao">{c.serial}</p>
                   <p className="text-[13px] text-cacao-700">
-                    {c.products?.name ?? "Torta"} · {c.flavors?.name ?? NO_FLAVOR}
+                    {c.products?.name ?? "Torta"}
+                    {c.flavors?.name && ` · ${c.flavors.name}`}
                     {c.contracts && ` · Encomienda #${c.contracts.number}`}
                   </p>
                   {c.dispatch_id && c.dispatches && (

@@ -49,6 +49,7 @@ type TaskRow = {
   reject_reason: string | null;
   notes: string | null;
   checked_out_at: string | null;
+  released_quantity: number;
   articles: { description: string; recipe_unit: string | null } | null;
   production_task_inputs: InputRow[];
 };
@@ -81,7 +82,7 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
     db
       .from("production_tasks")
       .select(
-        "id, stage, article_code, planned_quantity, requires, rework_of, status, approved_quantity, rejected_quantity, reject_reason, notes, checked_out_at, articles(description, recipe_unit), production_task_inputs(id, article_code, planned_quantity, actual_quantity, display_unit, display_factor, count_on_execution, out_of_tolerance, justification, articles(description, type, recipe_unit))",
+        "id, stage, article_code, planned_quantity, requires, rework_of, status, approved_quantity, rejected_quantity, reject_reason, notes, checked_out_at, released_quantity, articles(description, recipe_unit), production_task_inputs(id, article_code, planned_quantity, actual_quantity, display_unit, display_factor, count_on_execution, out_of_tolerance, justification, articles(description, type, recipe_unit))",
       )
       .eq("batch_id", id)
       .order("created_at"),
@@ -96,6 +97,9 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
   const isOpen = batch.status === "open";
 
   const lostTasks = tasks.filter((t) => Number(t.rejected_quantity ?? 0) > 0);
+  const waitingDispatch = tasks
+    .filter((t) => t.stage === "decoracion" && t.status === "done")
+    .reduce((sum, t) => sum + Math.max(0, Math.floor(Number(t.approved_quantity ?? 0) - Number(t.released_quantity))), 0);
 
   /* Saldo só do que o taller produz; matéria-prima ainda não tem inventário inicial. */
   const intermediateCodes = [
@@ -152,6 +156,14 @@ export default async function ProductionOrderPage({ params }: { params: Promise<
       {batch.notes && <Notice>{batch.notes}</Notice>}
       {batch.status === "done" && <Notice tone="ok">Orden terminada. Todas las etapas están cerradas.</Notice>}
       {batch.status === "cancelled" && <Notice tone="warn">Orden cancelada. Lo ya consumido no vuelve al inventario.</Notice>}
+      {waitingDispatch > 0 && (
+        <Notice tone="info">
+          {waitingDispatch === 1 ? "1 torta decorada espera" : `${waitingDispatch} tortas decoradas esperan`} despacho.{" "}
+          <Link href="/admin/taller" className="font-semibold underline underline-offset-2">
+            Ir al taller
+          </Link>
+        </Notice>
+      )}
 
       {STAGES.map((stage) => {
         const stageTasks = tasks.filter((t) => t.stage === stage && t.status !== "cancelled");
