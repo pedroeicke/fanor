@@ -18,7 +18,7 @@ function parsedQuantity(value: string) {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
 }
 
-export function WorkshopSimulation() {
+export function WorkshopSimulation({ simulationOnly = false }: { simulationOnly?: boolean }) {
   const [scenarioId, setScenarioId] = useState<(typeof SIMULATION_SCENARIOS)[number]["id"]>("torta");
   const [stepIndex, setStepIndex] = useState(0);
   const [entries, setEntries] = useState<Record<string, Entry>>({});
@@ -57,7 +57,7 @@ export function WorkshopSimulation() {
       <PageHeader
         title="Simulación por áreas del taller"
         description="Recorre quién recibe, qué registra y qué entrega cada sector. Usa ejemplos de las fórmulas Fanor y cantidades que puedes cambiar para ensayar el flujo."
-        actions={<Link href="/admin/recetas" className="inline-flex h-11 items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-semibold text-cacao hover:border-cacao/35 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">Ver recetas</Link>}
+        actions={!simulationOnly && <Link href="/admin/recetas" className="inline-flex h-11 items-center rounded-full border border-crema-300 bg-white px-5 text-sm font-semibold text-cacao hover:border-cacao/35 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">Ver recetas</Link>}
       />
 
       <Notice tone="warn">
@@ -157,7 +157,7 @@ export function WorkshopSimulation() {
                   <button type="button" onClick={recordStep} className="min-h-11 rounded-full bg-cacao px-5 py-2 text-sm font-semibold text-white hover:bg-cacao-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">
                     {entry.completed ? "Actualizar este paso" : "Registrar en la simulación"}
                   </button>
-                  {step.existingScreen && <Link href={step.existingScreen} className="text-sm font-semibold text-cacao underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">Salir de la simulación y abrir la pantalla real</Link>}
+                  {step.existingScreen && !simulationOnly && <Link href={step.existingScreen} className="text-sm font-semibold text-cacao underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dorado">Salir de la simulación y abrir la pantalla real</Link>}
                 </div>
               </div>
             </Section>

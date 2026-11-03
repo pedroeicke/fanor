@@ -35,7 +35,7 @@ export function LoginForm() {
 
     try {
       const supabase = createBrowserClient(url!, key!);
-      const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
 
       if (authError) {
         /* Mensagem genérica de propósito: dizer "correo no registrado" revela
@@ -46,7 +46,7 @@ export function LoginForm() {
 
       /* refresh() força o servidor a reler a sessão do cookie antes de navegar. */
       router.refresh();
-      router.replace(next);
+      router.replace(data.user?.app_metadata?.fanor_simulation_test === true ? "/admin/simulacion-taller" : next);
     } catch {
       setError("No pudimos conectar. Revisa tu conexión e intenta de nuevo.");
     } finally {
