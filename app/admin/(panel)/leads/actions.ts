@@ -76,7 +76,7 @@ async function resolveAssignment(op: Operator, storeRaw: unknown, sellerRaw: unk
     /* A tela já esconde o taller e filtra por loja; aqui vale para quem chama
        a ação sem a tela. Lead de uma loja com vendedora de outra sumiria do
        filtro das duas. */
-    if (seller.role === "workshop") return { ok: false, error: "El personal del taller no atiende leads." };
+    if (seller.role === "workshop" || seller.role === "accounting") return { ok: false, error: "Esa persona no atiende leads." };
     if (store && seller.store_id && seller.store_id !== store) {
       return { ok: false, error: "La vendedora es de otra tienda." };
     }

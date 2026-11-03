@@ -9,7 +9,7 @@
  * etapa dele. Sem áreas marcadas, é quem organiza o taller inteiro.
  */
 
-export type Profile = "owner" | "manager" | "seller" | "workshop" | "area";
+export type Profile = "owner" | "manager" | "seller" | "workshop" | "area" | "accounting";
 
 const OWNER: Profile[] = ["owner"];
 const MANAGEMENT: Profile[] = ["owner", "manager"];
@@ -35,6 +35,10 @@ const ACCESS = {
   "/admin/etiquetas": WORKSHOP,
   "/admin/produccion": ["owner", "manager", "workshop", "area"],
   "/admin/produccion/nueva": WORKSHOP,
+  "/admin/insumos": WORKSHOP,
+  /* Tela de uma pessoa só: nem a encargada vê os gastos. */
+  "/admin/gastos": ["owner", "accounting"],
+  "/admin/costos": MANAGEMENT,
   "/admin/pedidos": MANAGEMENT,
   "/admin/alertas": MANAGEMENT,
   "/admin/recetas": MANAGEMENT,
@@ -59,12 +63,14 @@ const HOME: Record<Profile, string> = {
   seller: "/admin/tienda",
   workshop: "/admin/taller",
   area: "/admin/produccion",
+  accounting: "/admin/gastos",
 };
 
 /** Mesma regra de `panel_access()`. Conta sem ficha ativa fica com o mínimo: ninguém perde a venda, ninguém ganha o resto. */
 export function profileOf(adminRole: string, seller: { role: string; stages: string[] } | null): Profile {
   if (adminRole === "owner") return "owner";
   if (seller?.role === "manager") return "manager";
+  if (seller?.role === "accounting") return "accounting";
   if (seller?.role === "workshop") return seller.stages.length > 0 ? "area" : "workshop";
   return "seller";
 }

@@ -30,6 +30,7 @@ const GROUPS: Group[] = [
       { href: "/admin/pedidos-tienda", label: "Pedir al taller" },
       { href: "/admin/taller", label: "Taller" },
       { href: "/admin/produccion", label: "Producción" },
+      { href: "/admin/insumos", label: "Insumos" },
       { href: "/admin/encomiendas", label: "Encomiendas" },
       { href: "/admin/fotos", label: "Fotos" },
     ],
@@ -50,6 +51,8 @@ const GROUPS: Group[] = [
     label: "Gestión",
     links: [
       { href: "/admin/productos", label: "Productos" },
+      { href: "/admin/gastos", label: "Gastos" },
+      { href: "/admin/costos", label: "Costos" },
       { href: "/admin/recetas", label: "Recetas" },
       { href: "/admin/simulacion-taller", label: "Simulación del taller" },
       { href: "/admin/catalogos", label: "Catálogos" },

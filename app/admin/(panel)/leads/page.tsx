@@ -142,7 +142,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Search
   const allSellers = (sellerData ?? []) as SellerRow[];
   /* Taller não atende cliente: fica fora da lista de quem recebe lead. */
   const sellers: SellerOption[] = allSellers
-    .filter((s) => s.active && s.role !== "workshop")
+    .filter((s) => s.active && s.role !== "workshop" && s.role !== "accounting")
     .map((s) => ({ id: s.id, name: s.name, storeId: s.store_id }));
   const stores: StoreOption[] = storeList.map((s) => ({ id: s.id, name: shortStoreName(s.name) }));
 

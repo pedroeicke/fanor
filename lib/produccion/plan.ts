@@ -20,6 +20,8 @@ export type PlanArticle = {
   stockUnit: string | null;
   recipeUnit: string | null;
   conversionFactor: number | null;
+  /** Soles por unidade de estoque. Só o cálculo de custo usa. */
+  cost?: number | null;
 };
 
 export type PlanLine = {

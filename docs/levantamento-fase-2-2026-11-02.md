@@ -108,13 +108,13 @@ Este documento separa o que veio do cliente do que foi apenas sugerido pelo assi
 | Ordem de produção com mistura de formatos e cálculo de insumos | Pronto em `/admin/produccion` |
 | Checkout por etapa, refação e consumo real | Pronto em `/admin/produccion` |
 | Separação do ovo com duas saídas e contagem real de ovos | Pronto |
-| Inventário inicial e entrada de compras de insumos | Falta. Sem isso, o saldo de matéria-prima fica negativo |
+| Inventário inicial e entrada de compras de insumos | Pronto em `/admin/insumos`. Falta a equipe fazer a contagem |
 | Ligar a torta decorada à série e ao despacho | Pronto: fica "lista" no Taller e o despacho a escolhe. O caminho manual continua |
 | Perfis por área (forno, decoração) | Pronto: perfil na ficha, com a tabela de acesso a confirmar pelo Joseka |
-| Vínculo produto–caixa e baixa na venda | Falta |
+| Vínculo produto–caixa e baixa na venda | Pronto, por formato. Falta definir a caixa de cada formato |
 | Fracionamento, etiquetas de porção e bloqueio na venda | Falta |
-| Tela de gastos com perfil restrito | Falta |
-| Custo direto e relatório de participação | Falta, depende de custos e fatores |
+| Tela de gastos com perfil restrito | Pronto em `/admin/gastos` |
+| Custo direto e relatório de participação | Custo direto pronto em `/admin/costos`, faltam os custos. Participação falta, depende dos fatores |
 | Exportação para o Siscont | Falta, depende de exemplo e plano de contas |
 
 ## Como a produção funciona hoje
@@ -140,11 +140,10 @@ node --env-file=.env.local scripts/import-production-base.mjs .data/recipes-2026
 
 ## Ordem sugerida para o que falta
 
-1. **Inventário:** saldo inicial e entrada de compras, para o estoque de insumos valer de verdade.
-2. **Saída do Sisgeco:** boleta pelo Close2U, tabela de preços e virada da vitrine. Lista em `PENDENCIAS.md`.
-3. **Loja:** vínculo com caixas e fracionamento com etiquetas. O fracionamento depende das dúvidas 1 a 4.
-4. **Gastos:** tela restrita. Os códigos já vieram na planilha.
-5. **Custos e Siscont:** dependem dos custos, dos fatores do Peru, do exemplo de importação e do plano de contas.
+1. **Saída do Sisgeco:** boleta pelo Close2U, tabela de preços e virada da vitrine. Lista em `PENDENCIAS.md`.
+2. **Dados para o que já está pronto:** contagem do estoque, caixa por formato e custo dos insumos.
+3. **Porções:** fracionamento com etiquetas. Depende das dúvidas 1 a 4.
+4. **Rateio e Siscont:** dependem dos fatores do Peru, do exemplo de importação e do plano de contas.
 
 ## Limites desta leitura
 

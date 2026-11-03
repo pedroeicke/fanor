@@ -11,7 +11,20 @@ Planilha atualizada: 1.831 códigos, 1.032 fórmulas, 5.988 linhas e 17 bloqueio
 `/admin/produccion` com ordem por formatos, cálculo de insumos, checkout por etapa,
 refação e baixa do consumo real. Migração 0019 aplicada: a torta decorada fica "lista" no
 Taller e o despacho a escolhe, com produto vindo do artigo e validade contada da decoração.
-Falta inventário inicial, caixas, porções, gastos, custos e Siscont.
+Falta porções, fatores do rateio de custos e Siscont.
+
+**Insumos, caixas, gastos e custos (migração 0021):**
+
+- `/admin/insumos`: contagem e compra no taller e em cada loja, em unidade de estoque. Falta a
+  equipe contar cada item: até lá o saldo só reflete o que a produção consumiu.
+- Caixas: aba em Insumos, uma caixa por formato. A torta vendida baixa a caixa na loja, inclusive
+  na entrega de encomenda. Falta o Joseka dizer qual caixa vai em cada um dos 25 formatos: sem
+  isso, nada baixa. Velas e refrigerantes ainda não têm baixa por loja.
+- `/admin/gastos`: perfil Administración, e o banco esconde os lançamentos das outras contas.
+  Corrigir e anular deixam trilha. Falta dizer quem usa e se alimenta o rateio.
+- `/admin/costos`: custo direto por fórmula. Os 220 insumos estão sem custo; enquanto faltar, a
+  tela avisa que o valor está incompleto. `articles.cost` é por unidade de estoque e vale pela
+  última compra. Gema e clara dividem o ovo por peso até o rateio ser decidido.
 
 **Perfis por área (migração 0020):** dono, encargada, vendedora, taller e taller com áreas
 marcadas, escolhidos na ficha em Catálogos → Vendedoras. A tabela é uma proposta, em

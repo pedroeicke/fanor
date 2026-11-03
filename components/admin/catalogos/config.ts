@@ -77,6 +77,7 @@ export const SELLER_ROLES = {
   seller: "Vendedora",
   workshop: "Taller",
   manager: "Encargada",
+  accounting: "Administración",
 } as const;
 
 export type SellerRole = keyof typeof SELLER_ROLES;
@@ -85,7 +86,8 @@ export type SellerRole = keyof typeof SELLER_ROLES;
 export const SELLER_ROLE_HELP: Record<SellerRole, string> = {
   seller: "Vitrina, recepción, venta, pedidos al taller, encomiendas, fotos, leads y clientes.",
   workshop: "Taller y Producción. Si marcas áreas, solo ve Producción y cierra las etapas de esas áreas.",
-  manager: "Todo lo de tienda y taller, y los reportes. Sin Ajustes, Productos, Entrega ni Respaldos.",
+  manager: "Todo lo de tienda y taller, y los reportes. Sin Gastos, Ajustes, Productos, Entrega ni Respaldos.",
+  accounting: "Solo Gastos.",
 };
 
 /* Áreas que a ficha do taller pode marcar, na ordem do taller. */

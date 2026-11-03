@@ -34,6 +34,7 @@ type ArticleRow = {
   stock_unit: string | null;
   recipe_unit: string | null;
   conversion_factor: number | null;
+  cost: number | null;
 };
 
 /**
@@ -88,7 +89,7 @@ export async function loadPlanGraph(db: SupabaseClient, roots: string[]): Promis
   for (const part of chunks([...seen])) {
     const { data, error } = await db
       .from("articles")
-      .select("code, type, description, stock_unit, recipe_unit, conversion_factor")
+      .select("code, type, description, stock_unit, recipe_unit, conversion_factor, cost")
       .in("code", part);
     if (error) throw new Error(`[produccion] artículos: ${error.message}`);
     for (const row of (data ?? []) as ArticleRow[]) {
@@ -99,6 +100,7 @@ export async function loadPlanGraph(db: SupabaseClient, roots: string[]): Promis
         stockUnit: row.stock_unit,
         recipeUnit: row.recipe_unit,
         conversionFactor: row.conversion_factor === null ? null : Number(row.conversion_factor),
+        cost: row.cost === null ? null : Number(row.cost),
       });
     }
   }
@@ -119,6 +121,25 @@ export async function loadWorkshopBalances(db: SupabaseClient, codes: string[]) 
     for (const row of data ?? []) balances.set(row.article_code as string, Number(row.quantity));
   }
   return balances;
+}
+
+/** Saldo e última contagem ou compra num lugar. `storeId` nulo é o taller. */
+export async function loadStockAt(db: SupabaseClient, codes: string[], storeId: string | null) {
+  const balances = new Map<string, number>();
+  const counted = new Map<string, string>();
+  for (const part of chunks(codes)) {
+    const balance = db.from("article_balances").select("article_code, quantity").in("article_code", part);
+    const last = db.from("article_counted").select("article_code, last_at").in("article_code", part);
+    const [balanceRes, lastRes] = await Promise.all([
+      storeId ? balance.eq("store_id", storeId) : balance.is("store_id", null),
+      storeId ? last.eq("store_id", storeId) : last.is("store_id", null),
+    ]);
+    if (balanceRes.error) throw new Error(`[insumos] saldos: ${balanceRes.error.message}`);
+    if (lastRes.error) throw new Error(`[insumos] contagens: ${lastRes.error.message}`);
+    for (const row of balanceRes.data ?? []) balances.set(row.article_code as string, Number(row.quantity));
+    for (const row of lastRes.data ?? []) counted.set(row.article_code as string, row.last_at as string);
+  }
+  return { balances, counted };
 }
 
 export type ReadyCake = {
